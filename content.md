@@ -1,14 +1,15 @@
 # 目录
 
-## 1、[前言](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/0-foreword.md)
-- 1.1、微服务简介
-- 1.2、构建单体应用
-- 1.3、走向单体地狱
-- 1.4、微服务——解决复杂问题
-- 1.5、微服务的优点
-- 1.6、微服务的缺点
-- 1.7、总结
-- 1.8、微服务实战：NGINX作为反向代理服务器
+## 0、[前言](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/0-foreword.md)
+
+## 1、微服务简介
+- 1.1、构建单体应用
+- 1.2、走向单体地狱
+- 1.3、微服务——解决复杂问题
+- 1.4、微服务的优点
+- 1.5、微服务的缺点
+- 1.6、总结
+- 1.7、微服务实战：NGINX作为反向代理服务器
 
 ## 2、使用API网关
 - 2.1、简介
