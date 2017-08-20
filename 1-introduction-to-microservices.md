@@ -27,7 +27,7 @@
 
 另一个大问题是，复杂的单体应用本身就是持续部署的障碍。如今，SaaS 应用发展到了每天可将变更推送到生产中多次。这对于复杂的单体非常困难，因为您必须重新部署整个应用程序才能更新其中任何一部分。这对我之前提到的漫长的启动时间也不会有什么帮助。此外，因为变化的影响通常不是很清楚，您很可能需要做大量的手工测试。因此，持续部署是不可能做到的。
 
-当不同模块存在资源需求冲突时，单体应用也可能难以扩展。例如，一个模块可能会执行 CPU 密集型图像处理逻辑，理想情况下是部署在 Amazon EC2 Compute Optimized 实例中。另一个模块可能是内存数据库，最适合 EC2 Memory-optimized 实例。然而，因为这些模块被部署在一起，您必须在硬件选择上做出妥协。
+当不同模块存在资源需求冲突时，单体应用也可能难以扩展。例如，一个模块可能会执行 CPU 密集型图像处理逻辑，理想情况下是部署在 [Amazon EC2 Compute Optimized 实例](http://aws.amazon.com/about-aws/whats-new/2013/11/14/announcing-new-amazon-ec2-compute-optimized-instances/)中。另一个模块可能是内存数据库，最适合 [EC2 Memory-optimized 实例](https://aws.amazon.com/cn/about-aws/whats-new/2014/04/10/r3-announcing-the-next-generation-of-amazon-ec2-memory-optimized-instances/)。然而，因为这些模块被部署在一起，您必须在硬件选择上做出妥协。
 
 单体应用的另一个问题是可靠性。因为所有模块运行在同一进程。任何模块的一个 bug，比如内存泄漏，可能会拖垮整个进程。此外，由于应用程序的所有的实例都是相同的，该错误将影响到整个应用的可用性。
 
