@@ -1,13 +1,15 @@
 # 《微服务：从设计到部署》中文版
 本仓库为电子书 [Designing and Deploying Microservices](https://www.nginx.com/resources/library/designing-deploying-microservices/) 的中文翻译版本，不涉及任何商业利益，纯属个人爱好。
 
+![Cover](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/cover.png)
+
 ## 目录
 
 ### 1、[前言](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/0-foreword.md)
 
-### 1、微服务简介
-- 1.1、构建单体应用
-- 1.2、走向单体地狱
+### [1、微服务简介](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#1微服务简介)
+- [1.1、构建单体应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#1.1构建单体应用)
+- [1.2、走向单体地狱](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#1.2走向单体地狱)
 - 1.3、微服务——解决复杂问题
 - 1.4、微服务的优点
 - 1.5、微服务的缺点
