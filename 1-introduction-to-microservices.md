@@ -37,4 +37,21 @@
 
 那么您能做些什么呢？
 
+## 1.3、微服务-解决复杂问题
+许多组织，如 Amazon、eBay 和 [Netflix](http://www.nginx.com/blog/microservices-at-netflix-architectural-best-practices/)，已经采用现在所谓的[微服务架构模式](http://microservices.io/patterns/microservices.html)解决了这个问题，而不是构建一个臃肿的单体应用。它的思路是将您的应用程序分解成一套较小的互连服务。
+
+一个服务通常实现了一组不同的特性或者功能，例如订单管理、客户管理等。每一个微服务都是一个迷你应用，它自己的六边形架构包括业务逻辑以及多个适配器。
+
+一些微服务会暴露一个供其他微服务或应用客户端消费的 API。其他微服务可能实现了一个 web UI。在运行时，每个实例通常是一个云虚拟机（virtual machine，VM）或者一个 Docker 容器。
+
+例如，前面描述的系统可能分解成如图 1-2 所示：
+
+![图 1-2、一个单体应用分解成微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-2.png)
+
+应用程序的每个功能区域现在都由自己的微服务实现。此外，Web 应用程序被分为一组更简单的 Web 应用程序。例如，以我们的出粗车为例，一个专门是乘客的，一个专门是司机的。这使得它更容易地为特定的用户、司机、设备或者专门的用例部署不同的场景。每个后端服务暴露一个 REST API，大部分的服务消费由其他服务提供的 API。例如，司机管理使用了通知服务器来告知一个可用司机关于一个潜在路程。UI 服务调用了其他服务来渲染页面。服务也可以使用异步、基于消息的通信。本电子书后面将会详细介绍服务间的通信。
+
+一些 REST API 也暴露给移动端应用供司机和乘客使用。然而，应用不能直接访问后端服务。相反，他们之间的通信是由一个称为 [API 网关](http://microservices.io/patterns/apigateway.html)（API Cateway）的中介负责。API 网关负责负载均衡、缓存、访问控制、API计量和监控，[可以通过使用 NGINX 来实现](http://www.nginx.com/solutions/api-gateway/)。第 2 章详细讨论 API 网关。
+
+![图 1-3、开发和交付中的衡量立方（Scale Cube）](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-3.png)
+
 **待续……**
