@@ -52,6 +52,25 @@
 
 一些 REST API 也暴露给移动端应用供司机和乘客使用。然而，应用不能直接访问后端服务。相反，他们之间的通信是由一个称为 [API 网关](http://microservices.io/patterns/apigateway.html)（API Cateway）的中介负责。API 网关负责负载均衡、缓存、访问控制、API计量和监控，[可以通过使用 NGINX 来实现](http://www.nginx.com/solutions/api-gateway/)。第 2 章详细讨论 API 网关。
 
-![图 1-3、开发和交付中的衡量立方（Scale Cube）](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-3.png)
+![图 1-3、开发和交付中的缩放立方（Scale Cube）](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-3.png)
 
+微服务架构模式相当于此缩放立方的 Y 轴坐标，此立方是一个来自[《架构即未来》](http://theartofscalability.com/)的三维伸缩模型。另外两个坐标轴是由运行多个相同应用程序副本的负载均衡器组成的 X 轴缩放和 Z 轴坐标（或者数据分区），其中请求的属性（例如，一行记录的主键或者客户标识）用于将请求路由到特定的服务器。
+
+应用程序通常将这三种类型的坐标方式一起使用。Y 轴坐标将应用分解成微服务，如图 1-2 所示。
+
+在运行时，X 坐标轴上运行着服务的多个实例，每一个服务配合负载均衡器以满足吞吐量和可用性。某些应用程序也有可能使用 Z 坐标轴来进行分区服务。图 1-4 展示了如何用 Docker 将旅途管理（Trip Management）服务部署到 Amazon EC2 上运行。
+
+![图 1-4、使用 Docker 部署旅途管理服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-4.png)
+
+在运行时，旅途管理服务由多个服务实例组成，每个服务实例是一个 Docker 容器。为了实现高可用，容器是在多个云虚拟机上运行的。服务实例的前方是一个[如 NGINX 的负载均衡器](http://www.nginx.com/solutions/load-balancing/)，用于跨实例分发请求。负载均衡器也可以处理其他问题，如[缓存](http://www.nginx.com/resources/admin-guide/content-caching/)、[访问控制](http://www.nginx.com/resources/admin-guide/restricting-access/)、[API 度量](http://www.nginx.com/solutions/api-gateway/)和[监控](http://www.nginx.com/products/live-activity-monitoring/)。
+
+微服务架构模式明显影响到了应用程序与数据库之间的关系。与与其他共享单个数据库模式（schema）服务不同，每一个服务都有自己的数据库模式。一方面，这种做法是与企业级数据库数据模型的想法不符，此外，它经常导致一些数据冗余。然而，如果您想从微服务中受益，每一个服务都应该有自己的数据库模式。因为它做到了松耦合。图 1-5 展示了数据库架构示例应用程序。
+
+每个服务都有自己的数据库。而且，服务可以使用一种最适合其需求、号称多语言持久架构（polyglot persistence architecture）的数据库。例如，司机管理，找到与潜在乘客接近的司机必须使用支持高效地理查询的数据库。
+
+![图 1-5、打车应用的数据库架构](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-4.png)
+
+从表面上看，微服务架构模式类似于 SOA。微服务是由一组服务组成。然而，换另一种方式去思考微服务架构模式，它是没有商业化的 SOA，没有集成 [Web 服务规范](http://en.wikipedia.org/wiki/List_of_web_service_specifications)（WS-\*）和企业服务总线（Enterprise Service Bus，ESB）。基于微服务的应用支持更简单、轻量级的协议，例如，REST，而不是 WS-\*。他们也尽量避免使用 ESB，而是实现微服务本身具有类似 ESB 的功能。微服务架构也拒绝了 SOA 的其他部分，例如，数据访问[规范模式](https://en.wikipedia.org/wiki/Canonical_schema_pattern)概念。
+
+## 1.4、微服务的优点
 **待续……**
