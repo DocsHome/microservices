@@ -13,8 +13,8 @@
 - [1.3、微服务-解决复杂问题](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#13微服务-解决复杂问题)
 - [1.4、微服务的优点](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#14微服务的优点)
 - [1.5、微服务的缺点](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#15微服务的缺点)
-- 1.6、总结
-- 1.7、微服务实战：NGINX作为反向代理服务器
+- [1.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#16总结)
+- [微服务实战：NGINX作为反向代理服务器](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#微服务实战：NGINX作为反向代理服务器)
 
 ### 2、使用API网关
 - 2.1、简介
