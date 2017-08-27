@@ -14,36 +14,36 @@
 - [1.4、微服务的优点](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#14微服务的优点)
 - [1.5、微服务的缺点](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#15微服务的缺点)
 - [1.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#16总结)
-- [微服务实战：NGINX作为反向代理服务器](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#微服务实战：NGINX作为反向代理服务器)
+- [微服务实战：NGINX Plus 作为反向代理服务器](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#微服务实战nginx-plus-作为反向代理服务器)
 
 ### 2、使用API网关
 - 2.1、简介
 - 2.2、客户端与微服务直接通信
-- 2.3、使用API网关
-- 2.4、API网关的优点和缺点
-- 2.5、实现API网关
+- 2.3、使用 API 网关
+- 2.4、API 网关的优点和缺点
+- 2.5、实现 API 网关
 - 2.6、性能与扩展
 - 2.7、使用响应式编程模型
 - 2.8、服务调用
 - 2.9、服务发现
 - 2.10、处理部分失败
 - 2.11、总结
-- 2.12、微服务实战：NGINX作为API网关
+- 2.12、微服务实战：NGINX 作为 API 网关
 
 ### 3、进程间通信
 - 3.1、简介
 - 3.2、交互风格
-- 3.3、定义API
-- 3.4、演变API
+- 3.3、定义 API
+- 3.4、演变 API
 - 3.5、处理部分失败
-- 3.6、IPC技术
+- 3.6、IPC 技术
 - 3.7、异步，基于消息通信
 - 3.8、同步，请求/响应 IPC
 - 3.9、REST
 - 3.10、Thrift
 - 3.11、消息格式
 - 3.12、总结
-- 3.13、微服务实战：NGINX和应用架构
+- 3.13、微服务实战：NGINX 和应用架构
 
 ### 4、服务发现
 - 4.1、为什么使用服务发现
@@ -54,7 +54,7 @@
 - 4.6、自注册模式
 - 4.7、第三方注册模式
 - 4.8、总结
-- 4.9、微服务实战：NGINX的灵活性
+- 4.9、微服务实战：NGINX 的灵活性
 
 ### 5、微服务的事件驱动数据管理
 - 5.1、微服务与分布式数据管理问题
@@ -64,7 +64,7 @@
 - 5.5、挖掘数据库事务日志
 - 5.6、使用事件溯源
 - 5.7、总结
-- 5.8、微服务实战：NGINX与存储优化
+- 5.8、微服务实战：NGINX 与存储优化
 
 ### 6、选择微服务部署策略
 - 6.1、动机
@@ -85,8 +85,8 @@
 - 7.6、优先将哪些模块转为微服务
 - 7.7、怎样提取模块
 - 7.8、总结
-- 7.9、微服务实战：用NGINX驯服单体应用
-- 7.10、微服务与NGINX的相关资源
+- 7.9、微服务实战：用 NGINX 驯服单体应用
+- 7.10、微服务与 NGINX 的相关资源
 
 ## Licenses
 ![知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
