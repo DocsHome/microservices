@@ -10,7 +10,7 @@
 
 例如，图 2-1 展示了在 Amazon 的 Android 移动应用中的滚动产品信息时所看的内容。
 
-![图 2-1、一个简单的购物应用]((https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-1.png))
+![图 2-1、一个简单的购物应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-1.png)
 
 即使这是一个智能手机应用，产品详细信息页面展示了很多信息。例如，不仅有基本的产品信息，如名称、描述和加价格，页面还展示了：
 
@@ -37,7 +37,7 @@ GET api.company.com/productdetails/productId
 - **配送服务** - 配送选项、期限和费用，由配送方的 API 单独提供  
 - **推荐服务** - 推荐类目
 
-![图 2-2、将移动客户端的需求映射到相关的微服务]((https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-2.png))
+![图 2-2、将移动客户端的需求映射到相关的微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-2.png)
 
 我们需要决定移动客户端如何访问这些服务。让我们来看看这些方式。
 

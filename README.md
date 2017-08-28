@@ -17,8 +17,8 @@
 - [微服务实战：NGINX Plus 作为反向代理服务器](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#微服务实战nginx-plus-作为反向代理服务器)
 
 ### [2、使用API网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md)
-- [2.1、简介](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#简介)
-- [2.2、客户端与微服务直接通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#客户端与微服务直接通信)
+- [2.1、简介](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#21简介)
+- [2.2、客户端与微服务直接通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#22客户端与微服务直接通信)
 - 2.3、使用 API 网关
 - 2.4、API 网关的优点和缺点
 - 2.5、实现 API 网关
