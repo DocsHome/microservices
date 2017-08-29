@@ -19,15 +19,15 @@
 ### [2、使用API网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md)
 - [2.1、简介](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#21简介)
 - [2.2、客户端与微服务直接通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#22客户端与微服务直接通信)
-- 2.3、使用 API 网关
-- 2.4、API 网关的优点和缺点
-- 2.5、实现 API 网关
-- 2.6、性能与扩展
-- 2.7、使用响应式编程模型
-- 2.8、服务调用
-- 2.9、服务发现
-- 2.10、处理部分失败
-- 2.11、总结
+- [2.3、使用 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#23使用API网关)
+- [2.4、API 网关的优点和缺点](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#24API网关的优点和缺点)
+- [2.5、实施 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#25实施API网关)
+    - [2.5.1、性能与扩展](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#251性能与扩展)
+    - [2.5.2、使用响应式编程模型](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#252使用响应式编程模型)
+    - 2.5.3、服务调用
+    - 2.5.4、服务发现
+    - 2.4.5、处理部分失败
+- 2.6、总结
 - 微服务实战：NGINX 作为 API 网关
 
 ### 3、进程间通信
