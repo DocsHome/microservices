@@ -16,7 +16,7 @@
 - [1.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#16总结)
 - [微服务实战：NGINX Plus 作为反向代理服务器](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/1-introduction-to-microservices.md#微服务实战nginx-plus-作为反向代理服务器)
 
-### [2、使用API网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md)
+### [2、使用 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md)
 - [2.1、简介](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#21简介)
 - [2.2、客户端与微服务直接通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#22客户端与微服务直接通信)
 - [2.3、使用 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#23使用API网关)
@@ -28,7 +28,7 @@
     - [2.5.4、服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#254服务发现)
     - [2.5.5、处理部分故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#255处理部分故障)
 - [2.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#26总结)
-- [微服务实战：NGINX Plus 作为 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#微服务实战nginx-plus-作为api-网关)
+- [微服务实战：NGINX Plus 作为 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#微服务实战nginx-plus-作为-api-网关)
 
 ### 3、进程间通信
 - 3.1、简介
