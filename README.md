@@ -24,11 +24,11 @@
 - [2.5、实施 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#25实施API网关)
     - [2.5.1、性能与扩展](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#251性能与扩展)
     - [2.5.2、使用响应式编程模型](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#252使用响应式编程模型)
-    - 2.5.3、服务调用
-    - 2.5.4、服务发现
-    - 2.4.5、处理部分失败
-- 2.6、总结
-- 微服务实战：NGINX 作为 API 网关
+    - [2.5.3、服务调用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#253服务调用)
+    - [2.5.4、服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#254服务发现)
+    - [2.5.5、处理部分故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#255处理部分故障)
+- [2.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#26总结)
+- [微服务实战：NGINX Plus 作为 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#微服务实战nginx-plus-作为api-网关)
 
 ### 3、进程间通信
 - 3.1、简介
