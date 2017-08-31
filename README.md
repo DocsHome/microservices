@@ -30,12 +30,12 @@
 - [2.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#26总结)
 - [微服务实战：NGINX Plus 作为 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#微服务实战nginx-plus-作为-api-网关)
 
-### 3、进程间通信
-- 3.1、简介
-- 3.2、交互风格
-- 3.3、定义 API
-- 3.4、演变 API
-- 3.5、处理部分失败
+### [3、进程间通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md)
+- [3.1、简介](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#31简介)
+- [3.2、交互方式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#32交互方式)
+- [3.3、定义 API](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#33定义api)
+- [3.4、演化 API](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#34演化api)
+- [3.5、处理部分故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#35处理部分故障)
 - 3.6、IPC 技术
 - 3.7、异步，基于消息通信
 - 3.8、同步，请求/响应 IPC
