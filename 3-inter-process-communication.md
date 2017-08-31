@@ -23,11 +23,12 @@
 
 下表展示了各种交互方式。
 
-| |一对一|一对多
+|-|一对一|一对多
 ---|---|---|---
-同步 | 请求/相应 | —— |
+同步 | 请求/相应 | —— 
 异步 | 通知 | 发布/订阅
 异步 | 请求/异步响应 | 发布/异步响应
+
 表 3-1、进程间通信方式
 
 一对一交互分为以下列举的类型，包括同步（请求/响应）和异步（通知与请求/异步响应）：
@@ -70,7 +71,7 @@
 
 ![由无响应服务引起的线程阻塞](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-3.png)
 
-为了防止这个问题出现，您必须设计您的服务来处理部分故障。以下是一个由 [Netflix 给出的一个好方法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理部分故障的策略包括：
+为了防止这个问题出现，您必须设计您的服务来处理部分故障。以下是一个由 [Netflix 给出的好方法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理部分故障的策略包括：
 
 - **网络超时** - 在等待响应时，不要无限期地阻塞，始终使用超时方案。使用超时方案确保资源不被无限地消耗。
 
