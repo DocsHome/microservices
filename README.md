@@ -36,13 +36,13 @@
 - [3.3、定义 API](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#33定义api)
 - [3.4、演化 API](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#34演化api)
 - [3.5、处理局部故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#35处理局部故障)
-- 3.6、IPC 技术
-- 3.7、异步，基于消息通信
-- 3.8、同步，请求/响应 IPC
-- 3.9、REST
-- 3.10、Thrift
-- 3.11、消息格式
-- 3.12、总结
+- [3.6、IPC 技术](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#36ipc技术)
+- [3.7、异步、基于消息的通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#37异步、基于消息的通信)
+- [3.8、同步的请求/响应 IPC](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#38同步的请求响应ipc)
+    - [3.8.1、REST](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#381rest)
+    - [3.8.2、Thrift]
+- 3.9、消息格式
+- 3.10、总结
 - 微服务实战：NGINX 和应用架构
 
 ### 4、服务发现

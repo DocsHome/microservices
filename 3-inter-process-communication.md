@@ -83,4 +83,63 @@
 
 [Netflix Hystrix](https://github.com/Netflix/Hystrix) 是一个实现上述和其他模式的开源库。如果您正在使用 JVM，那么您一定要考虑使用 Hystrix。如果您在非 JVM 环境中运行，则应使用相等作用的库。
 
+## 3.6、IPC 技术
+有很多不同的 IPC 技术可供选择。服务可以使用基于同步请求/响应的通信机制，比如基于 HTTP 的 REST 或 Thrift。或者，可以使用异步、基于消息的通信机制，如 AMQP 或 STOMP。
+
+还有各种不同的消息格式。服务可以使用人类可读的、基于文本的格式，如 JSON 或 XML。或者，可以使用如 Avro 或 Protocol Buffers 等二进制格式（更加有效）。稍后我们将讨论同步 IPC 机制，但首先让我们来讨论一下异步 IPC 机制。
+
+## 3.7、异步、基于消息的通信
+当使用消息传递时，进程通过异步交换消息进行通信。客户端通过发送消息向服务发出请求。如果服务需要回复，则通过向客户端发送一条单独的消息来实现。由于通信是异步的，因此客户端不会阻塞等待回复。相反，客户端被假定不会立即收到回复。
+
+一条[消息](http://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html)由头部（如发件人之类的元数据）和消息体组成。消息通过[通道](http://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageChannel.html)进行交换。任何数量的生产者都可以向通道发送消息。类似地，任何数量的消费者都可以从通道接收消息。有两种通道，[点对点](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html)（point‑to‑point）和[发布订阅](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html)（publish‑subscribe）：
+
+- **点对点通道**发送一条消息给一个切确的、正在从通道读取消息的消费者。服务使用点对点通道，就是上述的一对一交互方式。
+- **发布订阅通道**将每条消息传递给所有订阅的消费者。服务使用发布订阅通道，就是上述的一对多交互方式。
+
+图 3-4 展示了打车应用程序如何使用发布订阅通道。
+
+![使用了发布-订阅通道的打车应用]()
+
+Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来通知已订阅的服务，如 Dispatcher。 Dispatcher 找到可用的司机并通过向发布订阅通道写入 Driver Proposed 消息来通知其他服务。
+
+有许多信息系统可供选择。您应该选择一个支持多种编程语言的。
+
+一些消息系统支持标准协议，如 AMQP 和 STOMP。其他消息系统有专有的但为文档化的协议。
+
+有大量的开源消息系统可供选择，包括 [RabbitMQ](http://www.rabbitmq.com/)、[Apache Kafka](http://kafka.apache.org/)、[Apache ActiveMQ](http://activemq.apache.org/) 和 [NSQ](https://github.com/bitly/nsq)。在高层上，他们都支持某种形式的消息和通道。他们都力求做到可靠、高性能和可扩展。然而，每个代理的消息传递模型细节上都存在着很大差异。
+
+使用消息传递有很多优点：
+
+- **将客户端与服务分离** - 客户端通过向相应的通道发送一条消息来简单地发出一个请求。服务实例对客户端而言是透明的。客户端不需要使用发现机制来确定服务实例的位置。
+- **消息缓冲** - 使用如 HTTP 的同步请求/响应协议，客户端和服务在交换期间必须可用。相比之下，消息代理会将消息写入通道入队，直到消费者处理它们。这意味着，例如，即使订单执行系统出现缓慢或不可用的情况，在线商店还是可以接受客户的订单。订单消息只需要简单地排队。
+- **灵活的客户端-服务交互** - 消息传递支持前面提到的所有交互方式。
+- **毫无隐瞒的进程间通信** - 基于 RPC 的机制试图使调用远程服务看起来与调用本地服务相同。然而，由于物理因素和局部故障的可能性，他们实际上是完全不同的。消息传递使这些差异变得非常明显，所以开发人员不会被这些虚假的安全感所欺骗。
+
+然而，消息传递也存在一些缺点：
+
+- **额外的复杂操作** - 消息传递系统是一个需要安装、配置和操作的系统组件。消息代理程序必须高度可用，否则系统的可靠性将受到影响。
+- **实施基于请求/响应的交互的复杂性** - 请求/响应式交互需要做些工作来实现。每个请求消息必须包含应答通道标识符和相关标识符。该服务将包含相关 ID 的响应消息写入应答信道。客户端使用相关 ID 将响应与请求相匹配。通常使用直接支持请求/响应的 IPC 机制更加容易。
+
+现在我们已经了解了使用基于消息的 IPC，让我们来看看请求/响应的 IPC。
+
+## 3.8、同步的请求/响应 IPC
+当使用基于同步、基于请求/响应的 IPC 机制时，客户端向服务器发送请求。该服务处理该请求并返回响应。
+
+在许多客户端中，请求的线程在等待响应时被阻塞。其他客户端可能会使用异步、事件驱动的客户端代码，这些代码可能是由 [Futures](http://docs.scala-lang.org/overviews/core/futures.html) 或 [Rx Observables](http://reactivex.io/documentation/observable.html) 封装的。然而，与使用消息传递不同，客户端假定响应能及时到达。
+
+有许多协议可供选择。有两种流行协议分别是 REST 和 Thrift。我们先来看一下 REST。
+
+### 3.8.1、REST
+如今，开发 [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) 风格的 API 是很流行的。REST 是一种使用了 HTTP （几乎总是）的 IPC 机制。
+
+REST 中的一个关键概念是资源，它通常表示业务对象，如客户或产品，或这些业务对象的集合。REST 使用 HTTP 动词（谓词）来操纵资源，这些资源通过 URL 引用。例如，GET 请求返回一个资源的表示形式，可能是 XML 文档或 JSON 对象形式。POST 请求创建一个新资源，PUT 请求更新一个资源。
+
+引用 REST 的创建者 Roy Fielding：
+
+> “REST 提供了一套架构约束，当作为整体应用时，其强调组件交互的可扩展性、接口的通用性、组件的独立部署以及中间组件，以减少交互延迟、实施安全性和封装传统系统。” - Roy Fielding，[《架构风格与基于网络的软件架构设计》](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+
+图 3-5 显示了打车应用程序可能使用 REST 的方式之一。
+
+![使用了 RESTful 交互的打车应用]()
+
 **待续……**
