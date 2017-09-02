@@ -26,7 +26,7 @@
     - [2.5.2、使用响应式编程模型](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#252使用响应式编程模型)
     - [2.5.3、服务调用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#253服务调用)
     - [2.5.4、服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#254服务发现)
-    - [2.5.5、处理部分故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#255处理部分故障)
+    - [2.5.5、处理局部故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#255处理局部故障)
 - [2.6、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#26总结)
 - [微服务实战：NGINX Plus 作为 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/2-using-an-api-gateway.md#微服务实战nginx-plus-作为-api-网关)
 
@@ -35,7 +35,7 @@
 - [3.2、交互方式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#32交互方式)
 - [3.3、定义 API](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#33定义api)
 - [3.4、演化 API](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#34演化api)
-- [3.5、处理部分故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#35处理部分故障)
+- [3.5、处理局部故障](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#35处理局部故障)
 - 3.6、IPC 技术
 - 3.7、异步，基于消息通信
 - 3.8、同步，请求/响应 IPC
