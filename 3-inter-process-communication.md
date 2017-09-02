@@ -98,7 +98,7 @@
 
 图 3-4 展示了打车应用程序如何使用发布订阅通道。
 
-![使用了发布-订阅通道的打车应用]()
+![使用了发布-订阅通道的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-4.png)
 
 Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来通知已订阅的服务，如 Dispatcher。 Dispatcher 找到可用的司机并通过向发布订阅通道写入 Driver Proposed 消息来通知其他服务。
 
@@ -140,6 +140,6 @@ REST 中的一个关键概念是资源，它通常表示业务对象，如客户
 
 图 3-5 显示了打车应用程序可能使用 REST 的方式之一。
 
-![使用了 RESTful 交互的打车应用]()
+![使用了 RESTful 交互的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-5.png)
 
 **待续……**
