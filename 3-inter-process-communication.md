@@ -142,7 +142,7 @@ Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来�
 
 ![使用了 RESTful 交互的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-5.png)
 
-乘客的智能手机通过向 Trip Management 服务的 `/tripps` 资源发出一个 POST 请求来请求旅程。该服务通过向 Passenger Management 服务发送一个获取乘客信息的 GET 请求来处理该请求。在验证乘客被授权创建旅程后，Trip Management 服务将创建旅程，并向智能手机返回 201 响应。
+乘客的智能手机通过向 Trip Management 服务的 `/trips` 资源发出一个 POST 请求来请求旅程。该服务通过向 Passenger Management 服务发送一个获取乘客信息的 GET 请求来处理该请求。在验证乘客被授权创建旅程后，Trip Management 服务将创建旅程，并向智能手机返回 201 响应。
 
 许多开发人员声称其基于 HTTP 的 API 就是 RESTful。然而，正如 Fielding 在这篇博文中所描述的那样，并不是所有的都是这样。
 
