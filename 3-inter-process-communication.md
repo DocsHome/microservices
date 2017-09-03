@@ -11,21 +11,21 @@
 ![使用进程间通信交互的微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-1.png)
 
 ## 3.2、交互方式
-当为服务选择一种 IPC 机制时，首先需要考虑服务如何交互。有很多种客户端←→服务端交互方式。它们可以分为两个类。第一类是交互是一对一还是一对多：
+当为服务选择一种 IPC 机制时，首先需要考虑服务如何交互。有很多种客户端-服务交互方式。它们可以分为两个类。第一类是一对一交互与一对多交互：
 
 - **一对一** - 每个客户端请求都由一个服务实例处理。
 - **一对多** - 每个请求由多个服务实例处理。
 
-第二类是交互是同步还是异步：
+第二类是同步交互与异步交互：
 
 - **同步** - 客户端要求服务及时响应，在等待过程中可能会发生阻塞。
 - **异步** - 客户端在等待响应时不会发生阻塞，但响应（如果有）不一定立即返回。
 
 下表展示了各种交互方式。
 
-\- | 一对一 | 一对多
+- | 一对一 | 一对多
 ---|---|---
-同步 | 请求/相应 | \-
+同步 | 请求/响应 | -
 异步 | 通知 | 发布/订阅
 异步 | 请求/异步响应 | 发布/异步响应
 
@@ -44,54 +44,54 @@
 
 通常，每个服务都组合着使用这些交互方式。对于一些服务，单一的 IPC 机制就足够了，但其他服务可能需要组合多个 IPC 机制。
 
-图 3-2 显示了当用户请求打车时，出租车应用程序中的服务可能会发生交互。
+图 3-2 显示了当用户请求打车时，打车应用中的服务可能会发生交互。
 
-![使用了多重 IPC 机制的服务交互](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-2.png)
+![使用了多种 IPC 机制的服务交互](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-2.png)
 
-服务使用了通知、请求/响应和发布/订阅组合。例如，乘客的智能手机向 Trip Management 微服务发送通知以请求一辆车。Trip Management 服务通过使用请求/响应来调用 Passenger Management 服务以验证乘客的帐户是可用。之后，Trip Management 服务创建路线，并使用发布/订阅通知其他服务，包括用于定位可用司机的调度程序。
+服务使用了通知、请求/响应和发布/订阅组合。例如，乘客的智能手机向 Trip Management 微服务发送一条通知以请求一辆车。Trip Management 服务通过使用请求/响应来调用 Passenger Management 服务以验证乘客的帐户是否可用。之后，Trip Management 服务创建路线，并使用发布/订阅通知其他服务，包括用于定位可用司机的 Dispatcher。
 
 现在我们来看一下交互方式，我们先来看看如何定义 API。
 
 ## 3.3、定义 API
-服务 API 是服务与客户端之间的契约。无论您选择何种 IPC 机制，使用接口定义语言（interface definition language，IDL）严格定义服务 API 都是非常有必要的。有论据证明使用 [API 优先（API‑first）法](https://www.programmableweb.com/news/how-to-design-great-apis-api-first-design-and-raml/how-to/2015/07/10)定义服务更加合适。在对您需要实现的服务的 API 定义进行迭代之后，您可以通过编写接口定义并与客户端开发人员进行审阅来开始开发服务。这样设计可以增加您构建出符合客户端需求的服务的几率。
+服务 API 是服务与客户端之间的契约。无论您选择何种 IPC 机制，使用接口定义语言（interface definition language，IDL）严格定义服务 API 都是非常有必要的。有论据证明使用 [API 优先（API‑first）法](https://www.programmableweb.com/news/how-to-design-great-apis-api-first-design-and-raml/how-to/2015/07/10)定义服务更加合适。在对您需要实现的服务的 API 定义进行迭代之后，您可以通过编写接口定义并与客户端开发人员进行审阅来开始开发服务。这样设计可以增加您构建出符合客户端需求的服务的机率。
 
-正如您将会在后面看到，API 定义的方式取决于您使用的是哪种 IPC 机制。如果您正在使用消息服务，则 API 由消息通道和消息类型组成。如果您使用 HTTP，则 API 由 URL、请求和响应格式组成。稍后我们详细地介绍关于 IDL 方面的内容。
+正如您将会在后面看到，定义 API 的方式取决于您使用何种 IPC 机制。如果您正在使用消息传递，则 API 由消息通道和消息类型组成。如果您使用的是 HTTP，则 API 由 URL、请求和响应格式组成。稍后我们将详细地介绍关于 IDL 方面的内容。
 
 ## 3.4、演化 API
-服务的 API 总是随着时间而变化。在单体应用程序中，更改 API 和更新所有调用者通常都是直截了当的。但在基于微服务的应用程序中，即使您的 API 的所有消费者都是同一应用程序中的其他服务，要想完成这些工作也是非常困难的。通常，您无法强制所有客户端与服务升级的节奏一致。此外，您可能会[逐步部署新版本的服务](http://techblog.netflix.com/2013/08/deploying-netflix-api.html)，以便新旧版本的服务同时运行。制定这些问题的处理策略是很重要的。
+服务 API 总是随着时间而变化。在单体应用程序中，更改 API 和更新所有调用者通常是一件直截了当的事。但在基于微服务的应用程序中，即使您的 API 的所有消费者都是同一应用程序中的其他服务，要想完成这些工作也是非常困难的。通常，您无法强制所有客户端与服务升级的节奏一致。此外，您可能需要[逐步部署新版本服务](http://techblog.netflix.com/2013/08/deploying-netflix-api.html)，以便新旧版本的服务同时运行。制定这些问题的处理策略还是很重要的。
 
-处理 API 变更的方式取决于变更的程度。某些更改是次要，需要向后兼容以前的版本。例如，您可能会向请求或响应添加属性。设计客户与服务时遵守[鲁棒性原则](https://en.wikipedia.org/wiki/Robustness_principle)是很有意义的。使用较旧 API 的客户端应继续使用新版本的服务。该服务为缺少的请求属性提供默认值，并且客户端忽略任何多余的响应属性。使用 IPC 机制和消息格式非常重要，可以让您轻松地演化 API。
+处理 API 变更的方式取决于变更的程度。某些更改是次要或需要向后兼容以前的版本。例如，您可能会向请求或响应添加属性。这时设计客户与服务时遵守[鲁棒性原则](https://en.wikipedia.org/wiki/Robustness_principle)就显得很有意义了。使用较旧 API 的客户端应继续使用新版本的服务。该服务为缺少的请求属性提供默认值，并且客户端忽略任何多余的响应属性。使用 IPC 机制和消息格式非常重要，可以让您轻松地演化 API。
 
-但有时候，您必须对 API 作出重大不兼容的更改。由于您无法强制客户端立即升级，服务也必须支持较旧版本的 API 一段时间。如果您使用了基于 HTTP 的机制（如 REST），则一种方法是将版本号嵌入 URL 中。每个服务实例可能同时处理多个版本。或者，您可以部署每个用于处理特定版本的不同实例。
+但有时候，您必须对 API 作出大量不兼容的更改。由于您无法强制客户端立即升级，服务也必须支持较旧版本的 API 一段时间。如果您使用了基于 HTTP 的机制（如 REST），则一种方法是将版本号嵌入 URL 中。每个服务实例可能同时处理多个版本。或者，您可以部署多个不同的实例，每个实例用于处理特定版本。
 
 ## 3.5、处理局部故障
-正如第二章中关于 API 网关所述，在分布式系统中存在着局部故障风险。由于客户端进程和服务进程是分开的，服务可能无法及时响应客户端的请求。由于故障或者维护，服务可能会关闭。也有可能因服务过载，响应速度变得极慢。
+正如第二章中关于 API 网关所述，在分布式系统中存在局部故障风险。由于客户端进程与服务进程是分开的，服务可能无法及时响应客户端的请求。由于故障或者维护，服务可能需要关闭。也有可能因服务过载，造成响应速度变得极慢。
 
-例如，请考虑第二章中的产品详细信息场景。我们假设 Recommendation Service 没有反应。客户端天真的实现可能会无限期地阻塞以等待响应。这不仅会导致用户体验糟糕，而且在许多应用程序中，它将消耗诸如线程等宝贵资源。以致最终，运行时将线程用完，造成无法响应，如图 3-3 所示。
+例如，请回想第二章中的产品详细信息场景。我们假设 Recommendation Service 没有响应。客户端天真般的实现可能会无限期地阻塞以等待响应。这不仅会导致用户体验糟糕，而且在许多应用程序中，它将消耗如线程之类等宝贵资源。以致最终，在运行时将线程用完，造成无法响应，如图 3-3 所示。
 
-![由无响应服务引起的线程阻塞](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-3.png)
+![因无响应服务引起的线程阻塞](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-3.png)
 
-为了防止这个问题出现，您必须设计您的服务来处理局部故障。以下是一个由 [Netflix 给出的好方法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理局部故障的策略包括：
+为了防止这个问题出现，您必须设计您的服务以处理局部故障。以下是一个由 [Netflix 给出的好方法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理局部故障的策略包括：
 
 - **网络超时** - 在等待响应时，不要无限期地阻塞，始终使用超时方案。使用超时方案确保资源不被无限地消耗。
 
-- **限制未完成的请求数量** - 对客户端拥有特定服务的未完成请求的数量设置上限。如果达到了上限，则发出的额外请求可能是毫无意义的，这些尝试需要立即失败。
+- **限制未完成的请求数量** - 对客户端拥有特定服务的未完成请求的数量设置上限。如果达到了上限，发出的额外请求可能是毫无意义的，因此这些尝试需要立即失败。
 
-- **[断路器模式](http://martinfowler.com/bliki/CircuitBreaker.html)** - 追踪成功和失败请求的数量。如果错误率超过配置的阈值，则断开断路器，以便后续的尝试能立即失败。如果大量请求失败，则表明服务不可用，发送请求将是无意义的。发生超时后，客户端应重新尝试，如果成功，则关闭断路器。
+- **[断路器模式](http://martinfowler.com/bliki/CircuitBreaker.html)** - 追踪成功和失败请求的数量。如果错误率超过配置阈值，则断开断路器，以便后续的尝试能立即失败。如果出现大量请求失败，则表明服务不可用，发送请求将是无意义的。发生超时后，客户端应重新尝试，如果成功，则关闭断路器。
 
-- **提供回退** - 请求失败时执行回退逻辑。例如，返回缓存数据或者默认值，比如一组空的推荐。
+- **提供回退** - 请求失败时执行回退逻辑。例如，返回缓存数据或者默认值，如一组空白的推荐数据。
 
 [Netflix Hystrix](https://github.com/Netflix/Hystrix) 是一个实现上述和其他模式的开源库。如果您正在使用 JVM，那么您一定要考虑使用 Hystrix。如果您在非 JVM 环境中运行，则应使用相等作用的库。
 
 ## 3.6、IPC 技术
-有很多不同的 IPC 技术可供选择。服务可以使用基于同步请求/响应的通信机制，比如基于 HTTP 的 REST 或 Thrift。或者，可以使用异步、基于消息的通信机制，如 AMQP 或 STOMP。
+有多种 IPC 技术可供选择。服务可以使用基于同步请求/响应的通信机制，比如基于 HTTP 的 REST 或 Thrift。或者，可以使用异步、基于消息的通信机制，如 AMQP 或 STOMP。
 
-还有各种不同的消息格式。服务可以使用人类可读的、基于文本的格式，如 JSON 或 XML。或者，可以使用如 Avro 或 Protocol Buffers 等二进制格式（更加有效）。稍后我们将讨论同步 IPC 机制，但首先让我们来讨论一下异步 IPC 机制。
+还有各种不同的消息格式。服务可以使用人类可读的、基于文本的格式，如 JSON 或 XML。或者，可以使用如 Avro 或 Protocol Buffers 等二进制格式（更加高效）。稍后我们将讨论同步 IPC 机制，但在此之前让我们先来讨论一下异步 IPC 机制。
 
 ## 3.7、异步、基于消息的通信
 当使用消息传递时，进程通过异步交换消息进行通信。客户端通过发送消息向服务发出请求。如果服务需要回复，则通过向客户端发送一条单独的消息来实现。由于通信是异步的，因此客户端不会阻塞等待回复。相反，客户端被假定不会立即收到回复。
 
-一条[消息](http://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html)由头部（如发件人之类的元数据）和消息体组成。消息通过[通道](http://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageChannel.html)进行交换。任何数量的生产者都可以向通道发送消息。类似地，任何数量的消费者都可以从通道接收消息。有两种通道，[点对点](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html)（point‑to‑point）和[发布订阅](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html)（publish‑subscribe）：
+一条[消息](http://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html)由头部（如发件人之类的元数据）和消息体组成。消息通过[通道](http://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageChannel.html)进行交换。任何数量的生产者都可以向通道发送消息。类似地，任何数量的消费者都可以从通道接收消息。有两种通道类型，分别是[点对点](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html)（point‑to‑point）与[发布订阅](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html)（publish‑subscribe）：
 
 - **点对点通道**发送一条消息给一个切确的、正在从通道读取消息的消费者。服务使用点对点通道，就是上述的一对一交互方式。
 - **发布订阅通道**将每条消息传递给所有订阅的消费者。服务使用发布订阅通道，就是上述的一对多交互方式。
@@ -102,9 +102,9 @@
 
 Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来通知已订阅的服务，如 Dispatcher。 Dispatcher 找到可用的司机并通过向发布订阅通道写入 Driver Proposed 消息来通知其他服务。
 
-有许多信息系统可供选择。您应该选择一个支持多种编程语言的。
+有许多消息系统可供选择。您应该选择一个支持多种编程语言的。
 
-一些消息系统支持标准协议，如 AMQP 和 STOMP。其他消息系统有专有的但为文档化的协议。
+一些消息系统支持标准协议，如 AMQP 和 STOMP。其他消息系统有专有的文档化协议。
 
 有大量的开源消息系统可供选择，包括 [RabbitMQ](http://www.rabbitmq.com/)、[Apache Kafka](http://kafka.apache.org/)、[Apache ActiveMQ](http://activemq.apache.org/) 和 [NSQ](https://github.com/bitly/nsq)。在高层上，他们都支持某种形式的消息和通道。他们都力求做到可靠、高性能和可扩展。然而，每个代理的消息传递模型细节上都存在着很大差异。
 
@@ -132,14 +132,77 @@ Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来�
 ### 3.8.1、REST
 如今，开发 [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) 风格的 API 是很流行的。REST 是一种使用了 HTTP （几乎总是）的 IPC 机制。
 
-REST 中的一个关键概念是资源，它通常表示业务对象，如客户或产品，或这些业务对象的集合。REST 使用 HTTP 动词（谓词）来操纵资源，这些资源通过 URL 引用。例如，GET 请求返回一个资源的表示形式，可能是 XML 文档或 JSON 对象形式。POST 请求创建一个新资源，PUT 请求更新一个资源。
+资源是 REST 中的一个关键概念，它通常表示业务对象，如客户、产品或这些业务对象的集合。REST 使用 HTTP 动词（谓词）来操纵资源，这些资源通过 URL 引用。例如，GET 请求返回一个资源的表示形式，可能是 XML 文档或 JSON 对象形式。POST 请求创建一个新资源，PUT 请求更新一个资源。
 
-引用 REST 的创建者 Roy Fielding：
+引用 REST 创建者 Roy Fielding：
 
 > “REST 提供了一套架构约束，当作为整体应用时，其强调组件交互的可扩展性、接口的通用性、组件的独立部署以及中间组件，以减少交互延迟、实施安全性和封装传统系统。” - Roy Fielding，[《架构风格与基于网络的软件架构设计》](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
-图 3-5 显示了打车应用程序可能使用 REST 的方式之一。
+图 3-5 展示了打车应用程序可能使用 REST 的方式之一。
 
 ![使用了 RESTful 交互的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-5.png)
 
-**待续……**
+乘客的智能手机通过向 Trip Management 服务的 `/tripps` 资源发出一个 POST 请求来请求旅程。该服务通过向 Passenger Management 服务发送一个获取乘客信息的 GET 请求来处理该请求。在验证乘客被授权创建旅程后，Trip Management 服务将创建旅程，并向智能手机返回 201 响应。
+
+许多开发人员声称其基于 HTTP 的 API 就是 RESTful。然而，正如 Fielding 在这篇博文中所描述的那样，并不是所有的都是这样。
+
+Leonard Richardson 定义了一个非常有用的 [ REST 成熟度模型](https://martinfowler.com/articles/richardsonMaturityModel.html)，包括以下层次：
+
+- **级别 0** - 级别 0 的 API 的客户端通过向其唯一的 URL 端点发送 HTTP POST 请求来调用该服务。每个请求被指定要执行的操作、操作的目标（如业务对象）以及参数。
+- **级别 1** - 级别 1 的 API 支持资源概念。要对资源执行操作，客户端会创建一个 POST 请求，指定要执行的操作和参数。
+- **级别 2** - 级别 2 的 API 使用 HTTP 动词（谓词）执行操作：使用 GET 检索、使用 POST 创建和使用 PUT 进行更新。请求查询参数和请求体（如果有）指定操作的参数。这使服务能够利用 Web 基础特性，如缓存 GET 请求。
+- **级别 3级** - 级别 3 的 API 基于非常规命名原则设计，HATEOAS（超文本作为应用程序状态引擎）。基本思想是 GET 请求返回的资源的表示，包含用于执行该资源上允许的操作的链接。例如，客户端可以使用发送 GET 请求检索订单返回的订单响应中的链接来取消订单。HATEOAS 的一个[好处](http://www.infoq.com/news/2009/04/hateoas-restful-api-advantages)是不再需要将 URL 硬编码在客户端代码中。另一个好处是，由于资源的表示包含可允许操作的链接，所以客户端不必猜测可以对当前状态的资源执行什么操作。
+
+使用基于 HTTP 的协议有很多好处：
+- HTTP 简单易懂。
+- 您可以使用浏览器中的扩展（如 [Postman](https://www.getpostman.com/)）测试 HTTP API，或者使用 curl 命令行测试 HTTP API（假设使用了 JSON 或其他一些文本格式）。
+- 它直接支持请求/响应式通信。
+- HTTP 是防火墙友好。
+- 它不需要中间代理，简化了系统架构。
+
+使用 HTTP 也存在一些缺点：
+- HTTP 仅直接支持请求/响应的交互方式。您可以使用 HTTP 进行通知，但服务器必须始终发送 HTTP 响应。
+- 因为客户端和服务直接通信（没有一个中间者来缓冲消息），所以它们必须在交换期间都运行。
+- 客户端必须知道每个服务实例的位置（即 URL）。如第二章关于 API 网关所述，这是现代应用程序中的一个不简单的问题。客户端必须使用服务发现机制来定位服务实例。
+
+开发人员社区最近重新发现了 RESTful API 接口定义语言的价值。有几个可以选择，包括 [RAML](https://raml.org/) 和 [Swagger](http://swagger.io/)。一些 IDL（如 Swagger）允许您定义请求和响应消息的格式。其他如 RAML，需要您使用一个单独的规范，如 [JSON 模式](http://json-schema.org/)。除了用于描述 API 之外，IDL 通常还具有可从接口定义生成客户端 stub 和服务器 skeleton 的工具。
+
+### 3.8.2、Thrift
+[Apache Thrift](https://thrift.apache.org/) 是 REST 的一个有趣的替代方案。它是一个用于编写跨语言 [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 客户端和服务器 skeleton。Thrift 提供了一个 C 风格的 IDL 来定义您的 API。您可以使用 Thrift 编译器生成客户端存根和服务器端骨架。编译器可以生成各种语言的代码，包括 C++、Java、Python、PHP、Ruby、Erlang 和 Node.js。
+
+Thrift 接口由一个或多个服务组成。一个服务定义类似于一个 Java 接口。它是强类型方法的集合。Thrift 方法可以返回一个（可能为 void）值，或者如果它们被定义为单向，则不会返回值。返回值方法实现了请求/响应的交互方式，客户端等待响应，并可能会抛出异常。单向方式对应通知互动方式，服务器不发送响应。
+
+Thrift 支持多种消息格式：JSON，二进制和压缩二进制。二进制比 JSON 更有效率，因为其解码速度更快。而且，顾名思义，压缩二进制是一种节省空间的格式。当然，JSON 是人性化和浏览器友好的。Thrift 还为您提供了包括原始 TCP 和 HTTP 在内的传输协议选择。原始 TCP 可能比 HTTP 更有效率。然而，HTTP 是防火墙友好的、浏览器友好的和人性化的。
+
+## 3.9、消息格式
+我们已经了解了 HTTP 和 Thrift，现在让我们来看看消息格式的问题。如果您使用的是消息系统或 REST，则可以选择您的消息格式。其他 IPC 机制如 Thrift 可能只支持少量的消息格式，甚至只支持一种。在任一种情况下，使用跨语言消息格式就显得非常重要了。即使您现在是以单一语言编写您的微服务，您将来也可能会使用到其他语言。
+
+有两种主要的消息格式：文本和二进制。基于文本格式的例子有 JSON 和 XML。这些格式的优点在于，它们不仅是人类可读的，而且是自描述的。在 JSON 中，对象的属性由键值对集合表示。类似地，在 XML 中，属性由命名元素和值表示。这使得消息消费者能够挑选其感兴趣的值并忽略其余的值。因此，可以轻松地向后兼容作出微小更改的消息格式。
+
+XML 文档的结构由 [XML 模式](https://www.w3.org/XML/Schema)（schema）指定。随着时间的推移，开发人员社区已经意识到 JSON 也需要一个类似的机制。一个选择是使用 [JSON Schema](http://json-schema.org/)，独立或作为 IDL 的一部分，如 Swagger。
+
+使用基于文本的消息格式的缺点是消息往往是冗长的，特别是 XML。因为消息是自描述的，每个消息除了它们的值之外还包含属性的名称。另一个缺点是解析文本的开销。因此，您可能需要考虑使用二进制格式。
+
+有几种二进制格式可供选择。如果您使用的是 Thrift RPC，您可以使用二进制 Thrift。如果您选择的消息格式，包括了流行的 [Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview) 和 [Apache Avro](https://avro.apache.org/)。这两种格式都提供了一种用于定义消息结构的类型 IDL。然而，一个区别是 Protocol Buffers 使用标记字段，而 Avro 消费者需要知道模式才能解释消息。因此，Protocol Buffers 的 API 演化比 Avro 更容易使用。这里有篇[博文](http://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html)对 Thrift、Protocol Buffers 和 Avro 作出了极好的比较。
+
+## 3.10、总结
+微服务必须使用进程间通信机制进行通信。在设计服务如何进行通信时，您需要考虑各种问题：服务如何交互、如何为每个服务指定 API、如何演变 API 以及如何处理局部故障。微服务可以使用两种 IPC 机制：异步消息传递和同步请求/响应。为了进行通信，一个服务必须能够找到另一个服务。在第四章中，我们将介绍微服务架构中服务发现问题。
+
+## 微服务实战：NGINX 与应用程序架构
+
+by Floyd Smith
+
+NGINX 使您能够实现各种伸缩和镜像操作，使您的应用程序更加灵敏和高度可用。您为伸缩和镜像所作的选择会影响到您如何进行进程间通信，这是本章的主题。
+
+我们在 NGINX 方面建议您在实现基于微服务的应用程序时考虑使用四层架构。Forrester 在这方面有详细的报告，您可以从 NGINX 上免费下载。这些层代表客户端（包括台式机或笔记本电脑、移动、可穿戴或 IoT 客户端）、交付、聚合（包括数据存储）和服务，其中包括应用功能和特定服务，而不是共享数据存储。
+
+四层架构比以前的三层架构更加灵活，具有可扩展、响应灵敏、移动友好，并且内在支持基于微服务的应用程序开发和交付等优点。像 Netflix 和 Uber 这样的行业引领者能够通过使用这种架构来实现用户所需的性能水平。
+
+NGINX 本质上非常适合四层架构，从客户端层的媒体流，到交付层的负载均衡与缓存、聚合层的高性能和安全的基于 API 的通信的工具，以及服务层中支持灵活管理的短暂服务实例。
+
+同样的灵活性使得可以实现强大的伸缩和镜像模式，以处理流量变化，防止安全攻击，此外还提供可用的故障配置切换，从而实现高可用。
+
+在更为复杂的架构中，包括服务实例实例化和需求不断的服务发现，解耦的进程间通信往往更受青睐。异步和一对多通信方式可能比高耦合的通信方式更加灵活，它们最终提供更高的性能和可靠性。
+
+## 本系列全部译文
+- [https://github.com/oopsguy/microservices-from-design-to-deployment-chinese](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese)

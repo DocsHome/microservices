@@ -40,10 +40,10 @@
 - [3.7、异步、基于消息的通信](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#37异步基于消息的通信)
 - [3.8、同步的请求/响应 IPC](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#38同步的请求响应ipc)
     - [3.8.1、REST](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#381rest)
-    - [3.8.2、Thrift]
-- 3.9、消息格式
-- 3.10、总结
-- 微服务实战：NGINX 和应用架构
+    - [3.8.2、Thrift](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#382thrift)
+- [3.9、消息格式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#39消息格式)
+- [3.10、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#310总结)
+- [微服务实战：NGINX 与应用程序架构](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#微服务实战nginx-与应用程序架构)
 
 ### 4、服务发现
 - 4.1、为什么使用服务发现
