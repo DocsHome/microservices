@@ -45,9 +45,9 @@
 - [3.10、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#310总结)
 - [微服务实战：NGINX 与应用程序架构](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/3-inter-process-communication.md#微服务实战nginx-与应用程序架构)
 
-### 4、服务发现
-- 4.1、为什么使用服务发现
-- 4.2、客户端发现模式
+### [4、服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md)
+- [4.1、为何使用服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#41为何使用服务发现)
+- [4.2、客户端发现模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#42客户端发现模式)
 - 4.3、服务端发现模式
 - 4.4、服务注册表
 - 4.5、服务注册选项
