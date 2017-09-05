@@ -48,9 +48,9 @@
 ### [4、服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md)
 - [4.1、为何使用服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#41为何使用服务发现)
 - [4.2、客户端发现模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#42客户端发现模式)
-- 4.3、服务端发现模式
-- 4.4、服务注册表
-- 4.5、服务注册选项
+- [4.3、服务端发现模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#43服务端发现模式)
+- [4.4、服务注册中心](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#44服务注册中心)
+- 4.5、服务注册方式
 - 4.6、自注册模式
 - 4.7、第三方注册模式
 - 4.8、总结
