@@ -108,6 +108,9 @@ Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运�
 一个 HTTP 反向代理和负载均衡器（如 NGINX）也可以用作服务端发现负载均衡器。服务注册中心可以将路由信息推送给 NGINX，并调用一个正常的配置更新；例如，您可以使用 [Consul Template](https://www.hashicorp.com/blog/introducing-consul-template/)。NGINX Plus 支持[额外的动态重新配置机制](https://www.nginx.com/products/on-the-fly-reconfiguration/) - 它可以使用 DNS 从注册中心中提取有关服务实例的信息，并为远程重新配置提供一个 API。
 
 ## 微服务实战：NGINX 的灵活性
+
+by Floyd Smith
+
 在微服务环境中，由于自动扩展、故障和升级，您的后端基础设施可能会不断变化，这些包括了服务的创建，部署和扩展。如本章所述，在动态重新分配服务位置的环境中需要服务发现机制。
 
 将 NGINX 应用于微服务的一部分好处是，您可以轻松地将其配置为自动响应后端基础设施作出的变更。NGINX 配置不仅简单灵活，而且兼容 [Amazon Web Services](http://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/create-configuration-template.html) 使用的模板，可以更轻松地管理特定的服务变更与受负载均衡的变更服务组。
