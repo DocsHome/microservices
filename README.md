@@ -50,11 +50,11 @@
 - [4.2、客户端发现模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#42客户端发现模式)
 - [4.3、服务端发现模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#43服务端发现模式)
 - [4.4、服务注册中心](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#44服务注册中心)
-- 4.5、服务注册方式
-- 4.6、自注册模式
-- 4.7、第三方注册模式
-- 4.8、总结
-- 微服务实战：NGINX 的灵活性
+- [4.5、服务注册方式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#45服务注册方式)
+- [4.6、自注册模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#46自注册模式)
+- [4.7、第三方注册模式](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#47第三方注册模式)
+- [4.8、总结](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#48总结)
+- [微服务实战：NGINX 的灵活性](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/4-service-discovery.md#微服务实战nginx-的灵活性)
 
 ### 5、微服务的事件驱动数据管理
 - 5.1、微服务与分布式数据管理问题
