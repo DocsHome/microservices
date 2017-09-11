@@ -8,7 +8,7 @@
 
 稍后我们将了解到多种 IPC 技术，但在此之前，我们先来探讨一下涉及到的各种设计问题。
 
-![使用进程间通信交互的微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-1.png)
+![使用进程间通信交互的微服务](resources/3-1.png)
 
 ## 3.2、交互方式
 当为服务选择一种 IPC 机制时，首先需要考虑服务如何交互。有很多种客户端-服务交互方式。它们可以分为两个类。第一类是一对一交互与一对多交互：
@@ -46,7 +46,7 @@
 
 图 3-2 显示了当用户请求打车时，打车应用中的服务可能会发生交互。
 
-![使用了多种 IPC 机制的服务交互](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-2.png)
+![使用了多种 IPC 机制的服务交互](resources/3-2.png)
 
 服务使用了通知、请求/响应和发布/订阅组合。例如，乘客的智能手机向 Trip Management 微服务发送一条通知以请求一辆车。Trip Management 服务通过使用请求/响应来调用 Passenger Management 服务以验证乘客的帐户是否可用。之后，Trip Management 服务创建路线，并使用发布/订阅通知其他服务，包括用于定位可用司机的 Dispatcher。
 
@@ -69,7 +69,7 @@
 
 例如，请回想第二章中的产品详细信息场景。我们假设 Recommendation Service 没有响应。客户端天真般的实现可能会无限期地阻塞以等待响应。这不仅会导致用户体验糟糕，而且在许多应用程序中，它将消耗如线程之类等宝贵资源。以致最终，在运行时将线程用完，造成无法响应，如图 3-3 所示。
 
-![因无响应服务引起的线程阻塞](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-3.png)
+![因无响应服务引起的线程阻塞](resources/3-3.png)
 
 为了防止这个问题出现，您必须设计您的服务以处理局部故障。以下是一个由 [Netflix 给出的好方法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理局部故障的策略包括：
 
@@ -98,7 +98,7 @@
 
 图 3-4 展示了打车应用程序如何使用发布订阅通道。
 
-![使用了发布-订阅通道的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-4.png)
+![使用了发布-订阅通道的打车应用](resources/3-4.png)
 
 Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来通知已订阅的服务，如 Dispatcher。 Dispatcher 找到可用的司机并通过向发布订阅通道写入 Driver Proposed 消息来通知其他服务。
 
@@ -140,7 +140,7 @@ Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来�
 
 图 3-5 展示了打车应用程序可能使用 REST 的方式之一。
 
-![使用了 RESTful 交互的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/3-5.png)
+![使用了 RESTful 交互的打车应用](resources/3-5.png)
 
 乘客的智能手机通过向 Trip Management 服务的 `/trips` 资源发出一个 POST 请求来请求旅程。该服务通过向 Passenger Management 服务发送一个获取乘客信息的 GET 请求来处理该请求。在验证乘客被授权创建旅程后，Trip Management 服务将创建旅程，并向智能手机返回 201 响应。
 

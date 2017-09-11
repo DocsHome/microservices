@@ -10,7 +10,7 @@
 
 例如，图 2-1 展示了在 Amazon 的 Android 移动应用中的滚动产品信息时所看的内容。
 
-![图 2-1、一个简单的购物应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-1.png)
+![图 2-1、一个简单的购物应用](resources/2-1.png)
 
 即使这是一个智能手机应用，产品详细信息页面展示了很多信息。例如，不仅有基本的产品信息，如名称、描述和价格，页面还展示了：
 
@@ -37,7 +37,7 @@ GET api.company.com/productdetails/productId
 - **配送服务** - 配送选项、期限和费用，由配送方的 API 单独提供  
 - **推荐服务** - 推荐类目
 
-![图 2-2、将移动客户端的需求映射到相关的微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-2.png)
+![图 2-2、将移动客户端的需求映射到相关的微服务](resources/2-2.png)
 
 我们需要决定移动客户端如何访问这些服务。让我们来看看有哪些方式。
 
@@ -62,7 +62,7 @@ https://serviceName.api.company.name
 
 图 2-3 展示了 API 通常如何整合架构
 
-![使用 API 网关的微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/2-3.png)
+![使用 API 网关的微服务](resources/2-3.png)
 
 API 网关负责请求路由、组合和协议转换。所有的客户端请求首先通过 API 网关，之后请求被路由到适当的服务。API 网关通常会通过调用多个微服务和聚合结果来处理一个请求。它可以在 Web 协议（如 HTTP 和 WebSocket）和用于内部的非 Web 友好协议之间进行转换。
 

@@ -8,7 +8,7 @@
 
 服务实例具有动态分配的网络位置。此外，由于自动扩展、故障与升级，整组服务实例会动态变更。因此，您的客户端代码需要使用更精确的服务发现机制。
 
-![图 4-1、需要服务寻找帮助的客户端或 API 网关](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/4-1.png)
+![图 4-1、需要服务寻找帮助的客户端或 API 网关](resources/4-1.png)
 
 有两种主要的服务发现模式：客户端发现（client-side discovery）与服务端发现（server-side discovery）。让我们先来看看客户端发现。
 
@@ -17,7 +17,7 @@
 
 图 4-2 展示了该模式的结构
 
-![客户端可以承担发现服务任务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/4-2.png)
+![客户端可以承担发现服务任务](resources/4-2.png)
 
 服务实例的网络位置在服务注册中心启动时被注册。当实例终止时，它将从服务注册中心中移除。通常使用心跳机制周期性地刷新服务实例的注册信息。
 
@@ -30,7 +30,7 @@
 ## 4.3、服务端发现模式
 服务发现的另一种方式是服务端发现模式。图 4-3 展示了该模式的结构：
 
-![服务器间处理也可以处理服务发现](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/4-3.png)
+![服务器间处理也可以处理服务发现](resources/4-3.png)
 
 客户端通过负载均衡器向服务发出请求。负载均衡器查询服务注册中心并将每个请求路由到可用的服务实例。与客户端发现一样，服务实例由服务注册中心注册与销毁。
 
@@ -69,7 +69,7 @@ Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运�
 
 图 4-4 展示了该模式的结构。
 
-![图 4-4、服务可以自我处理注册](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/4-4.png)
+![图 4-4、服务可以自我处理注册](resources/4-4.png)
 
 该方式的一个很好的范例就是 [Netflix OSS Eureka 客户端](https://github.com/Netflix/eureka)。Eureka 客户端负责处理服务实例注册与注销的所有方面。实现了包括服务发现在内的多种模式的 [Spring Cloud 项目](http://projects.spring.io/spring-cloud/)可以轻松地使用 Eureka 自动注册服务实例。您只需在Java Configuration类应用 `@EnableEurekaClient` 注解即可。
 
@@ -82,7 +82,7 @@ Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运�
 
 图 4-5 展示了该模式的结构：
 
-![图 4-5、一个单独的服务注册器可负责注册其他服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/4-5.png)
+![图 4-5、一个单独的服务注册器可负责注册其他服务](resources/4-5.png)
 
 服务注册器的一个例子是开源的 [Registrator](https://github.com/gliderlabs/registrator) 项目。它可以自动注册和注销作为 Docker 容器部署的服务实例。注册器支持多个服务注册中心，包括 etcd 和 Consul。
 

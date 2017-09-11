@@ -10,7 +10,7 @@
 
 这个新应用是一个模块化的六边形架构，如图 1-1 所示：
 
-![图 1-1、一个简单的打车应用](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-1.png)
+![图 1-1、一个简单的打车应用](resources/1-1.png)
 
 应用程序的核心是由模块实现的业务逻辑，它定义了服务、领域对象和事件。围绕核心的是与外部世界接口对接的适配器。适配器示例包括了数据库访问组件、生产和消费消息的消息组件和 web 组件，它们暴露了 API 或者实现了一个 UI。
 
@@ -46,13 +46,13 @@
 
 例如，前面描述的系统可能分解成如图 1-2 所示：
 
-![图 1-2、一个单体应用分解成微服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-2.png)
+![图 1-2、一个单体应用分解成微服务](resources/1-2.png)
 
 应用程序的每个功能区域现在都由自己的微服务实现。此外，Web 应用程序被分为一组更简单的 Web 应用程序。例如，以我们的出粗车为例，一个专门是乘客的，一个专门是司机的。这使得它更容易地为特定的用户、司机、设备或者专门的用例部署不同的场景。每个后端服务暴露一个 REST API，大部分的服务消费由其他服务提供的 API。例如，司机管理使用了通知服务器来告知一个可用司机关于一个潜在路程。UI 服务调用了其他服务来渲染页面。服务也可以使用异步、基于消息的通信。本电子书后面将会详细介绍服务间的通信。
 
 一些 REST API 也暴露给移动端应用供司机和乘客使用。然而，应用不能直接访问后端服务。相反，他们之间的通信是由一个称为 [API 网关](http://microservices.io/patterns/apigateway.html)（API Cateway）的中介负责。API 网关负责负载均衡、缓存、访问控制、API计量和监控，[可以通过使用 NGINX 来实现](http://www.nginx.com/solutions/api-gateway/)。第 2 章详细讨论 API 网关。
 
-![图 1-3、开发和交付中的缩放立方（Scale Cube）](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-3.png)
+![图 1-3、开发和交付中的缩放立方（Scale Cube）](resources/1-3.png)
 
 微服务架构模式相当于此缩放立方的 Y 轴坐标，此立方是一个来自[《架构即未来》](http://theartofscalability.com/)的三维伸缩模型。另外两个坐标轴是由运行多个相同应用程序副本的负载均衡器组成的 X 轴缩放和 Z 轴坐标（或者数据分区），其中请求的属性（例如，一行记录的主键或者客户标识）用于将请求路由到特定的服务器。
 
@@ -60,7 +60,7 @@
 
 在运行时，X 坐标轴上运行着服务的多个实例，每一个服务配合负载均衡器以满足吞吐量和可用性。某些应用程序也有可能使用 Z 坐标轴来进行分区服务。图 1-4 展示了如何用 Docker 将旅途管理（Trip Management）服务部署到 Amazon EC2 上运行。
 
-![图 1-4、使用 Docker 部署旅途管理服务](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-4.png)
+![图 1-4、使用 Docker 部署旅途管理服务](resources/1-4.png)
 
 在运行时，旅途管理服务由多个服务实例组成，每个服务实例是一个 Docker 容器。为了实现高可用，容器是在多个云虚拟机上运行的。服务实例的前方是一个[如 NGINX 的负载均衡器](http://www.nginx.com/solutions/load-balancing/)，用于跨实例分发请求。负载均衡器也可以处理其他问题，如[缓存](http://www.nginx.com/resources/admin-guide/content-caching/)、[访问控制](http://www.nginx.com/resources/admin-guide/restricting-access/)、[API 度量](http://www.nginx.com/solutions/api-gateway/)和[监控](http://www.nginx.com/products/live-activity-monitoring/)。
 
@@ -68,7 +68,7 @@
 
 每个服务都有自己的数据库。而且，服务可以使用一种最适合其需求、号称多语言持久架构（polyglot persistence architecture）的数据库。例如，司机管理，找到与潜在乘客接近的司机必须使用支持高效地理查询的数据库。
 
-![图 1-5、打车应用的数据库架构](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese/blob/master/resources/1-4.png)
+![图 1-5、打车应用的数据库架构](resources/1-4.png)
 
 从表面上看，微服务架构模式类似于 SOA。微服务是由一组服务组成。然而，换另一种方式去思考微服务架构模式，它是没有商业化的 SOA，没有集成 [Web 服务规范](http://en.wikipedia.org/wiki/List_of_web_service_specifications)（WS-\*）和企业服务总线（Enterprise Service Bus，ESB）。基于微服务的应用支持更简单、轻量级的协议，例如，REST，而不是 WS-\*。他们也尽量避免使用 ESB，而是实现微服务本身具有类似 ESB 的功能。微服务架构也拒绝了 SOA 的其他部分，例如，数据访问[规范模式](https://en.wikipedia.org/wiki/Canonical_schema_pattern)概念。
 
