@@ -51,7 +51,7 @@ Created （订单创建）事件。
 
 更复杂的场景可能会涉及额外的步骤，例如在检查客户信用的同时保留库存。
 
-假设（a）每个服务原子地更新数据库并发布事件，稍后再更新，（b）Message Broker 保证事件至少被传送一次，您可以实现跨多服务的业务事务。需要注意的是，这些并不是 ACID 事务。它们提供了更弱的保证，如[最终一致性](https://en.wikipedia.org/wiki/Eventual_consistency)。该事务模型称为 [BASE 模型](http://queue.acm.org/detail.cfm?id=1394128)。
+假设（a）每个服务原子地更新数据库并发布事件，稍后再更新，（b）Message Broker 保证事件至少被传送一次，您可以实现跨多服务的业务事务。需要注意的是，这些并不是 ACID 事务。它们只提供了更弱的保证，如[最终一致性](https://en.wikipedia.org/wiki/Eventual_consistency)。该事务模型称为 [BASE 模型](http://queue.acm.org/detail.cfm?id=1394128)。
 
 您还可以使用事件来维护多个微服务预先加入所拥有的数据的物化视图（materialized view）。维护视图的服务订阅相关事件并更新视图。图 5-5 展示了 Customer Order View Updater Service （客户订单视图更新服务）根据 Customer
 Service 和 Order Service 发布的事件更新 Customer Order View （客户订单服务）。
