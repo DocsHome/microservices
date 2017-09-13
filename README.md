@@ -60,8 +60,8 @@
 - [5.1、微服务与分布式数据管理问题](5-event-driven-data-management-for-microservices.md#51微服务与分布式数据管理问题)
 - [5.2、事件驱动架构](5-event-driven-data-management-for-microservices.md#52事件驱动架构)
 - [5.3、实现原子性](5-event-driven-data-management-for-microservices.md#53实现原子性)
-- 5.4、使用本地事务发布事件
-- 5.5、挖掘数据库事务日志
+- [5.4、使用本地事务发布事件](5-event-driven-data-management-for-microservices.md#54使用本地事务发布事件)
+- [5.5、挖掘数据库事务日志](5-event-driven-data-management-for-microservices.md#55挖掘数据库事务日志)
 - 5.6、使用事件溯源
 - 5.7、总结
 - 微服务实战：NGINX 与存储优化
