@@ -72,9 +72,9 @@
 - [6.3、每个主机一个服务实例模式](6-choosing-deployment-strategy.md#63每个主机一个服务实例模式)
     - [6.3.1、每个虚拟机一个服务实例模式](6-choosing-deployment-strategy.md#631每个虚拟机一个服务实例模式)
     - [6.3.2、每个容器一个服务实例模式](6-choosing-deployment-strategy.md#632每个容器一个服务实例模式)
-- [6.6、Serverless 部署](6-choosing-deployment-strategy.md#66serverless-部署)
+- [6.4、Serverless 部署](6-choosing-deployment-strategy.md#64serverless-部署)
 - [6.5、总结](6-choosing-deployment-strategy.md#65总结)
-- [微服务实战：使用 NGINX 在不同主机上部署微服务](6-choosing-deployment-strategy.md#微服务实战使用nginx-在不同主机上部署微服务)
+- [微服务实战：使用 NGINX 在不同主机上部署微服务](6-choosing-deployment-strategy.md#微服务实战使用-nginx-在不同主机上部署微服务)
 
 ### 7、将单体重构为微服务
 - 7.1、微服务重构概述
