@@ -68,7 +68,7 @@
 
 每个服务都有自己的数据库。而且，服务可以使用一种最适合其需求、号称多语言持久架构（polyglot persistence architecture）的数据库。例如，司机管理，找到与潜在乘客接近的司机必须使用支持高效地理查询的数据库。
 
-![图 1-5、打车应用的数据库架构](resources/1-4.png)
+![图 1-5、打车应用的数据库架构](resources/1-5.png)
 
 从表面上看，微服务架构模式类似于 SOA。微服务是由一组服务组成。然而，换另一种方式去思考微服务架构模式，它是没有商业化的 SOA，没有集成 [Web 服务规范](http://en.wikipedia.org/wiki/List_of_web_service_specifications)（WS-\*）和企业服务总线（Enterprise Service Bus，ESB）。基于微服务的应用支持更简单、轻量级的协议，例如，REST，而不是 WS-\*。他们也尽量避免使用 ESB，而是实现微服务本身具有类似 ESB 的功能。微服务架构也拒绝了 SOA 的其他部分，例如，数据访问[规范模式](https://en.wikipedia.org/wiki/Canonical_schema_pattern)概念。
 

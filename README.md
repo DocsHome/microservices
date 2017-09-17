@@ -66,27 +66,25 @@
 - [5.7、总结](5-event-driven-data-management-for-microservices.md#57总结)
 - [微服务实战：NGINX 与存储优化](5-event-driven-data-management-for-microservices.md#微服务实战nginx-与存储优化)
 
-### 6、选择微服务部署策略
-- 6.1、动机
-- 6.2、单主机多服务实例模式
-- 6.3、单主机服务实例模式
-- 6.4、单虚拟机服务实例模式
-- 6.5、单容器服务实例模式
-- 6.6、无服务部署
-- 6.7、总结
-- 微服务实战：部署微服务
+### [6、选择部署策略](6-choosing-deployment-strategy.md)
+- [6.1、动机](6-choosing-deployment-strategy.md#61动机)
+- [6.2、单主机多服务实例模式](6-choosing-deployment-strategy.md#62单主机多服务实例模式)
+- [6.3、每个主机一个服务实例模式](6-choosing-deployment-strategy.md#63每个主机一个服务实例模式)
+    - [6.3.1、每个虚拟机一个服务实例模式](6-choosing-deployment-strategy.md#631每个虚拟机一个服务实例模式)
+    - [6.3.2、每个容器一个服务实例模式](6-choosing-deployment-strategy.md#632每个容器一个服务实例模式)
+- [6.6、Serverless 部署](6-choosing-deployment-strategy.md#66serverless-部署)
+- [6.5、总结](6-choosing-deployment-strategy.md#65总结)
+- [微服务实战：使用 NGINX 在不同主机上部署微服务](6-choosing-deployment-strategy.md#微服务实战使用nginx-在不同主机上部署微服务)
 
-### 7、用NGINX跨越不同的主机
-- 7.1、重构单体为微服务
-- 7.2、微服务重构概述
-- 7.3、策略1：停止挖掘
-- 7.4、策略2：分离前后端
-- 7.5、策略3：提取服务
-- 7.6、优先将哪些模块转为微服务
-- 7.7、怎样提取模块
-- 7.8、总结
-- 7.9、微服务实战：用 NGINX 驯服单体应用
-- 微服务与 NGINX 的相关资源
+### 7、将单体重构为微服务
+- 7.1、微服务重构概述
+- 7.2、策略1：停止挖掘
+- 7.3、策略2：前后端分离
+- 7.4、策略3：提取服务
+    - 7.4.1、优先将哪些模块转换为微服务
+    - 7.4.2、怎样提取模块
+- 7.5、总结
+- 微服务实战：用 NGINX 驯服单体
 
 ## Licenses
 ![知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
