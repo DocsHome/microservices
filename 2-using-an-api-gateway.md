@@ -102,7 +102,7 @@ API 网关需要知道与其通信的每个微服务的位置（IP 地址和端�
 
 基础设施服务（比如消息代理）通常都有一个可以通过系统环境变量来指定的静态位置。但是，要确定应用程序服务的位置并不是那么容易。
 
-应用服务可以动态分配位置。此外，由于自动扩展与升级，一个服务的整组实例可以动态变更。因此，API 网关与系统中的任何其他服务客户端一样，需要使用系统的服务发现机制：[服务端发现](http://microservices.io/patterns/server-side-discovery.html)或[客户端发现](http://microservices.io/patterns/client-side-discovery.html)。 第4章中更详细地描述了服务发现。现在需要注意的是，如果系统使用客户端发现，API 网关必须能够查询[服务注册表](http://microservices.io/patterns/service-registry.html)，该注册表是所有微服务实例及其位置的数据库。
+应用服务可以动态分配位置。此外，由于自动扩缩与升级，一个服务的整组实例可以动态变更。因此，API 网关与系统中的任何其他服务客户端一样，需要使用系统的服务发现机制：[服务端发现](http://microservices.io/patterns/server-side-discovery.html)或[客户端发现](http://microservices.io/patterns/client-side-discovery.html)。 第4章中更详细地描述了服务发现。现在需要注意的是，如果系统使用客户端发现，API 网关必须能够查询[服务注册表](http://microservices.io/patterns/service-registry.html)，该注册表是所有微服务实例及其位置的数据库。
 
 ### 2.5.5、处理局部故障
 实施 API 网关时必须解决的另一个问题是局部故障问题。当一个服务调用另一个响应缓慢或者不可用的服务时，所有分布式系统都会出现此问题。API 网关不应该无限期地等待下游服务。但是，如何处理故障问题取决于特定的方案和哪些服务发生故障。例如，如果推荐服务在获取产品详细信息时没有响应，API 网关应将其余的产品详细信息返回给客户端，因为它们对用户仍然有用。建议可以是空的，也可以用其他代替，例如硬编码的十强名单。然而，如果产品信息服务没有响应，那么 API 网关应该向客户端返回错误。
