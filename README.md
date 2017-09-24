@@ -76,9 +76,9 @@
 - [6.5、总结](6-choosing-deployment-strategy.md#65总结)
 - [微服务实战：使用 NGINX 在不同主机上部署微服务](6-choosing-deployment-strategy.md#微服务实战使用-nginx-在不同主机上部署微服务)
 
-### 7、将单体重构为微服务
-- 7.1、微服务重构概述
-- 7.2、策略1：停止挖掘
+### [7、重构单体为微服务](7-refactoring-a-monolith-into-microservices.md)
+- [7.1、微服务重构概述](7-refactoring-a-monolith-into-microservices.md#71微服务重构概述)
+- [7.2、策略一：停止挖掘](7-refactoring-a-monolith-into-microservices.md#策略一停止挖掘)
 - 7.3、策略2：前后端分离
 - 7.4、策略3：提取服务
     - 7.4.1、优先将哪些模块转换为微服务
