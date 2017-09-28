@@ -78,13 +78,13 @@
 
 ### [7、重构单体为微服务](7-refactoring-a-monolith-into-microservices.md)
 - [7.1、微服务重构概述](7-refactoring-a-monolith-into-microservices.md#71微服务重构概述)
-- [7.2、策略一：停止挖掘](7-refactoring-a-monolith-into-microservices.md#策略一停止挖掘)
-- 7.3、策略2：前后端分离
-- 7.4、策略3：提取服务
-    - 7.4.1、优先将哪些模块转换为微服务
-    - 7.4.2、怎样提取模块
-- 7.5、总结
-- 微服务实战：用 NGINX 驯服单体
+- [7.2、策略一：停止挖掘](7-refactoring-a-monolith-into-microservices.md#72策略一停止挖掘)
+- [7.3、策略二：前后端分离](7-refactoring-a-monolith-into-microservices.md#73策略二前后端分离)
+- [7.4、策略三：提取服务](7-refactoring-a-monolith-into-microservices.md#74策略三提取服务)
+    - [7.4.1、优先将哪些模块转换为微服务](7-refactoring-a-monolith-into-microservices.md#741优先将哪些模块转换为微服务)
+    - [7.4.2、如何提取模块](7-refactoring-a-monolith-into-microservices.md#742如何提取模块)
+- [7.5、总结](7-refactoring-a-monolith-into-microservices.md#总结)
+- [微服务实战：用 NGINX 驯服单体](7-refactoring-a-monolith-into-microservices.md#微服务实战用-nginx-驯服单体)
 
 ## Licenses
 ![知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
