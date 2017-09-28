@@ -96,6 +96,6 @@ by Floyd Smith
 
 - **更好地支持微服务** — 如第五章最后栏目所述，NGINX 和 [NGINX Plus](https://www.nginx.com/products/) 具有利于开发基于微服务的应用的功能。当您开始重新设计单体应用时，由于 NGINX 的功能，您的微服务将执行得更好、更易于管理。
 - **跨环境的功能抽象** — 从您管理的服务器到各种公共云、私有云和混合云上将功能迁移到 NGINX 作为反向代理服务器可以减少部署在新的环境中的设施数量变化。这补充扩展了微服务所固有的灵活性。
-- **NGINX 微服务参考架构的可用性** — 当您迁移到 NGINX 时，您可以借鉴 [NGINX 微服务参考架构](https://www.nginx.com/blog/introducing-the-nginx-microservices-reference-architecture/)（MRA，Microservices Reference Architecture,），以便在迁移到微服务之后定义应用程序的最终结构，并根据需要使用的 MRA 部分应用与您创建的每个新的微服务。
+- **NGINX 微服务参考架构可用性** — 当您迁移到 NGINX 时，您可以借鉴 [NGINX 微服务参考架构](https://www.nginx.com/blog/introducing-the-nginx-microservices-reference-architecture/)（MRA，Microservices Reference Architecture），以便在迁移到微服务之后定义应用程序的最终结构，并根据需要使用的 MRA 部分应用于您创建的每个新的微服务。
 
 总而言之，实现NGINX作为您的转型的第一步，将压倒您的单片应用程序，使其更容易获得微服务的所有优势，并为您提供用于进行转换的模型。您可以了解有关 MRA 的更多信息，并获得 NGINX Plus 的免费试用版。
