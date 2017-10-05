@@ -1,12 +1,16 @@
 # 6、选择部署策略
 本书内容主要关于如何使用微服务构建应用程序，这是本书的第六章。第一章介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，讨论了使用微服务的优点与缺点。之后的章节讨论了微服务架构的方方面面：[使用 API ​​网关](2-using-an-api-gateway.md)、[进程间通信](3-inter-process-communication.md)、[服务发现](4-service-discovery.md)和[事件驱动数据管理](5-event-driven-data-management-for-microservices.md)。在本章中，我们将介绍部署微服务的策略。
 
+<a id="motivations"></a>
+
 ## 6.1、动机
 部署[单体应用](http://microservices.io/patterns/monolithic.html)程序意味着运行一个或多个相同副本的单个较大的应用程序。您通常会在每个服务器上配置 N 个服务器（物理或虚拟）并运行 M 个应用程序实例。单体应用程序的部署并不总是非常简单，但它比部署微服务应用程序要简单得多。
 
 [微服务应用程序](http://microservices.io/patterns/microservices.html)由数十甚至上百个服务组成。服务以不同的语言和框架编写。每个都是一个迷你的应用程序，具有自己特定的部署、资源、扩展和监视要求。例如，您需要根据该服务的需求运行每个服务的一定数量的实例。此外，必须为每个服务实例提供相应的 CPU、内存和 I/O 资源。更具挑战性的是尽管如此复杂，部署服务也必须快速、可靠和具有成本效益。
 
 有几种不同的微服务部署模式。我们首先看看单主机多服务实例模式。
+
+<a id="multiple-service-instances-per-host-pattern"></a>
 
 ## 6.2、单主机多服务实例模式
 部署微服务的一种方式是使用[单主机多服务实例](http://microservices.io/patterns/deployment/multiple-services-per-host.html)（Multiple Service Instances per Host）模式。当使用此模式时，您可以提供一个或多个物理主机或虚拟主机，并在每个上运行多个服务实例。从多方面来讲，这是应用程序部署的传统方式。每个服务实例在一个或多个主机的标准端口上运行。主机通常被[当作宠物对待](https://www.nginx.com/blog/microservices-at-netflix-architectural-best-practices/#stateless-servers)。
@@ -33,8 +37,12 @@
 
 正如您所见，尽管这种方式简单，但单主机多服务实例模式确实存在一些明显的缺点。现在让我们来看看可以绕过这些问题部署微服务的其他方式。
 
+<a id="service-instance-per-host-pattern"></a>
+
 ## 6.3、每个主机一个服务实例模式
 部署微服务的另一种方式是使用[每个主机一个服务实例](http://microservices.io/patterns/deployment/single-service-per-host.html)（Service Instance per Host）模式。当使用此模式时，您可以在主机上单独运行每个服务实例。这种模式有两种不同形式：每个虚拟机一个服务实例和每个容器一个服务实例模式。
+
+<a id="service-instance-per-virtual-machine-pattern"></a>
 
 ### 6.3.1、每个虚拟机一个服务实例模式
 当您使用[每个虚拟机一个服务实例](http://microservices.io/patterns/deployment/service-per-vm.html)模式时，将每个服务打包为一个虚拟机（VM）镜像（如 [Amazon EC2 AMI](https://aws.amazon.com/cn/ec2/)）。每个服务实例都是一个使用该 VM 镜像启动的 VM（例如，一个 EC2 实例）。
@@ -67,6 +75,8 @@
 
 接下来让我们看看另一种部署更轻量级微服务的替代方式，它也有许多与虚拟机一样的优势。
 
+<a id="service-instance-per-container-pattern"></a>
+
 ### 6.3.2、每个容器一个服务实例模式
 当您使用[每个容器一个服务实例模式](http://microservices.io/patterns/deployment/service-per-container.html)（Service Instance per Container）模式时，每个服务实例都在其自己的容器中运行。容器是一个[操作系统级虚拟化机制](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)。一个容器是由一个或多个运行在沙箱中的进程组成。从进程的角度来看，它们有自己的端口命名空间和根文件系统。您可以限制容器的内存和 CPU 资源。一些容器实现也具有 I/O 速率限制。容器技术的相关例子有 [Docker](https://www.docker.com/) 和 [Solaris Zones](https://en.wikipedia.org/wiki/Solaris_Containers)。
 
@@ -92,6 +102,8 @@
 
 还有一个日益流行的 server-less（无服务器）部署概念，这是一种避免了“在容器中还是在虚拟机中部署服务”问题的方法。接下来我们来看看。
 
+<a id="serverless-deployment"></a>
+
 ## 6.4、Serverless 部署
 [AWS Lambda](https://aws.amazon.com/lambda/) 就是一个 serverless 部署技术示例。它支持 Java、Node.js 和 Python 服务。要部署微服务器，请将其打包成 ZIP 文件并将上传到 AWS Lambda。您还要提供元数据，其中包括了被调用来处理请求（又称为事件）的函数的名称。AWS Lambda 自动运行足够的微服务服务实例来处理请求。您只需根据每个请求所用时间和内存消耗来付费。当然，问题往往出现在细节上，您很快注意到了 AWS Lambda 的局限性。但是，作为开发人员的您或组织中的任何人都无需担心服务器、虚拟机或容器的任何方面 ，这非常有吸引力，足以令人难以置信。
 
@@ -108,8 +120,12 @@ Lambda 函数是无状态服务。它通常通过调用 AWS 服务来处理请�
 
 然而，其也存在一些明显的局限性。Lambda 函数不适用于部署长时间运行的服务，例如消耗第三方消息代理消息的服务。请求必须在 300 秒内完成。服务必须是无状态的，因为理论上，AWS Lambda 可能为每个请求运行一个单独的实例。他们必须使用受支持的语言之一来编写。服务也必须快速启动；否则，他们可能会因超时而终止。
 
+<a id="summary"></a>
+
 ## 6.5、总结
 部署微服务应用程序充满着挑战。您可能有数个甚至数百个使用了各种语言和框架编写的服务。每个应用程序都是一个迷你应用程序，有自己特定的部署、资源、扩展和监视需求。有几个微服务部署模式，包括每个虚拟机一个服务实例和每个容器一个服务实例模式。部署微服务的另一个有趣的选择是 AWS Lambda，一种 serverless 方式。在本书的下一章也是最后一章中，我们将介绍如何将单体应用程序迁移到微服务架构。
+
+<a id="microservices-in-action"></a>
 
 ## 微服务实战：使用 NGINX 在不同主机上部署微服务
 
