@@ -1,10 +1,10 @@
 # 3、进程间通信
-本书是关于如何使用微服务架构构建应用程序，这是本书的第三章。[第一章](1-introduction-to-microservices.md)介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，将其与单体架构模式进行对比，并讨论了使用微服务的优点与缺点。[第二章](2-using-an-api-gateway.md)描述了应用程序客户端通过扮演中间人角色的 [API 网关](http://microservices.io/patterns/apigateway.html)与微服务器进行通信。在本章中，我们来了解一下系统中的服务是如何相互通信的。[第四章](4-service-discovery.md)将详细探讨服务发现方面的内容。
+本书主要介绍如何使用微服务架构构建应用程序，这是本书的第三章。[第一章](1-introduction-to-microservices.md)介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，将其与单体架构模式进行对比，并讨论了使用微服务的优点与缺点。[第二章](2-using-an-api-gateway.md)描述了应用程序客户端通过扮演中间人角色的 [API 网关](http://microservices.io/patterns/apigateway.html)与微服务器进行通信。在本章中，我们来了解一下系统中的服务是如何相互通信的。[第四章](4-service-discovery.md)将详细探讨服务发现方面的内容。
 
 <a id="introduction"></a>
 
 ## 3.1、简介
-在单体应用程序中，组件可通过语言级方法或者函数相互调用。相比之下，基于微服务的应用程序是一个运行在多台机器上的分布式系统。通常，每个服务实例是一个进程。
+在单体应用程序中，组件可通过语言级方法或者函数相互调用。相比之下，基于微服务的应用程序是一个运行在多台机器上的分布式系统。通常，每个服务实例都是一个进程。
 
 因此，如图 3-1 所示，服务必须使用进程间通信（IPC）机制进行交互。
 
@@ -15,7 +15,7 @@
 <a id="interaction-styles"></a>
 
 ## 3.2、交互方式
-当为服务选择一种 IPC 机制时，首先需要考虑服务如何交互。有很多种客户端 — 服务交互方式。它们可以分为两个类。第一类是一对一交互与一对多交互：
+当为服务选择一种 IPC 机制时，首先需要考虑服务如何交互。有许多种客户端 — 服务交互方式。它们可以分为两个类。第一类是一对一交互与一对多交互：
 
 - **一对一** — 每个客户端请求都由一个服务实例处理。
 - **一对多** — 每个请求由多个服务实例处理。
@@ -35,7 +35,7 @@
 
 表 3-1、进程间通信方式
 
-一对一交互分为以下列举的类型，包括同步（请求/响应）和异步（通知与请求/异步响应）：
+一对一交互分为以下列举的类型，包括同步（请求/响应）与异步（通知与请求/异步响应）：
 
 - **请求/响应**
 
@@ -54,9 +54,9 @@
     客户端发布通知消息，由零个或多个感兴趣的服务消费。
 - **发布/异步响应**
 
-    客户端发布请求消息，然后等待一定时间来接收消费者的响应。
+    客户端发布请求消息，之后等待一定时间来接收消费者的响应。
 
-通常，每个服务都组合着使用这些交互方式。对于一些服务，单一的 IPC 机制就足够了，但其他服务可能需要组合多个 IPC 机制。
+通常，每个服务都组合着使用这些交互方式。对一些服务而言，单一的 IPC 机制就足够了，但其他服务可能需要组合多个 IPC 机制。
 
 图 3-2 显示了当用户请求打车时，打车应用中的服务可能会发生交互。
 
@@ -69,18 +69,18 @@
 <a id="defining-apis"></a>
 
 ## 3.3、定义 API
-服务 API 是服务与客户端之间的契约。无论您选择何种 IPC 机制，使用接口定义语言（interface definition language，IDL）严格定义服务 API 都是非常有必要的。有论据证明使用 [API 优先（API‑first）法](https://www.programmableweb.com/news/how-to-design-great-apis-api-first-design-and-raml/how-to/2015/07/10)定义服务更加合理。在对您需要实现的服务的 API 定义进行迭代之后，您可以通过编写接口定义并与客户端开发人员进行审阅来开始开发服务。这样设计可以增加您构建出符合客户端需求的服务的机率。
+服务 API 是服务与客户端之间的契约。无论您选择何种 IPC 机制，使用接口定义语言（interface definition language，IDL）来严格定义服务 API 都是非常有必要的。有论据证明使用 [API 优先法](https://www.programmableweb.com/news/how-to-design-great-apis-api-first-design-and-raml/how-to/2015/07/10)定义服务更加合理。在对需要实现的服务的 API 定义进行迭代之后，您可以通过编写接口定义并与客户端开发人员进行审阅来开始开发服务。这样设计可以增加您成功的机率，以构建出符合客户端需求的服务。
 
-正如您将会在后面看到，定义 API 的方式取决于您使用何种 IPC 机制。如果您正在使用消息传递，那么 API 由消息通道和消息类型组成。如果您使用的是 HTTP，那么 API 由 URL、请求和响应格式组成。稍后我们将详细地介绍关于 IDL 方面的内容。
+正如您将会在后面看到，定义 API 的方式取决于您使用何种 IPC 机制。如果您正在使用消息传递，那么 API 是由消息通道和消息类型组成。如果您使用的是 HTTP，那么 API 是由 URL、请求和响应格式组成。稍后我们将详细地介绍关于 IDL 方面的内容。
 
 <a id="evolving-apis"></a>
 
 ## 3.4、演化 API
-服务 API 总是随着时间而变化。在单体应用程序中，更改 API 和更新所有调用者通常是一件直截了当的事。但在基于微服务的应用程序中，即使您的 API 的所有消费者都是同一应用程序中的其他服务，要想完成这些工作也是非常困难的。通常，您无法强制所有客户端与服务升级的节奏一致。此外，您可能需要[逐步部署服务的新版本](http://techblog.netflix.com/2013/08/deploying-netflix-api.html)，以便新旧版本的服务同时运行。制定这些问题的处理策略还是很重要的。
+服务 API 总是随着时间而变化。在单体应用程序中，更改 API 和更新所有调用者通常是一件直截了当的事。但在基于微服务的应用程序中，即使 API 的所有消费者都是同一应用程序中的其他服务，要想完成这些工作也是非常困难的。通常，您无法强制所有客户端与服务升级的节奏一致。此外，您可能需要[逐步部署服务的新版本](http://techblog.netflix.com/2013/08/deploying-netflix-api.html)，以便新旧版本的服务同时运行。因此，制定这些问题的处理策略还是很重要的。
 
-处理 API 变更的方式取决于变更的程度。某些更改是次要或需要向后兼容以前的版本。例如，您可能会向请求或响应添加属性。此时设计客户与服务遵守[鲁棒性原则](https://en.wikipedia.org/wiki/Robustness_principle)就显得很有意义了。使用较旧 API 的客户端应继续使用新版本的服务。该服务为缺少的请求属性提供默认值，并且客户端忽略任何多余的响应属性。使用 IPC 机制和消息格式非常重要，可以让您轻松地演化 API。
+处理 API 变更的方式取决于变更的程度。某些更改是次要或需要向后兼容以前的版本。例如，您可能会向请求或响应添加属性。此时设计客户端与服务遵守[鲁棒性原则](https://en.wikipedia.org/wiki/Robustness_principle)就显得很有意义了。使用较旧 API 的客户端应继续使用新版本的服务。该服务为缺少的请求属性提供默认值，并且客户端忽略所有多余的响应属性。使用 IPC 机制和消息格式非常重要，他们可以让您轻松地演化 API。
 
-但有时候，您必须对 API 作出大量不兼容的更改。由于您无法强制客户端立即升级，服务也必须支持较旧版本的 API 一段时间。如果您使用了基于 HTTP 的机制（如 REST），则一种方法是将版本号嵌入 URL 中。每个服务实例可能同时处理多个版本。或者，您可以部署多个不同的实例，每个实例用于处理特定版本。
+但有时候，您必须对 API 作出大量不兼容的更改。由于您无法强制客户端立即升级，服务也必须支持较旧版本的 API 一段时间。如果您使用了基于 HTTP 的机制（如 REST），则一种方法是将版本号嵌入到 URL 中。每个服务实例可能同时处理多个版本。或者，您可以部署多个不同的实例，每个实例用于处理特定版本。
 
 <a id="handling-partial-failure"></a>
 
@@ -91,7 +91,7 @@
 
 ![因无响应服务引起的线程阻塞](resources/3-3.png)
 
-为了防止此类问题出现，您必须设计您的服务以处理局部故障。以下是一个由 [Netflix 给出的好办法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理局部故障的策略包括：
+为了防止出现此类问题，您必须设计您的服务以处理局部故障。以下是一个由 [Netflix 给出的好办法](http://techblog.netflix.com/2012/02/fault-tolerance-in-high-volume.html)。处理局部故障的策略包括：
 
 - **网络超时**
 
@@ -126,7 +126,7 @@
 一条[消息](http://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html)由头部（如发件人之类的元数据）和消息体组成。消息通过[通道](http://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageChannel.html)进行交换。任何数量的生产者都可以向通道发送消息。类似地，任何数量的消费者都可以从通道接收消息。有两种通道类型，分别是[点对点](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html)（point‑to‑point）与[发布订阅](http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html)（publish‑subscribe）：
 
 - **点对点通道**发送一条消息给一个切确的、正在从通道读取消息的消费者。服务使用点对点通道，就是上述的一对一交互方式。
-- **发布订阅通道**将每条消息传递给所有订阅的消费者。服务使用发布订阅通道，就是上述的一对多交互方式。
+- **发布订阅通道**将每条消息传递给所有已订阅的消费者。服务使用发布订阅通道，就是上述的一对多交互方式。
 
 图 3-4 展示了打车应用程序如何使用发布订阅通道。
 
@@ -134,11 +134,11 @@
 
 Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来通知已订阅的服务，如 Dispatcher。Dispatcher 找到可用的司机并通过向发布订阅通道写入 Driver Proposed 消息来通知其他服务。
 
-有许多消息系统可供选择。您应该选择一个支持多种编程语言的。
+有许多消息系统可供选择，您应该选择一个支持多种编程语言的。
 
 一些消息系统支持标准协议，如 AMQP 和 STOMP。其他消息系统有专有的文档化协议。
 
-有大量的开源消息系统可供选择，包括 [RabbitMQ](http://www.rabbitmq.com/)、[Apache Kafka](http://kafka.apache.org/)、[Apache ActiveMQ](http://activemq.apache.org/) 和 [NSQ](https://github.com/bitly/nsq)。在高层上，他们都支持某种形式的消息和通道。他们都力求做到可靠、高性能和可扩展。然而，每个代理的消息传递模型细节上都存在着很大差异。
+有大量的开源消息系统可供选择，包括 [RabbitMQ](http://www.rabbitmq.com/)、[Apache Kafka](http://kafka.apache.org/)、[Apache ActiveMQ](http://activemq.apache.org/) 和 [NSQ](https://github.com/bitly/nsq)。从高层而言，他们都支持某种形式的消息和通道。他们都力求做到可靠、高性能和可扩展。然而，每个代理的消息传递模型细节上都存在着很大差异。
 
 使用消息传递有很多优点：
 
@@ -184,7 +184,7 @@ Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来�
 
 引用 REST 创建者 Roy Fielding：
 
-> “REST 提供了一套架构约束，当应用为整体时，其强调组件交互的可扩展性、接口的通用性、组件的独立部署以及中间组件，以减少交互延迟、实施安全性和封装传统系统。” — **Roy Fielding，[《架构风格与基于网络的软件架构设计》](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)**
+> “REST 提供了一套架构约束，当应用作为整体时，其强调组件交互的可扩展性、接口的通用性、组件的独立部署以及中间组件，以减少交互延迟、实施安全性和封装传统系统。” — **Roy Fielding，[《架构风格与基于网络的软件架构设计》](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)**
 
 图 3-5 展示了打车应用程序可能使用 REST 的方式之一。
 
@@ -194,7 +194,7 @@ Trip Management 服务通过向发布订阅通道写入 Trip Created 消息来�
 
 许多开发人员声称其基于 HTTP 的 API 就是 RESTful。然而，正如 Fielding 在这篇博文中所描述的那样，并不是都是这样。
 
-Leonard Richardson 定义了一个非常有用的 [ REST 成熟度模型](https://martinfowler.com/articles/richardsonMaturityModel.html)，包括以下层次：
+Leonard Richardson 定义了一个非常有用的 [REST 成熟度模型](https://martinfowler.com/articles/richardsonMaturityModel.html)，包括以下层次：
 
 - **级别 0**
 
@@ -204,21 +204,21 @@ Leonard Richardson 定义了一个非常有用的 [ REST 成熟度模型](https:
     级别 1 的 API 支持资源概念。要对资源执行操作，客户端会创建一个 POST 请求，指定要执行的操作和参数。
 - **级别 2**
 
-    级别 2 的 API 使用 HTTP 动词（谓词）执行操作：使用 GET 检索、使用 POST 创建和使用 PUT 进行更新。请求查询参数和请求体（如果有）指定操作的参数。这使服务能够利用 Web 基础特性，如缓存 GET 请求。
+    级别 2 的 API 使用 HTTP 动词（谓词）执行操作：使用 GET 检索、使用 POST 创建和使用 PUT 进行更新。请求查询参数和请求体（如果有）指定操作的参数。这使服务能够利用得到 Web 的基础特性，如缓存 GET 请求。
 - **级别 3**
 
     级别 3 的 API 基于非常规命名原则设计，HATEOAS（Hypermedia as the engine of application state，超媒体即应用程序状态引擎）。基本思想是 GET 请求返回的资源的表述，包含用于执行该资源上允许的操作的链接。例如，客户端可以使用发送 GET 请求检索订单返回的订单响应中的链接来取消订单。HATEOAS 的一个[好处](http://www.infoq.com/news/2009/04/hateoas-restful-api-advantages)是不再需要将 URL 硬编码在客户端代码中。另一个好处是，由于资源的表示包含可允许操作的链接，所以客户端不必猜测可以对当前状态的资源执行什么操作。
 
 使用基于 HTTP 的协议有很多好处：
 - HTTP 简单易懂。
-- 您可以使用浏览器中的扩展（如 [Postman](https://www.getpostman.com/)）测试 HTTP API，或者使用 curl 命令行测试 HTTP API（假设使用了 JSON 或其他一些文本格式）。
+- 您可以使用浏览器扩展（如 [Postman](https://www.getpostman.com/)）来测试 HTTP API，或者使用 curl 命令行测试 HTTP API（假设使用了 JSON 或其他一些文本格式）。
 - 它直接支持请求/响应式通信。
-- HTTP 是防火墙友好。
+- HTTP 属于防火墙友好。
 - 它不需要中间代理，简化了系统架构。
 
 使用 HTTP 也存在一些缺点：
 - HTTP 仅直接支持请求/响应的交互方式。您可以使用 HTTP 进行通知，但服务器必须始终发送 HTTP 响应。
-- 因为客户端和服务直接通信（没有一个中间者来缓冲消息），所以它们必须在交换期间都运行。
+- 因为客户端和服务直接通信（没有一个中间者来缓冲消息），所以它们必须在交换期间都运行着。
 - 客户端必须知道每个服务实例的位置（即 URL）。如[第二章](2-using-an-api-gateway.md)关于 API 网关所述，这是现代应用程序中的一个复杂问题。客户端必须使用服务发现机制来定位服务实例。
 
 开发人员社区最近重新发现了 RESTful API 接口定义语言的价值。有几个可以选择，包括 [RAML](https://raml.org/) 和 [Swagger](http://swagger.io/)。一些 IDL（如 Swagger）允许您定义请求和响应消息的格式。其他如 RAML，需要您使用一个单独的规范，如 [JSON 模式](http://json-schema.org/)。除了用于描述 API 之外，IDL 通常还具有可从接口定义生成客户端 stub 和服务器 skeleton 的工具。
