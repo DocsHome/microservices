@@ -1,5 +1,5 @@
 # 《微服务：从设计到部署》中文版
-本书为 Chris Richardson 所著的微服务电子书 [Designing and Deploying Microservices](https://www.nginx.com/resources/library/designing-deploying-microservices/) 中文版，其从不同角度全面介绍了微服务：微服务的优点与缺点、API 网关、进程间通信（IPC）、服务发现、事件驱动数据管理、微服务部署策略、重构单体。
+本书为 Chris Richardson 和 Floyd Smith 联合编写的微服务电子书 **[Designing and Deploying Microservices](https://www.nginx.com/resources/library/designing-deploying-microservices/)** 中文版，其从不同角度全面介绍了微服务：微服务的优点与缺点、API 网关、进程间通信（IPC）、服务发现、事件驱动数据管理、微服务部署策略、重构单体。
 
 - [文档仓库：https://github.com/oopsguy/microservices-from-design-to-deployment-chinese](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese)
 - [在线阅读：http://oopsguy.com/books/microservices](http://oopsguy.com/books/microservices/index.html)
