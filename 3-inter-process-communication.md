@@ -1,5 +1,5 @@
 # 3、进程间通信
-本书主要介绍如何使用微服务架构构建应用程序，这是本书的第三章。[第一章](1-introduction-to-microservices.md)介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，将其与单体架构模式进行对比，并讨论了使用微服务的优点与缺点。[第二章](2-using-an-api-gateway.md)描述了应用程序客户端通过扮演中间人角色的 [API 网关](http://microservices.io/patterns/apigateway.html)与微服务器进行通信。在本章中，我们来了解一下系统中的服务是如何相互通信的。[第四章](4-service-discovery.md)将详细探讨服务发现方面的内容。
+本书主要介绍如何使用微服务架构构建应用程序，这是本书的第三章。[第一章](1-introduction-to-microservices.md)介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，将其与单体架构模式进行对比，并讨论了使用微服务的优点与缺点。[第二章](2-using-an-api-gateway.md)描述了应用程序客户端通过扮演中间人角色的 [API 网关](http://microservices.io/patterns/apigateway.html)与微服务进行通信。在本章中，我们来了解一下系统中的服务是如何相互通信的。[第四章](4-service-discovery.md)将详细探讨服务发现方面的内容。
 
 <a id="introduction"></a>
 

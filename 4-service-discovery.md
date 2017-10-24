@@ -1,5 +1,5 @@
 # 4、服务发现
-本书主要介绍如何使用微服务来构建应用程序，现在是第四章。[第一章](1-introduction-to-microservices.md)已经介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，并讨论了使用微服务的优点与缺点。[第二章](2-using-an-api-gateway.md)和[第三章](5-event-driven-data-management-for-microservices.md)介绍了微服务间的通信，并对不同的通信机制作出对比。在本章中，我们将探讨服务发现（service discovery）相关的内容。
+本书主要介绍如何使用微服务来构建应用程序，现在是第四章。[第一章](1-introduction-to-microservices.md)已经介绍了[微服务架构模式](http://microservices.io/patterns/microservices.html)，并讨论了使用微服务的优点与缺点。[第二章](2-using-an-api-gateway.md)和[第三章](3-inter-process-communication.md)介绍了微服务间的通信，并对不同的通信机制作出对比。在本章中，我们将探讨服务发现（service discovery）相关的内容。
 
 <a id="why-use-service-discovery"></a>
 
