@@ -1,0 +1,67 @@
+{
+    "author": "oopsguy.com",
+    "description": "Nginx 经典微服务电子书中文翻译版本",
+    "language": "zh-hans",
+    "extension": null,
+    "generator": "site",
+    "links": {
+        "sharing": {
+            "all": true,
+            "facebook": true,
+            "google": true,
+            "twitter": true,
+            "weibo": true
+        },
+        "sidebar": {
+            "Oopsguy 的博客": "http://oopsguy.com",
+            "《微服务：从设计到部署》": "https://github.com/oopsguy/microservices-from-design-to-deployment-chinese"
+        }
+    },
+    "output": null,
+    "pdf": {
+        "fontFamily": "Microsoft yahei",
+        "fontSize": 16,
+        "margin": {
+            "bottom": 36,
+            "left": 62,
+            "right": 62,
+            "top": 36
+        },
+        "pageNumbers": true,
+        "paperSize": "a4"
+    },
+    "plugins": [
+        "github",
+        "splitter",
+        "tbfed-pagefooter",
+        "-lunr",
+        "-search",
+        "github-buttons",
+        "image-captions",
+        "-highlight",
+        "-livereload"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/oopsguy/microservices-from-design-to-deployment-chinese"
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy <a style=\"font-weight: bold\" href=\"http://oopsguy.com\">Oopsguy.com</a> 2017",
+            "modify_label": "最后更新时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "github-buttons": {
+            "repo": "oopsguy/microservices-from-design-to-deployment-chinese",
+            "types": [
+                "star",
+                "watch"
+            ],
+            "size": "small"
+        },
+        "image-captions": {
+            "caption": "_CAPTION_"
+        }
+    },
+    "title": "微服务：从设计到部署",
+    "variables": {}
+}
