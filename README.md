@@ -4,6 +4,7 @@
 
 - [Github：https://github.com/oopsguy/microservices-from-design-to-deployment-chinese](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese)
 - [在线阅读：http://oopsguy.com/books/microservices](http://oopsguy.com/books/microservices/index.html)
+- [GitBook：https://www.gitbook.com/book/docshome/microservices/details](https://www.gitbook.com/book/docshome/microservices/details)
 - [PDF 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf)
 - [MOBI 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.mobi](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.mobi)
 
