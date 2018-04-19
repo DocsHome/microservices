@@ -25,9 +25,9 @@
 
 服务实例的网络位置在服务注册中心启动时被注册。当实例终止时，它将从服务注册中心中移除。通常使用心跳机制周期性地刷新服务实例的注册信息。
 
-[Netflix OSS](https://netflix.github.io/) 提供了一个很好的客户端发现模式示例。[Netflix Eureka](https://github.com/Netflix/eureka) 是一个服务注册中心，它提供了一个用于管理服务实例注册和查询可用实例的 REST API。[Netflix Ribbon](https://github.com/Netflix/ribbon) 是一个 IPC 客户端，可与 Eureka 一起使用，用于在可用服务实例之间使请求负载均衡。本章稍后将讨论 Eureka。
+[Netflix OSS](https://netflix.github.io/) 提供了一个很好的客户端发现模式示例。[Netflix Eureka](https://github.com/Netflix/eureka) 是一个服务注册中心，它提供了一组用于管理服务实例注册和查询可用实例的 REST API。[Netflix Ribbon](https://github.com/Netflix/ribbon) 是一个 IPC 客户端，可与 Eureka 一起使用，用于在可用服务实例之间使请求负载均衡。本章稍后将讨论 Eureka。
 
-客户端发现模式存在各种优点与缺点。该模式相对比较简单，除了服务注册中心，没有其他移动部件。此外，由于客户端能发现可用的服务实例，因此可以实现智能的、特定于应用程序的负载均衡决策，比如使用一致性哈希。该模式的一个重要缺点是它将客户端与服务注册中心耦合在一起。您必须为服务客户端使用的每种编程语言和框架实现客户端服务发现逻辑。
+客户端发现模式存在各种优点与缺点。该模式相对比较简单，除了服务注册中心，没有其他移动部件。此外，由于客户端能发现可用的服务实例，因此可以实现智能的、特定于应用程序的负载均衡决策，比如使用一致性哈希。该模式的一个重要缺点是它将客户端与服务注册中心耦合在一起。您必须为您使用的每种编程语言和框架实现客户端服务发现逻辑。
 
 现在我们已经了解了客户端发现，接下来让我们看看服务端发现。
 
@@ -55,7 +55,7 @@ HTTP 服务器和负载均衡器（如 [NGINX Plus](https://www.nginx.com/produc
 
 如之前所述，[Netflix Eureka](https://github.com/Netflix/eureka) 是一个很好的服务注册中心范例。它提供了一个用于注册和查询服务实例的 REST API。服务实例使用 POST 请求注册其网络位置。它必须每隔 30 秒使用 PUT 请求来刷新其注册信息。通过使用 HTTP DELETE 请求或实例注册超时来移除注册信息。正如您所料，客户端可以使用 HTTP GET 请求来检索已注册的服务实例。
 
-Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运行一个或多个 Eureka 服务器来[实现高可用](https://github.com/Netflix/eureka/wiki/Configuring-Eureka-in-AWS-Cloud)。每个 Eureka 服务器都运行在具有一个 [Elastic IP 地址](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)的 EC2 实例上。DNS TEXT 记录用于存储 Eureka 集群配置，这是一个从可用性区域到 Eureka 服务器的网络位置列表的映射。当 Eureka 服务器启动时，它将会查询 DNS 以检索 Eureka 群集配置，查找其对等体，并为其分配一个未使用的 Elastic IP 地址。
+Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运行一个或多个 Eureka 服务器来[实现高可用](https://github.com/Netflix/eureka/wiki/Configuring-Eureka-in-AWS-Cloud)。每个 Eureka 服务器都运行在具有一个 [弹性 IP 地址](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)的 EC2 实例上。DNS TEXT 记录用于存储 Eureka 集群配置，这是一个从可用性区域到 Eureka 服务器的网络位置列表的映射。当 Eureka 服务器启动时，它将会查询 DNS 以检索 Eureka 群集配置，查找其对等体，并为其分配一个未使用的弹性 IP 地址。
 
 Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka 服务器的网络位置。客户端优先使用相同可用性区域中的 Eureka 服务器，如果没有可用的，则使用另一个可用性区域的 Eureka 服务器。
 
@@ -63,7 +63,7 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
 
 - **[etcd](https://github.com/coreos/etcd)**
 
-    一个用于共享配置和服务发现的高可用、分布式和一致的键值存储。使用了 etcd 的两个著名项目分别为 Kubernetes 和 [Cloud Foundry](http://pivotal.io/platform)。
+    一个用于共享配置和服务发现的高可用、分布式和一致的键值存储。使用了 etcd 的两个著名项目分别为 Kubernetes 和 [Cloud Foundry](http://pivotal.io/platform)。
 - **[Consul](https://www.consul.io/)**
 
     一个发现与配置服务工具。它提供了一个 API，可用于客户端注册与发现服务。Consul 可对服务进行健康检查，以确定服务的可用性。
@@ -72,7 +72,7 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
     一个被广泛应用于分布式应用程序的高性能协调服务。Apache ZooKeeper 最初是一个 Hadoop 子项目，但现在已经成为一个独立的顶级项目。
 
 另外，如之前所述，部分系统，如 Kubernetes、Marathon 和 AWS，没有明确的服务注册中心。相反，服务注册中心只是基础设施的一个内置部分。
- 
+
 现在我们已经了解服务注册中心的概念，接下来让我们看看服务实例是如何被注册到服务注册中心。
 
 <a id="service-registration-options"></a>
@@ -104,11 +104,11 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
 
 ![图 4-5、一个单独的服务注册器可负责注册其他服务](resources/4-5.png)
 
-开源的 [Registrator](https://github.com/gliderlabs/registrator) 项目是一个很好的服务注册器示例。它可以自动注册和注销作为 Docker 容器部署的服务实例。注册器支持多个服务注册中心，包括 etcd 和 Consul。
+开源的 [Registrator](https://github.com/gliderlabs/registrator) 项目是一个很好的服务注册器示例。它可以自动注册和注销作为 Docker 容器部署的服务实例。注册器支持多种服务注册中心，包括 etcd 和 Consul。
 
-另一个服务注册器例子是 [NetflixOSS Prana](https://github.com/Netflix/Prana)。其主要用于非 JVM 语言编写的服务，它是一个与服务实例并行运行的侧中应用。Prana 使用了 Netflix Eureka 来注册和注销服务实例。
+另一个服务注册器例子是 [NetflixOSS Prana](https://github.com/Netflix/Prana)。其主要用于非 JVM 语言编写的服务，它是一个与服务实例并行运行的附加应用。Prana 使用了 Netflix Eureka 来注册和注销服务实例。
 
-服务注册器在部分部署环境中是一个内置组件。Autoscaling Group 创建的 EC2 实例可以自动注册到 ELB。Kubernetes 服务将自动注册并提供发现。
+服务注册器在部分部署环境中是一个内置组件。Autoscaling Group 创建的 EC2 实例可以自动注册到 ELB。Kubernetes 服务能够自动注册并提供发现。
 
 第三方注册模式同样有好有坏。一个主要的好处是服务与服务注册中心之间解耦。您不需要为开发人员使用的每种编程语言和框架都实现服务注册逻辑。相反，仅需要在专用服务中以集中的方式处理服务实例注册。
 
@@ -125,7 +125,7 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
 
 服务实例在服务注册中心中注册与注销有两种主要方式。一个是服务实例向服务注中心自我注册，即[自注册模式](http://microservices.io/patterns/self-registration.html)。另一个是使用其他系统组件代表服务完成注册与注销，即[第三方注册模式](http://microservices.io/patterns/3rd-party-registration.html)。
 
-在某些部署环境中，您需要使用如 [Netflix Eureka](https://github.com/Netflix/eureka) 或 [Apache ZooKeeper](http://zookeeper.apache.org/) 等服务注册中心来设置您自己的服务发现基础设施。在其他部署环境中，服务发现是内置的，例如，[Kubernetes](https://kubernetes.io/) 和 [Marathon](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)，可以处理服务实例的注册与注销。他们还在每一个扮演服务端发现路由角色的集群主机上运行一个代理。
+在某些部署环境中，您需要使用如 [Netflix Eureka](https://github.com/Netflix/eureka) ，ectd 或 [Apache ZooKeeper](http://zookeeper.apache.org/) 等服务注册中心来设置您自己的服务发现基础设施。在其他部署环境中，服务发现是内置的，例如，[Kubernetes](https://kubernetes.io/) 和 [Marathon](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)，可以处理服务实例的注册与注销。他们还在每一个扮演服务端发现路由角色的集群主机上运行一个代理。
 
 一个 HTTP 反向代理和负载均衡器（如 NGINX）也可以用作服务端发现负载均衡器。服务注册中心可以将路由信息推送给 NGINX，并调用一个正常的配置更新，例如，您可以使用 [Consul Template](https://www.hashicorp.com/blog/introducing-consul-template/)。NGINX Plus 支持[额外的动态重新配置机制](https://www.nginx.com/products/on-the-fly-reconfiguration/) — 它可以使用 DNS 从注册中心中提取有关服务实例的信息，并为远程重新配置提供一个 API。
 

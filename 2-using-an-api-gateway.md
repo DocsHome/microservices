@@ -28,7 +28,7 @@
 
 ```
 GET api.company.com/productdetails/productId
-``` 
+```
 
 负载均衡器将请求路由到几个相同应用程序实例中的其中一个。之后，应用程序查询各个数据库表并返回响应给客户端。相比之下，当使用微服务架构时，产品详细页面上展示的数据来自多个微服务。以下是一些微服务，可能拥有给定产品页面展示的数据：
 
@@ -72,7 +72,7 @@ https://serviceName.api.company.name
 
 API 网关负责请求路由、组合和协议转换。所有的客户端请求首先要通过 API 网关，之后请求被路由到适当的服务。API 网关通常会通过调用多个微服务和聚合结果来处理一个请求。它可以在 Web 协议（如 HTTP 和 WebSocket）和用于内部的非 Web 友好协议之间进行转换。
 
-API 还可以为每个客户端提供一个定制 API。它通常会为移动客户端暴露一个粗粒度的 API。例如，考虑一下产品详细信息场景。API 网关可以提供一个端点 `/productdetails?productid=xxx`，如图 2-3 所示，一个使用了 API 网关的微服务。允许移动客户端通过一个单独的请求来检索所有产品详细信息。API 网关通过调用各种服务（产品信息、推荐、评价等）并组合结果。
+API 网关还可以为每个客户端提供一个定制 API。它通常会为移动客户端暴露一个粗粒度的 API。例如，考虑一下产品详细信息场景。API 网关可以提供一个端点 `/productdetails?productid=xxx`，如图 2-3 所示，一个使用了 API 网关的微服务。允许移动客户端通过一个单独的请求来检索所有产品详细信息。API 网关通过调用各种服务（产品信息、推荐、评价等）并组合结果。
 
 一个很好的 API 网关案例是 [Netflix API 网关](http://techblog.netflix.com/2013/02/rxjava-netflix-api.html)。Netflix 流媒体服务可用于数百种不同类型的设备，包括电视机、机顶盒、智能手机、游戏机和平板电脑等。起初，Netflix 尝试为他们的流媒体服务提供一个[通用](http://www.programmableweb.com/news/why-rest-keeps-me-night/2012/05/15)的 API。后来，他们发现由于设备种类繁多，并且他们各自有着不同需求，所以并不是能很好地运作。如今，他们使用了 API 网关，通过运行特定设备适配代码来为每个设备提供一个定制 API。
 
@@ -87,22 +87,22 @@ API 网关也存在一些缺点，它是另一个高度可用的组件，需要�
 
 <a id="implementing-an-api-gateway"></a>
 
-## 2.5、实施 API 网关
-我们已经了解了使用 API 网关的动机与权衡。接下来让我们看看您需要考虑的各种设计问题。
+## 2.5、实现 API 网关
+我们已经了解了使用 API 网关的动机和利弊，接下来让我们看看您需要考虑的各种设计问题。
 
 <a id="performance-and-scalability"></a>
 
 ### 2.5.1、性能与可扩展性
-只有少数公司能达到 Netflix 的运营规模，每天需要处理数十亿的请求。然而，对于大多数应用来说，API 网关的性能和可扩展性是相当重要的。因此，在一个支持异步、非阻塞 I/O 平台上构建 API 网关是很有必要的。可以使用不同的技术来实现一个可扩展的 API 网关。在 JVM 上，您可以使用基于 NIO 的框架，如 Netty、Vertx、Spring Reactor 或者 JBoss Undertow。一个流行的非 JVM 选择是使用 Node.js，它是一个建立在 Chrome 的 JavaScript 引擎之上的平台。此外，您还可以选择使用 NGINX Plus。
+只有少数公司能达到 Netflix 的运营规模，每天需要处理数十亿的请求。不管怎样，对于大多数应用来说，API 网关的性能和可扩展性是相当重要的。因此，在一个支持异步、非阻塞 I/O 平台上构建 API 网关是很有必要的。实现一个可扩展的 API 网关的技术多种多样。在 JVM 上，您可以使用基于 NIO 的框架，如 Netty、Vertx、Spring Reactor 或者 JBoss Undertow。一个流行的非 JVM 选择是使用 Node.js，它是一个建立在 Chrome 的 JavaScript 引擎之上的平台。此外，您还可以选择使用 NGINX Plus。
 
 [NGINX Plus](https://www.nginx.com/solutions/api-gateway/) 提供了一个成熟、可扩展和高性能的 Web 服务器和反向代理，它易于部署、配置和编程。NGINX Plus 可以管理身份验证、访问控制、负载均衡请求、缓存响应，并且提供了应用程序健康检查和监控功能。
 
 <a id="using-a-reactive-programming-model"></a>
 
 ### 2.5.2、使用响应式编程模型
-API 网关通过简单地把他们（请求）路由到适当的后端服务来处理一些请求。它通过调用多个后端服务并聚合结果来处理其他请求。对于某些请求，如产品详细信息请求，对后端服务请求而言是彼此独立的。为了把响应时间缩短到最小，API 网关应该并发执行独立请求。
+API 网关处理大部分请求只是简单的把它们路由到与之对应的后端服务。它通过调用多个后端服务并聚合结果来处理其他请求。对于某些请求，如产品详细信息请求，对后端服务请求而言是彼此独立的。为了把响应时间缩短到最小，API 网关应该并发执行独立请求。
 
-然而，有时候，请求是相互依赖的。首先，API 网关可能需要在将请求路由到后端服务之前，通过调用验证服务来验证请求。同样，为了从客户的愿望清单中获取产品信息，API 网关首先必须检索包含该信息的客户资料，然后检索每个产品的信息。另一个有趣的 API 组合案例是 [Netflix 视频网格](http://techblog.netflix.com/2013/02/rxjava-netflix-api.html)。
+然而，有时候，请求是相互依赖的。首先，API 网关可能需要在将请求路由到后端服务之前，通过调用验证服务来验证该请求。同样，为了从客户的愿望清单中获取产品信息，API 网关首先必须检索包含该信息的客户资料，然后检索每个产品的信息。另一个有趣的 API 组合案例是 [Netflix 视频网格](http://techblog.netflix.com/2013/02/rxjava-netflix-api.html)。
 
 使用传统的异步回调方式来编写 API 组合代码会很快使你陷入回调地狱。代码将会变得杂乱、难以理解并且容易出错。一个更好的方式是使用响应式方法以声明式编写 API 网关代码。响应式抽象的例子包括 Scala 的 [Future](http://docs.scala-lang.org/overviews/core/futures.html)、Java 8 中的 [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) 和 JavaScript 中的 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)。还有 [Reactive Extensions](http://reactivex.io/)（也称为 Rx 或 ReactiveX），最初由 Microsoft 为 .NET 平台开发。Netflix 为 JVM 创建了 RxJava，专门应用于其 API 网关。还有用于 JavaScript 的 RxJS，它可以在浏览器和 Node.js 中运行。使用响应式方式可让您能够编写出简单而高效的 API 网关代码。
 
@@ -125,7 +125,7 @@ API 网关需要知道与其通信的每个微服务的位置（IP 地址和端�
 <a id="handling-partial-failures"></a>
 
 ### 2.5.5、处理局部故障
-实施 API 网关时必须解决的另一个问题是局部故障问题。当一个服务调用另一个响应缓慢或者不可用的服务时，所有分布式系统都会出现此问题。API 网关不应该无期限地等待下游服务。但是，如何处理故障问题取决于特定的方案和哪些服务发生故障。例如，如果推荐服务在获取产品详细信息时没有响应，API 网关应将其余的产品详细信息返回给客户端，因为它们对用户仍然有用。建议可以是空的，也可以用其他代替，例如硬编码的十强名单。然而，如果产品信息服务没有响应，那么 API 网关应该向客户端返回错误。
+实现 API 网关时必须解决的另一个问题是局部故障问题。当一个服务调用另一个响应缓慢或者不可用的服务时，所有分布式系统都会出现此问题。API 网关不应该无期限地等待下游服务。但是，如何处理故障问题取决于特定的方案和哪些服务发生故障。例如，如果推荐服务在获取产品详细信息时没有响应，API 网关应将其余的产品详细信息返回给客户端，因为它们对用户仍然有用。建议可以是空的，也可以用其他代替，例如硬编码的十强名单。然而，如果产品信息服务没有响应，那么 API 网关应该向客户端返回错误。
 
 如果可以，API 网关还可以返回缓存数据。例如，由于产品价格变化不大，当价格服务不可用时，API 网关可以返回被缓存的价格数据。数据可以由 API 网关缓存或存储在外部缓存中，如 Redis 或 Memcached。API 网关通过返回默认数据或缓存数据，确保系统发生故障时最小程度上影响到用户体验。
 
