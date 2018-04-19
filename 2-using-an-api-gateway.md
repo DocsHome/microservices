@@ -72,7 +72,7 @@ https://serviceName.api.company.name
 
 API 网关负责请求路由、组合和协议转换。所有的客户端请求首先要通过 API 网关，之后请求被路由到适当的服务。API 网关通常会通过调用多个微服务和聚合结果来处理一个请求。它可以在 Web 协议（如 HTTP 和 WebSocket）和用于内部的非 Web 友好协议之间进行转换。
 
-API网关 还可以为每个客户端提供一个定制 API。它通常会为移动客户端暴露一个粗粒度的 API。例如，考虑一下产品详细信息场景。API 网关可以提供一个端点 `/productdetails?productid=xxx`，如图 2-3 所示，一个使用了 API 网关的微服务。允许移动客户端通过一个单独的请求来检索所有产品详细信息。API 网关通过调用各种服务（产品信息、推荐、评价等）并组合结果。
+API 网关还可以为每个客户端提供一个定制 API。它通常会为移动客户端暴露一个粗粒度的 API。例如，考虑一下产品详细信息场景。API 网关可以提供一个端点 `/productdetails?productid=xxx`，如图 2-3 所示，一个使用了 API 网关的微服务。允许移动客户端通过一个单独的请求来检索所有产品详细信息。API 网关通过调用各种服务（产品信息、推荐、评价等）并组合结果。
 
 一个很好的 API 网关案例是 [Netflix API 网关](http://techblog.netflix.com/2013/02/rxjava-netflix-api.html)。Netflix 流媒体服务可用于数百种不同类型的设备，包括电视机、机顶盒、智能手机、游戏机和平板电脑等。起初，Netflix 尝试为他们的流媒体服务提供一个[通用](http://www.programmableweb.com/news/why-rest-keeps-me-night/2012/05/15)的 API。后来，他们发现由于设备种类繁多，并且他们各自有着不同需求，所以并不是能很好地运作。如今，他们使用了 API 网关，通过运行特定设备适配代码来为每个设备提供一个定制 API。
 

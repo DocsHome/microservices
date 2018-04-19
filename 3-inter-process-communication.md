@@ -226,7 +226,7 @@ Leonard Richardson 定义了一个非常有用的 [REST 成熟度模型](https:/
 <a id="thrift"></a>
 
 ### 3.8.2、Thrift
-[Apache Thrift](https://thrift.apache.org/) 是 REST 的一个有趣的替代方案。它是一个用于编写跨语言 [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 客户端和服务器 框架。Thrift 提供了一个 C 风格的 IDL 来定义您的 API。您可以使用 Thrift 编译器生成客户端 stub 和服务器端 skeleton。编译器可以生成各种语言的代码，包括 C++、Java、Python、PHP、Ruby、Erlang 和 Node.js。
+[Apache Thrift](https://thrift.apache.org/) 是 REST 的一个有趣的替代方案。它是一个用于编写跨语言 [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 客户端和服务器框架。Thrift 提供了一个 C 风格的 IDL 来定义您的 API。您可以使用 Thrift 编译器生成客户端 stub 和服务器端 skeleton。编译器可以生成各种语言的代码，包括 C++、Java、Python、PHP、Ruby、Erlang 和 Node.js。
 
 Thrift 接口由一个或多个服务组成。服务定义类似于一个 Java 接口。它是强类型方法的集合。
 
@@ -245,7 +245,7 @@ XML 文档的结构由 [XML 模式](https://www.w3.org/XML/Schema)（schema）�
 
 使用基于文本的消息格式的缺点是消息往往是冗长的，特别是 XML。因为消息是自描述的，每个消息除了它们的值之外还包含属性的名称。另一个缺点是解析文本的开销。因此，您可能需要考虑使用二进制格式。
 
-有几种二进制格式可供选择。如果您使用的是 Thrift RPC，您可以使用 Thrift的二进制格式。如果你可以选择消息格式，比较流行的有 [Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview) 和 [Apache Avro](https://avro.apache.org/)。这两种格式都提供了一种类型化的 IDL用于定义消息结构。然而，一个区别是 Protocol Buffers 使用标记字段，而 Avro 消费者需要知道模式才能解释消息。因此，Protocol Buffers 的 API 演化比 Avro 更容易使用。这里有篇[博文](http://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html)对 Thrift、Protocol Buffers 和 Avro 作出了极好的比较。
+有几种二进制格式可供选择。如果您使用的是 Thrift RPC，您可以使用 Thrift 的二进制格式。如果你可以选择消息格式，比较流行的有 [Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview) 和 [Apache Avro](https://avro.apache.org/)。这两种格式都提供了一种类型化的 IDL 用于定义消息结构。然而，一个区别是 Protocol Buffers 使用标记字段，而 Avro 消费者需要知道模式才能解释消息。因此，Protocol Buffers 的 API 演化比 Avro 更容易使用。这里有篇[博文](http://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html)对 Thrift、Protocol Buffers 和 Avro 作出了极好的比较。
 
 <a id="summary"></a>
 

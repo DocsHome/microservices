@@ -55,7 +55,7 @@ HTTP 服务器和负载均衡器（如 [NGINX Plus](https://www.nginx.com/produc
 
 如之前所述，[Netflix Eureka](https://github.com/Netflix/eureka) 是一个很好的服务注册中心范例。它提供了一个用于注册和查询服务实例的 REST API。服务实例使用 POST 请求注册其网络位置。它必须每隔 30 秒使用 PUT 请求来刷新其注册信息。通过使用 HTTP DELETE 请求或实例注册超时来移除注册信息。正如您所料，客户端可以使用 HTTP GET 请求来检索已注册的服务实例。
 
-Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运行一个或多个 Eureka 服务器来[实现高可用](https://github.com/Netflix/eureka/wiki/Configuring-Eureka-in-AWS-Cloud)。每个 Eureka 服务器都运行在具有一个 [弹性IP 地址](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)的 EC2 实例上。DNS TEXT 记录用于存储 Eureka 集群配置，这是一个从可用性区域到 Eureka 服务器的网络位置列表的映射。当 Eureka 服务器启动时，它将会查询 DNS 以检索 Eureka 群集配置，查找其对等体，并为其分配一个未使用的 弹性 IP 地址。
+Netflix 通过在每个 Amazon EC2 可用性区域（Availability Zone）中运行一个或多个 Eureka 服务器来[实现高可用](https://github.com/Netflix/eureka/wiki/Configuring-Eureka-in-AWS-Cloud)。每个 Eureka 服务器都运行在具有一个 [弹性 IP 地址](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)的 EC2 实例上。DNS TEXT 记录用于存储 Eureka 集群配置，这是一个从可用性区域到 Eureka 服务器的网络位置列表的映射。当 Eureka 服务器启动时，它将会查询 DNS 以检索 Eureka 群集配置，查找其对等体，并为其分配一个未使用的弹性 IP 地址。
 
 Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka 服务器的网络位置。客户端优先使用相同可用性区域中的 Eureka 服务器，如果没有可用的，则使用另一个可用性区域的 Eureka 服务器。
 
@@ -125,7 +125,7 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
 
 服务实例在服务注册中心中注册与注销有两种主要方式。一个是服务实例向服务注中心自我注册，即[自注册模式](http://microservices.io/patterns/self-registration.html)。另一个是使用其他系统组件代表服务完成注册与注销，即[第三方注册模式](http://microservices.io/patterns/3rd-party-registration.html)。
 
-在某些部署环境中，您需要使用如 [Netflix Eureka](https://github.com/Netflix/eureka) ，ectd或 [Apache ZooKeeper](http://zookeeper.apache.org/) 等服务注册中心来设置您自己的服务发现基础设施。在其他部署环境中，服务发现是内置的，例如，[Kubernetes](https://kubernetes.io/) 和 [Marathon](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)，可以处理服务实例的注册与注销。他们还在每一个扮演服务端发现路由角色的集群主机上运行一个代理。
+在某些部署环境中，您需要使用如 [Netflix Eureka](https://github.com/Netflix/eureka) ，ectd 或 [Apache ZooKeeper](http://zookeeper.apache.org/) 等服务注册中心来设置您自己的服务发现基础设施。在其他部署环境中，服务发现是内置的，例如，[Kubernetes](https://kubernetes.io/) 和 [Marathon](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)，可以处理服务实例的注册与注销。他们还在每一个扮演服务端发现路由角色的集群主机上运行一个代理。
 
 一个 HTTP 反向代理和负载均衡器（如 NGINX）也可以用作服务端发现负载均衡器。服务注册中心可以将路由信息推送给 NGINX，并调用一个正常的配置更新，例如，您可以使用 [Consul Template](https://www.hashicorp.com/blog/introducing-consul-template/)。NGINX Plus 支持[额外的动态重新配置机制](https://www.nginx.com/products/on-the-fly-reconfiguration/) — 它可以使用 DNS 从注册中心中提取有关服务实例的信息，并为远程重新配置提供一个 API。
 
