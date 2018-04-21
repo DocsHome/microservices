@@ -1,4 +1,4 @@
-# 7、重构单体服务为微服务
+# 7、重构单体应用为微服务
 本书主要介绍如何使用微服务构建应用程序，这是本书的第七章，也是最后一章。[第一章](1-introduction-to-microservices.md)介绍了微服务架构模式，讨论了使用微服务的优点与缺点。随后的章节讨论了微服务架构的方方面面：[使用 API ​​网关](2-using-an-api-gateway.md)、[进程间通信](3-inter-process-communication.md)、[服务发现](4-service-discovery.md)、[事件驱动数据管理](5-event-driven-data-management-for-microservices.md)和[部署微服务](6-choosing-deployment-strategy.md)。在本章中，我们将介绍单体应用迁移到微服务的策略。
 
 我希望这本电子书能够让您对微服务架构、其优点和缺点以及何时使用它有很好的了解。微服务架构也许很适合您的组织。
@@ -108,7 +108,7 @@ Martin Fowler 将这种应用现代化策略称为[杀手应用](http://www.mart
 
 <a id="microservices-in-action"></a>
 
-## 微服务实战：用 NGINX 征服单体
+## 微服务实战：使用 NGINX 征服单体
 
 by Floyd Smith
 

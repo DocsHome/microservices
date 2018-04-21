@@ -49,7 +49,7 @@
     - [4.6、自注册模式](4-service-discovery.md#the-self-registration-pattern)
     - [4.7、第三方注册模式](4-service-discovery.md#the-third-party-registration-pattern)
     - [4.8、总结](4-service-discovery.md#summary)
-    - [微服务实战：NGINX 的灵活性](4-service-discovery.md#microservices-in-action)
+    - [微服务实战：灵活的 NGINX](4-service-discovery.md#microservices-in-action)
 
 * [5、事件驱动数据管理](5-event-driven-data-management-for-microservices.md)
     - [5.1、微服务与分布式数据管理问题](5-event-driven-data-management-for-microservices.md#microservices-and-the-problem-of-distributed-data-management)
@@ -71,7 +71,7 @@
     - [6.5、总结](6-choosing-deployment-strategy.md#summary)
     - [微服务实战：使用 NGINX 在不同主机上部署微服务](6-choosing-deployment-strategy.md#microservices-in-action)
 
-* [7、重构单体为微服务](7-refactoring-a-monolith-into-microservices.md)
+* [7、重构单体应用为微服务](7-refactoring-a-monolith-into-microservices.md)
     - [7.1、微服务重构概述](7-refactoring-a-monolith-into-microservices.md#overview-of-refactoring-to-microservices)
     - [7.2、策略一：停止挖掘](7-refactoring-a-monolith-into-microservices.md#strategy-1-Stop-digging)
     - [7.3、策略二：前后端分离](7-refactoring-a-monolith-into-microservices.md#strategy-2-split-frontend-and-backend)
@@ -79,4 +79,4 @@
         - [7.4.1、优先将哪些模块转换为微服务](7-refactoring-a-monolith-into-microservices.md#prioritizing-which-modules-to-convert-into-services)
         - [7.4.2、如何提取模块](7-refactoring-a-monolith-into-microservices.md#how-to-extract-a-module)
     - [7.5、总结](7-refactoring-a-monolith-into-microservices.md#summary)
-    - [微服务实战：用 NGINX 征服单体](7-refactoring-a-monolith-into-microservices.md#microservices-in-action)
+    - [微服务实战：使用 NGINX 征服单体](7-refactoring-a-monolith-into-microservices.md#microservices-in-action)

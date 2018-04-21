@@ -5,7 +5,7 @@
 - [Github：https://github.com/oopsguy/microservices-from-design-to-deployment-chinese](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese)
 - [在线阅读：http://oopsguy.com/books/microservices](http://oopsguy.com/books/microservices/index.html)
 - [GitBook：https://www.gitbook.com/book/docshome/microservices/details](https://www.gitbook.com/book/docshome/microservices/details)
-- [PDF 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf)
+- ~~[PDF 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf)（更新滞后，请下载 GitBook 的 PDF 版本）~~
 - [MOBI 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.mobi](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.mobi)
 
 本书对 Nginx 的描述不是很多，主要针对微服务领域。如果您想了解更多关于 Nginx 的内容，请参阅正在更新的 **[Nginx 中文文档](https://github.com/oopsguy/nginx-docs)**。
@@ -63,7 +63,7 @@
 - [4.6、自注册模式](4-service-discovery.md#the-self-registration-pattern)
 - [4.7、第三方注册模式](4-service-discovery.md#the-third-party-registration-pattern)
 - [4.8、总结](4-service-discovery.md#summary)
-- [微服务实战：NGINX 的灵活性](4-service-discovery.md#microservices-in-action)
+- [微服务实战：灵活的 NGINX](4-service-discovery.md#microservices-in-action)
 
 ### [5、事件驱动数据管理](5-event-driven-data-management-for-microservices.md)
 - [5.1、微服务与分布式数据管理问题](5-event-driven-data-management-for-microservices.md#microservices-and-the-problem-of-distributed-data-management)
@@ -85,7 +85,7 @@
 - [6.5、总结](6-choosing-deployment-strategy.md#summary)
 - [微服务实战：使用 NGINX 在不同主机上部署微服务](6-choosing-deployment-strategy.md#microservices-in-action)
 
-### [7、重构单体为微服务](7-refactoring-a-monolith-into-microservices.md)
+### [7、重构单体应用为微服务](7-refactoring-a-monolith-into-microservices.md)
 - [7.1、微服务重构概述](7-refactoring-a-monolith-into-microservices.md#overview-of-refactoring-to-microservices)
 - [7.2、策略一：停止挖掘](7-refactoring-a-monolith-into-microservices.md#strategy-1-Stop-digging)
 - [7.3、策略二：前后端分离](7-refactoring-a-monolith-into-microservices.md#strategy-2-split-frontend-and-backend)
@@ -93,7 +93,12 @@
     - [7.4.1、优先将哪些模块转换为微服务](7-refactoring-a-monolith-into-microservices.md#prioritizing-which-modules-to-convert-into-services)
     - [7.4.2、如何提取模块](7-refactoring-a-monolith-into-microservices.md#how-to-extract-a-module)
 - [7.5、总结](7-refactoring-a-monolith-into-microservices.md#summary)
-- [微服务实战：用 NGINX 征服单体](7-refactoring-a-monolith-into-microservices.md#microservices-in-action)
+- [微服务实战：使用 NGINX 征服单体](7-refactoring-a-monolith-into-microservices.md#microservices-in-action)
+
+## 感谢
+- 感谢 Chris Richardson 和 Floyd Smith 编写出那么棒的一本书。
+- 感谢 Github 网友的 [issue](https://github.com/DocsHome/microservices/issues) 和 [PR](https://github.com/DocsHome/microservices/pulls)
+- [Contributor 名单](https://github.com/DocsHome/microservices/graphs/contributors)
 
 ## 许可
 ![](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)

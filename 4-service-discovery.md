@@ -131,7 +131,7 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
 
 <a id="microservices-in-action"></a>
 
-## 微服务实战：NGINX 的灵活性
+## 微服务实战：灵活的 NGINX
 
 by Floyd Smith
 
