@@ -3,10 +3,7 @@
 本书为 Chris Richardson 和 Floyd Smith 联合编写的微服务电子书 **[Designing and Deploying Microservices](https://www.nginx.com/resources/library/designing-deploying-microservices/)** 中文版，其从不同角度全面介绍了微服务：微服务的优点与缺点、API 网关、进程间通信（IPC）、服务发现、事件驱动数据管理、微服务部署策略、重构单体。
 
 - [Github：https://github.com/oopsguy/microservices-from-design-to-deployment-chinese](https://github.com/oopsguy/microservices-from-design-to-deployment-chinese)
-- [在线阅读：http://oopsguy.com/books/microservices](http://oopsguy.com/books/microservices/index.html)
 - [GitBook：https://www.gitbook.com/book/docshome/microservices/details](https://www.gitbook.com/book/docshome/microservices/details)
-- ~~[PDF 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.pdf)（更新滞后，请下载 GitBook 的 PDF 版本）~~
-- [MOBI 离线版：http://oopsguy.com/books/microservices/designing-and-deploying-microservices.mobi](http://oopsguy.com/books/microservices/designing-and-deploying-microservices.mobi)
 
 本书对 Nginx 的描述不是很多，主要针对微服务领域。如果您想了解更多关于 Nginx 的内容，请参阅正在更新的 **[Nginx 中文文档](https://github.com/oopsguy/nginx-docs)**。
 
