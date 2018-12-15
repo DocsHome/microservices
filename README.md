@@ -7,8 +7,6 @@
 
 本书对 Nginx 的描述不是很多，主要针对微服务领域。如果您想了解更多关于 Nginx 的内容，请参阅正在更新的 **[Nginx 中文文档](https://github.com/oopsguy/nginx-docs)**。
 
-![《微服务：从设计到部署》](resources/cover.png)
-
 ## 目录
 
 ### [0、前言](0-foreword.md)
@@ -93,7 +91,7 @@
 - [微服务实战：使用 NGINX 征服单体](7-refactoring-a-monolith-into-microservices.md#microservices-in-action)
 
 ## 感谢
-- 感谢 Chris Richardson 和 Floyd Smith 编写出那么棒的一本书。
+- 感谢 Chris Richardson 和 Floyd Smith。
 - 感谢 Github 网友的 [issue](https://github.com/DocsHome/microservices/issues) 和 [PR](https://github.com/DocsHome/microservices/pulls)
 - [Contributor 名单](https://github.com/DocsHome/microservices/graphs/contributors)
 
