@@ -1,44 +1,44 @@
 # Summary
 
-* [0、前言](0-foreword.md)
+* 0、前言
 
-* [1、微服务简介](1-introduction-to-microservices.md)
-    - [1.1、构建单体应用](1-introduction-to-microservices.md#building-monolithic-applications)
-    - [1.2、走向单体地狱](1-introduction-to-microservices.md#marching-toward-monolithic-hell)
-    - [1.3、微服务-解决复杂问题](1-introduction-to-microservices.md#tackling-the-complexity)
-    - [1.4、微服务的优点](1-introduction-to-microservices.md#the-benefits-of-microservices)
-    - [1.5、微服务的缺点](1-introduction-to-microservices.md#the-drawbacks-of-microservices)
-    - [1.6、总结](1-introduction-to-microservices.md#summary)
-    - [微服务实战：NGINX Plus 作为反向代理服务器](1-introduction-to-microservices.md#microservices-in-action)
+* 1、微服务简介
+    - 1.1、构建单体应用
+    - 1.2、走向单体地狱
+    - 1.3、微服务-解决复杂问题
+    - 1.4、微服务的优点
+    - 1.5、微服务的缺点
+    - 1.6、总结
+    - 微服务实战：NGINX Plus 作为反向代理服务器
 
-* [2、使用 API 网关](2-using-an-api-gateway.md)
-    - [2.1、简介](2-using-an-api-gateway.md#introduction)
-    - [2.2、客户端与微服务直接通信](2-using-an-api-gateway.md#direct-client-to-microservice-communication)
-    - [2.3、使用 API 网关](2-using-an-api-gateway.md#using-an-api-gateway)
-    - [2.4、API 网关的优点与缺点](2-using-an-api-gateway.md#benefits-and-drawbacks-of-an-api-gateway)
-    - [2.5、实施 API 网关](2-using-an-api-gateway.md#implementing-an-api-gateway)
-        - [2.5.1、性能与扩展](2-using-an-api-gateway.md#performance-and-scalability)
-        - [2.5.2、使用响应式编程模型](2-using-an-api-gateway.md#using-a-reactive-programming-model)
-        - [2.5.3、服务调用](2-using-an-api-gateway.md#service-invocation)
-        - [2.5.4、服务发现](2-using-an-api-gateway.md#service-discovery)
-        - [2.5.5、处理局部故障](2-using-an-api-gateway.md#handling-partial-failures)
-    - [2.6、总结](2-using-an-api-gateway.md#summary)
-    - [微服务实战：NGINX Plus 作为 API 网关](2-using-an-api-gateway.md#microservices-in-action)
+* 2、使用 API 网关
+    - 2.1、简介
+    - 2.2、客户端与微服务直接通信
+    - 2.3、使用 API 网关
+    - 2.4、API 网关的优点与缺点
+    - 2.5、实施 API 网关
+        - 2.5.1、性能与扩展]
+        - 2.5.2、使用响应式编程模型
+        - 2.5.3、服务调用]
+        - 2.5.4、服务发现
+        - 2.5.5、处理局部故障
+    - 2.6、总结
+    - 微服务实战：NGINX Plus 作为 API 网关
 
-* [3、进程间通信](3-inter-process-communication.md)
-    - [3.1、简介](3-inter-process-communication.md#introduction)
-    - [3.2、交互方式](3-inter-process-communication.md#interaction-styles)
-    - [3.3、定义 API](3-inter-process-communication.md#defining-apis)
-    - [3.4、演化 API](3-inter-process-communication.md#evolving-apis)
-    - [3.5、处理局部故障](3-inter-process-communication.md#handling-partial-failure)
-    - [3.6、IPC 技术](3-inter-process-communication.md#ipc-technologies)
-    - [3.7、异步、基于消息的通信](3-inter-process-communication.md#asynchronous-message-based-communication)
-    - [3.8、同步的请求/响应 IPC](3-inter-process-communication.md#synchronous-request-response-ipc)
-        - [3.8.1、REST](3-inter-process-communication.md#rest)
-        - [3.8.2、Thrift](3-inter-process-communication.md#thrift)
-    - [3.9、消息格式](3-inter-process-communication.md#message-formats)
-    - [3.10、总结](3-inter-process-communication.md#summary)
-    - [微服务实战：NGINX 与应用程序架构](3-inter-process-communication.md#microservices-in-action)
+* 3、进程间通信
+    - 3.1、简介
+    - 3.2、交互方式
+    - 3.3、定义 API
+    - 3.4、演化 API
+    - 3.5、处理局部故障
+    - 3.6、IPC 技术
+    - 3.7、异步、基于消息的通信
+    - 3.8、同步的请求/响应 IPC
+        - 3.8.1、REST
+        - 3.8.2、Thrift
+    - 3.9、消息格式
+    - 3.10、总结
+    - 微服务实战：NGINX 与应用程序架构
 
 * [4、服务发现](4-service-discovery.md)
     - [4.1、为何使用服务发现](4-service-discovery.md#why-use-service-discovery)
