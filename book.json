@@ -1,6 +1,6 @@
 {
     "author": "oopsguy.com",
-    "description": "Nginx 经典微服务电子书中文翻译版本",
+    "description": "Nginx 经典微服务电子书中文译本",
     "language": "zh-hans",
     "extension": null,
     "generator": "site",
@@ -13,8 +13,8 @@
             "weibo": true
         },
         "sidebar": {
-            "Oopsguy 的博客": "http://oopsguy.com",
-            "《微服务：从设计到部署》": "https://github.com/oopsguy/microservices-from-design-to-deployment-chinese"
+            "Oopsguy": "http://oopsguy.com",
+            "《微服务：从设计到部署》": "https://github.com/docshome/microservices"
         }
     },
     "output": null,
