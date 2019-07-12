@@ -1,0 +1,1327 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6、选择部署策略 · 微服务：从设计到部署</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="oopsguy.com">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="6-choosing-deployment-strategy.html" />
+    
+    
+    <link rel="prev" href="5-event-driven-data-management-for-microservices.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"oopsguy/microservices-from-design-to-deployment-chinese","types":["star","watch"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://oopsguy.com" target="_blank" class="custom-link">Oopsguy 的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/oopsguy/microservices-from-design-to-deployment-chinese" target="_blank" class="custom-link">《微服务：从设计到部署》</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="0-foreword.html">
+            
+                <a href="0-foreword.html">
+            
+                    
+                    0、前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html">
+            
+                    
+                    1、微服务简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#building-monolithic-applications">
+            
+                    
+                    1.1、构建单体应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#marching-toward-monolithic-hell">
+            
+                    
+                    1.2、走向单体地狱
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#tackling-the-complexity">
+            
+                    
+                    1.3、微服务-解决复杂问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#the-benefits-of-microservices">
+            
+                    
+                    1.4、微服务的优点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#the-drawbacks-of-microservices">
+            
+                    
+                    1.5、微服务的缺点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#summary">
+            
+                    
+                    1.6、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="1-introduction-to-microservices.html">
+            
+                <a href="1-introduction-to-microservices.html#microservices-in-action">
+            
+                    
+                    微服务实战：NGINX Plus 作为反向代理服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html">
+            
+                    
+                    2、使用 API 网关
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#introduction">
+            
+                    
+                    2.1、简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#direct-client-to-microservice-communication">
+            
+                    
+                    2.2、客户端与微服务直接通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#using-an-api-gateway">
+            
+                    
+                    2.3、使用 API 网关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#benefits-and-drawbacks-of-an-api-gateway">
+            
+                    
+                    2.4、API 网关的优点与缺点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#implementing-an-api-gateway">
+            
+                    
+                    2.5、实施 API 网关
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.5.1" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#performance-and-scalability">
+            
+                    
+                    2.5.1、性能与扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.2" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#using-a-reactive-programming-model">
+            
+                    
+                    2.5.2、使用响应式编程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.3" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#service-invocation">
+            
+                    
+                    2.5.3、服务调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.4" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#service-discovery">
+            
+                    
+                    2.5.4、服务发现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.5" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#handling-partial-failures">
+            
+                    
+                    2.5.5、处理局部故障
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#summary">
+            
+                    
+                    2.6、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="2-using-an-api-gateway.html">
+            
+                <a href="2-using-an-api-gateway.html#microservices-in-action">
+            
+                    
+                    微服务实战：NGINX Plus 作为 API 网关
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html">
+            
+                    
+                    3、进程间通信
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#introduction">
+            
+                    
+                    3.1、简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#interaction-styles">
+            
+                    
+                    3.2、交互方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#defining-apis">
+            
+                    
+                    3.3、定义 API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#evolving-apis">
+            
+                    
+                    3.4、演化 API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#handling-partial-failure">
+            
+                    
+                    3.5、处理局部故障
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#ipc-technologies">
+            
+                    
+                    3.6、IPC 技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#asynchronous-message-based-communication">
+            
+                    
+                    3.7、异步、基于消息的通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#synchronous-request-response-ipc">
+            
+                    
+                    3.8、同步的请求/响应 IPC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.8.1" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#rest">
+            
+                    
+                    3.8.1、REST
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.2" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#thrift">
+            
+                    
+                    3.8.2、Thrift
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#message-formats">
+            
+                    
+                    3.9、消息格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#summary">
+            
+                    
+                    3.10、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="3-inter-process-communication.html">
+            
+                <a href="3-inter-process-communication.html#microservices-in-action">
+            
+                    
+                    微服务实战：NGINX 与应用程序架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html">
+            
+                    
+                    4、服务发现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#why-use-service-discovery">
+            
+                    
+                    4.1、为何使用服务发现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#the-client-side-discovery-pattern">
+            
+                    
+                    4.2、客户端发现模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#the-server-side-discovery-pattern">
+            
+                    
+                    4.3、服务端发现模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#the-service-registry">
+            
+                    
+                    4.4、服务注册中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#service-registration-options">
+            
+                    
+                    4.5、服务注册方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#the-self-registration-pattern">
+            
+                    
+                    4.6、自注册模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#the-third-party-registration-pattern">
+            
+                    
+                    4.7、第三方注册模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#summary">
+            
+                    
+                    4.8、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="4-service-discovery.html">
+            
+                <a href="4-service-discovery.html#microservices-in-action">
+            
+                    
+                    微服务实战：灵活的 NGINX
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html">
+            
+                    
+                    5、事件驱动数据管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management">
+            
+                    
+                    5.1、微服务与分布式数据管理问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#event-driven-architecture">
+            
+                    
+                    5.2、事件驱动架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#achieving-atomicity">
+            
+                    
+                    5.3、实现原子性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions">
+            
+                    
+                    5.4、使用本地事务发布事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log">
+            
+                    
+                    5.5、挖掘数据库事务日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#using-event-sourcing">
+            
+                    
+                    5.6、使用事件溯源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#summary">
+            
+                    
+                    5.7、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="5-event-driven-data-management-for-microservices.html">
+            
+                <a href="5-event-driven-data-management-for-microservices.html#microservices-in-action">
+            
+                    
+                    微服务实战：NGINX 与存储优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html">
+            
+                    
+                    6、选择部署策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#motivations">
+            
+                    
+                    6.1、动机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#multiple-service-instances-per-host-pattern">
+            
+                    
+                    6.2、单主机多服务实例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#service-instance-per-host-pattern">
+            
+                    
+                    6.3、每个主机一个服务实例模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#service-instance-per-virtual-machine-pattern">
+            
+                    
+                    6.3.1、每个虚拟机一个服务实例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#service-instance-per-container-pattern">
+            
+                    
+                    6.3.2、每个容器一个服务实例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#serverless-deployment">
+            
+                    
+                    6.4、Serverless 部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#summary">
+            
+                    
+                    6.5、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="6-choosing-deployment-strategy.html">
+            
+                <a href="6-choosing-deployment-strategy.html#microservices-in-action">
+            
+                    
+                    微服务实战：使用 NGINX 在不同主机上部署微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html">
+            
+                    
+                    7、重构单体应用为微服务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#overview-of-refactoring-to-microservices">
+            
+                    
+                    7.1、微服务重构概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#strategy-1-Stop-digging">
+            
+                    
+                    7.2、策略一：停止挖掘
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#strategy-2-split-frontend-and-backend">
+            
+                    
+                    7.3、策略二：前后端分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#strategy-3-extract-services">
+            
+                    
+                    7.4、策略三：提取服务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#prioritizing-which-modules-to-convert-into-services">
+            
+                    
+                    7.4.1、优先将哪些模块转换为微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#how-to-extract-a-module">
+            
+                    
+                    7.4.2、如何提取模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#summary">
+            
+                    
+                    7.5、总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="7-refactoring-a-monolith-into-microservices.html">
+            
+                <a href="7-refactoring-a-monolith-into-microservices.html#microservices-in-action">
+            
+                    
+                    微服务实战：使用 NGINX 征服单体
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >6、选择部署策略</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="6&#x3001;&#x9009;&#x62E9;&#x90E8;&#x7F72;&#x7B56;&#x7565;">6&#x3001;&#x9009;&#x62E9;&#x90E8;&#x7F72;&#x7B56;&#x7565;</h1>
+<p>&#x672C;&#x4E66;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x5173;&#x4E8E;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x5FAE;&#x670D;&#x52A1;&#x6784;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x8FD9;&#x662F;&#x672C;&#x4E66;&#x7684;&#x7B2C;&#x516D;&#x7AE0;&#x3002;&#x7B2C;&#x4E00;&#x7AE0;&#x4ECB;&#x7ECD;&#x4E86;<a href="http://microservices.io/patterns/microservices.html" target="_blank">&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x6A21;&#x5F0F;</a>&#xFF0C;&#x8BA8;&#x8BBA;&#x4E86;&#x4F7F;&#x7528;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x4F18;&#x70B9;&#x4E0E;&#x7F3A;&#x70B9;&#x3002;&#x4E4B;&#x540E;&#x7684;&#x7AE0;&#x8282;&#x8BA8;&#x8BBA;&#x4E86;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x7684;&#x65B9;&#x65B9;&#x9762;&#x9762;&#xFF1A;<a href="2-using-an-api-gateway.html">&#x4F7F;&#x7528; API &#x7F51;&#x5173;</a>&#x3001;<a href="3-inter-process-communication.html">&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;</a>&#x3001;<a href="4-service-discovery.html">&#x670D;&#x52A1;&#x53D1;&#x73B0;</a>&#x548C;<a href="5-event-driven-data-management-for-microservices.html">&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x6570;&#x636E;&#x7BA1;&#x7406;</a>&#x3002;&#x5728;&#x672C;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x7B56;&#x7565;&#x3002;</p>
+<p><a id="motivations"></a></p>
+<h2 id="61&#x3001;&#x52A8;&#x673A;">6.1&#x3001;&#x52A8;&#x673A;</h2>
+<p>&#x90E8;&#x7F72;<a href="http://microservices.io/patterns/monolithic.html" target="_blank">&#x5355;&#x4F53;&#x5E94;&#x7528;</a>&#x7A0B;&#x5E8F;&#x610F;&#x5473;&#x7740;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x76F8;&#x540C;&#x526F;&#x672C;&#x7684;&#x5355;&#x4E2A;&#x8F83;&#x5927;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x60A8;&#x901A;&#x5E38;&#x4F1A;&#x914D;&#x7F6E; N &#x4E2A;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x7269;&#x7406;&#x6216;&#x865A;&#x62DF;&#xFF09;&#xFF0C;&#x6BCF;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x4F1A;&#x8FD0;&#x884C; M &#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5B9E;&#x4F8B;&#x3002;&#x5355;&#x4F53;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x90E8;&#x7F72;&#x5E76;&#x4E0D;&#x603B;&#x662F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x5B83;&#x6BD4;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8981;&#x7B80;&#x5355;&#x5F97;&#x591A;&#x3002;</p>
+<p><a href="http://microservices.io/patterns/microservices.html" target="_blank">&#x5FAE;&#x670D;&#x52A1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</a>&#x7531;&#x6570;&#x5341;&#x751A;&#x81F3;&#x4E0A;&#x767E;&#x4E2A;&#x670D;&#x52A1;&#x7EC4;&#x6210;&#x3002;&#x670D;&#x52A1;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x8BED;&#x8A00;&#x548C;&#x6846;&#x67B6;&#x7F16;&#x5199;&#x3002;&#x6BCF;&#x4E2A;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x8FF7;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5177;&#x6709;&#x81EA;&#x5DF1;&#x7279;&#x5B9A;&#x7684;&#x90E8;&#x7F72;&#x3001;&#x8D44;&#x6E90;&#x3001;&#x6269;&#x5C55;&#x548C;&#x76D1;&#x89C6;&#x8981;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x6839;&#x636E;&#x8BE5;&#x670D;&#x52A1;&#x7684;&#x9700;&#x6C42;&#x8FD0;&#x884C;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5FC5;&#x987B;&#x4E3A;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x63D0;&#x4F9B;&#x76F8;&#x5E94;&#x7684; CPU&#x3001;&#x5185;&#x5B58;&#x548C; I/O &#x8D44;&#x6E90;&#x3002;&#x66F4;&#x5177;&#x6311;&#x6218;&#x6027;&#x7684;&#x662F;&#x5C3D;&#x7BA1;&#x5982;&#x6B64;&#x590D;&#x6742;&#xFF0C;&#x90E8;&#x7F72;&#x670D;&#x52A1;&#x4E5F;&#x5FC5;&#x987B;&#x5FEB;&#x901F;&#x3001;&#x53EF;&#x9760;&#x548C;&#x5177;&#x6709;&#x6210;&#x672C;&#x6548;&#x76CA;&#x3002;</p>
+<p>&#x6709;&#x51E0;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x90E8;&#x7F72;&#x6A21;&#x5F0F;&#x3002;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x770B;&#x770B;&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x3002;</p>
+<p><a id="multiple-service-instances-per-host-pattern"></a></p>
+<h2 id="62&#x3001;&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;">6.2&#x3001;&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;</h2>
+<p>&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528;<a href="http://microservices.io/patterns/deployment/multiple-services-per-host.html" target="_blank">&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;</a>&#xFF08;Multiple Service Instances per Host&#xFF09;&#x6A21;&#x5F0F;&#x3002;&#x5F53;&#x4F7F;&#x7528;&#x6B64;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7269;&#x7406;&#x4E3B;&#x673A;&#x6216;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#xFF0C;&#x5E76;&#x5728;&#x6BCF;&#x4E2A;&#x4E0A;&#x8FD0;&#x884C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;&#x4ECE;&#x591A;&#x65B9;&#x9762;&#x6765;&#x8BB2;&#xFF0C;&#x8FD9;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x90E8;&#x7F72;&#x7684;&#x4F20;&#x7EDF;&#x65B9;&#x5F0F;&#x3002;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x5728;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x4E3B;&#x673A;&#x7684;&#x6807;&#x51C6;&#x7AEF;&#x53E3;&#x4E0A;&#x8FD0;&#x884C;&#x3002;&#x4E3B;&#x673A;&#x901A;&#x5E38;&#x88AB;<a href="https://www.nginx.com/blog/microservices-at-netflix-architectural-best-practices/#stateless-servers" target="_blank">&#x5F53;&#x4F5C;&#x5BA0;&#x7269;&#x5BF9;&#x5F85;</a>&#x3002;</p>
+<p>&#x56FE; 6-1 &#x5C55;&#x793A;&#x4E86;&#x8BE5;&#x6A21;&#x5F0F;&#x7684;&#x7ED3;&#x6784;&#xFF1A;</p>
+<figure id="fig1.8.1"><img src="resources/6-1.png" alt="&#x56FE; 6-1&#x3001;&#x4E3B;&#x673A;&#x53EF;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;"><figcaption>&#x56FE; 6-1&#x3001;&#x4E3B;&#x673A;&#x53EF;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;</figcaption></figure>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x6709;&#x51E0;&#x4E2A;&#x53D8;&#x4F53;&#x3002;&#x4E00;&#x4E2A;&#x53D8;&#x4F53;&#x662F;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x6216;&#x8FDB;&#x7A0B;&#x7EC4;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728; <a href="http://tomcat.apache.org/" target="_blank">Apache Tomcat</a> &#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5C06; Java &#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x90E8;&#x7F72;&#x4E3A; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x4E00;&#x4E2A; <a href="https://nodejs.org/" target="_blank">Node.js</a> &#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7236;&#x8FDB;&#x7A0B;&#x548C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x3002;</p>
+<p>&#x6B64;&#x6A21;&#x5F0F;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x53D8;&#x4F53;&#x662F;&#x5728;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#x6216;&#x8FDB;&#x7A0B;&#x7EC4;&#x4E2D;&#x8FD0;&#x884C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x540C;&#x4E00;&#x4E2A; Apache Tomcat &#x670D;&#x52A1;&#x5668;&#x4E0A;&#x90E8;&#x7F72;&#x591A;&#x4E2A; Java Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x5728;&#x540C;&#x4E00; OSGI &#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x591A;&#x4E2A; OSGI &#x8F6F;&#x4EF6;&#x5305;&#x3002;</p>
+<p>&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x6709;&#x4F18;&#x70B9;&#x4E5F;&#x6709;&#x7F3A;&#x70B9;&#x3002;&#x4E3B;&#x8981;&#x4F18;&#x70B9;&#x662F;&#x5176;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#x7387;&#x76F8;&#x5BF9;&#x8F83;&#x9AD8;&#x3002;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#x670D;&#x52A1;&#x5668;&#x53CA;&#x5176;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x6216;&#x8FDB;&#x7A0B;&#x7EC4;&#x8FD0;&#x884C;&#x4E86;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684; Apache Tomcat &#x670D;&#x52A1;&#x5668;&#x548C; JVM &#x7684;&#x591A;&#x4E2A; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF09;&#xFF0C;&#x5219;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x4F18;&#x70B9;&#x662F;&#x90E8;&#x7F72;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x76F8;&#x5BF9;&#x8F83;&#x5FEB;&#x3002;&#x60A8;&#x53EA;&#x9700;&#x5C06;&#x670D;&#x52A1;&#x590D;&#x5236;&#x5230;&#x4E3B;&#x673A;&#x5E76;&#x542F;&#x52A8;&#x5B83;&#x3002;&#x5982;&#x679C;&#x670D;&#x52A1;&#x662F;&#x4F7F;&#x7528; Java &#x7F16;&#x5199;&#x7684;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x590D;&#x5236; JAR &#x6216; WAR &#x6587;&#x4EF6;&#x3002;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#xFF0C;&#x4F8B;&#x5982; Node.js &#x6216; Ruby&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x6E90;&#x4EE3;&#x7801;&#x3002;&#x5728;&#x4EFB;&#x4E00;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x590D;&#x5236;&#x7684;&#x5B57;&#x8282;&#x6570;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x8F83;&#x5C0F;&#x7684;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x7F3A;&#x4E4F;&#x5F00;&#x9500;&#xFF0C;&#x901A;&#x5E38;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x662F;&#x975E;&#x5E38;&#x5FEB;&#x7684;&#x3002;&#x5982;&#x679C;&#x8BE5;&#x670D;&#x52A1;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x542F;&#x52A8;&#x5B83;&#x5373;&#x53EF;&#x3002;&#x5982;&#x679C;&#x670D;&#x52A1;&#x662F;&#x5728;&#x540C;&#x4E00;&#x5BB9;&#x5668;&#x8FDB;&#x7A0B;&#x6216;&#x8FDB;&#x7A0B;&#x7EC4;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x51E0;&#x4E2A;&#x5B9E;&#x4F8B;&#x4E4B;&#x4E00;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x52A8;&#x6001;&#x90E8;&#x7F72;&#x5230;&#x5BB9;&#x5668;&#x4E2D;&#x6216;&#x8005;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x5BB9;&#x5668;&#x3002;</p>
+<p>&#x5C3D;&#x7BA1;&#x8FD9;&#x5F88;&#x6709;&#x5438;&#x5F15;&#x529B;&#xFF0C;&#x4F46;&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x6709;&#x4E00;&#x4E9B;&#x660E;&#x663E;&#x7684;&#x7F3A;&#x70B9;&#x3002;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7F3A;&#x70B9;&#x662F;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x5F88;&#x5C11;&#x6216;&#x8005;&#x6CA1;&#x6709;&#x9694;&#x79BB;&#xFF0C;&#x9664;&#x975E;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x8FDB;&#x7A0B;&#x3002;&#x867D;&#x7136;&#x60A8;&#x53EF;&#x4EE5;&#x51C6;&#x786E;&#x5730;&#x76D1;&#x89C6;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x7684;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x7387;&#xFF0C;&#x4F46;&#x662F;&#x60A8;&#x4E0D;&#x80FD;&#x9650;&#x5236;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x4F7F;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x4E00;&#x4E2A;&#x884C;&#x4E3A;&#x4E0D;&#x5F53;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x53EF;&#x80FD;&#x4F1A;&#x5360;&#x7528;&#x6389;&#x4E3B;&#x673A;&#x7684;&#x6240;&#x6709;&#x5185;&#x5B58;&#x6216; CPU&#x3002;</p>
+<p>&#x5982;&#x679C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x5728;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x6BEB;&#x65E0;&#x9694;&#x79BB;&#x53EF;&#x8A00;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x53EF;&#x80FD;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684; JVM &#x5806;&#x3002;&#x884C;&#x4E3A;&#x4E0D;&#x5F53;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x53EF;&#x80FD;&#x4F1A;&#x8F7B;&#x6613;&#x5730;&#x7834;&#x574F;&#x5728;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x60A8;&#x65E0;&#x6CD5;&#x76D1;&#x63A7;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x4F7F;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x95EE;&#x9898;&#x662F;&#x90E8;&#x7F72;&#x670D;&#x52A1;&#x7684;&#x8FD0;&#x7EF4;&#x56E2;&#x961F;&#x5FC5;&#x987B;&#x4E86;&#x89E3;&#x90E8;&#x7F72;&#x7684;&#x5177;&#x4F53;&#x7EC6;&#x8282;&#x3002;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x7528;&#x591A;&#x79CD;&#x8BED;&#x8A00;&#x548C;&#x6846;&#x67B6;&#x7F16;&#x5199;&#xFF0C;&#x56E0;&#x6B64;&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5FC5;&#x987B;&#x4E0E;&#x8FD0;&#x7EF4;&#x4EA4;&#x4EE3;&#x8BB8;&#x591A;&#x7EC6;&#x8282;&#x3002;&#x8FD9;&#x79CD;&#x590D;&#x6742;&#x6027;&#x65E0;&#x7591;&#x52A0;&#x5927;&#x4E86;&#x90E8;&#x7F72;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x98CE;&#x9669;&#x3002;</p>
+<p>&#x6B63;&#x5982;&#x60A8;&#x6240;&#x89C1;&#xFF0C;&#x5C3D;&#x7BA1;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x5355;&#x4E3B;&#x673A;&#x591A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x786E;&#x5B9E;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x660E;&#x663E;&#x7684;&#x7F3A;&#x70B9;&#x3002;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x53EF;&#x4EE5;&#x7ED5;&#x8FC7;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x5F0F;&#x3002;</p>
+<p><a id="service-instance-per-host-pattern"></a></p>
+<h2 id="63&#x3001;&#x6BCF;&#x4E2A;&#x4E3B;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;">6.3&#x3001;&#x6BCF;&#x4E2A;&#x4E3B;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;</h2>
+<p>&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528;<a href="http://microservices.io/patterns/deployment/single-service-per-host.html" target="_blank">&#x6BCF;&#x4E2A;&#x4E3B;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;</a>&#xFF08;Service Instance per Host&#xFF09;&#x6A21;&#x5F0F;&#x3002;&#x5F53;&#x4F7F;&#x7528;&#x6B64;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x4E3B;&#x673A;&#x4E0A;&#x5355;&#x72EC;&#x8FD0;&#x884C;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x6709;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x5F62;&#x5F0F;&#xFF1A;&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x548C;&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x3002;</p>
+<p><a id="service-instance-per-virtual-machine-pattern"></a></p>
+<h3 id="631&#x3001;&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;">6.3.1&#x3001;&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;</h3>
+<p>&#x5F53;&#x60A8;&#x4F7F;&#x7528;<a href="http://microservices.io/patterns/deployment/service-per-vm.html" target="_blank">&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;</a>&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x5C06;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#xFF08;VM&#xFF09;&#x955C;&#x50CF;&#xFF08;&#x5982; <a href="https://aws.amazon.com/cn/ec2/" target="_blank">Amazon EC2 AMI</a>&#xFF09;&#x3002;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x8BE5; VM &#x955C;&#x50CF;&#x542F;&#x52A8;&#x7684; VM&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x4E00;&#x4E2A; EC2 &#x5B9E;&#x4F8B;&#xFF09;&#x3002;</p>
+<p>&#x56FE; 6-2 &#x5C55;&#x793A;&#x4E86;&#x8BE5;&#x6A21;&#x5F0F;&#x7684;&#x7ED3;&#x6784;&#xFF1A;</p>
+<figure id="fig1.8.2"><img src="resources/6-2.png" alt="&#x56FE; 6-2&#x3001;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x5404;&#x81EA;&#x8FD0;&#x884C;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x865A;&#x62DF;&#x673A;&#x4E2D;"><figcaption>&#x56FE; 6-2&#x3001;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x5404;&#x81EA;&#x8FD0;&#x884C;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x865A;&#x62DF;&#x673A;&#x4E2D;</figcaption></figure>
+<p>&#x8FD9;&#x662F; Netflix &#x90E8;&#x7F72;&#x5176;&#x89C6;&#x9891;&#x6D41;&#x670D;&#x52A1;&#x7684;&#x4E3B;&#x8981;&#x65B9;&#x5F0F;&#x3002;Netflix &#x4F7F;&#x7528; <a href="https://github.com/Netflix/aminator" target="_blank">Aminator</a> &#x5C06;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x6253;&#x5305;&#x4E3A; EC2 AMI&#x3002;&#x6BCF;&#x4E2A;&#x8FD0;&#x884C;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x90FD;&#x662F;&#x4E00;&#x4E2A; EC2 &#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x5DE5;&#x5177;&#x6765;&#x6784;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x865A;&#x62DF;&#x673A;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x60A8;&#x7684;&#x6301;&#x7EED;&#x96C6;&#x6210;&#xFF08;CI&#xFF09;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x6BD4;&#x5982; <a href="https://jenkins.io/index.html" target="_blank">Jenkins</a>&#xFF09;&#x6765;&#x8C03;&#x7528; Aminator &#x5C06;&#x670D;&#x52A1;&#x6253;&#x5305;&#x4E3A;&#x4E00;&#x4E2A; EC2 AMI&#x3002;<a href="https://www.packer.io/" target="_blank">Packer</a> &#x662F;&#x81EA;&#x52A8;&#x5316;&#x865A;&#x62DF;&#x673A;&#x955C;&#x50CF;&#x521B;&#x5EFA;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x3002;&#x4E0E; Aminator &#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x652F;&#x6301;&#x5404;&#x79CD;&#x865A;&#x62DF;&#x5316;&#x6280;&#x672F;&#xFF0C;&#x5305;&#x62EC; EC2&#x3001;DigitalOcean&#x3001;VirtualBox &#x548C; VMware&#x3002;</p>
+<p><a href="https://boxfuse.com/" target="_blank">Boxfuse</a> &#x516C;&#x53F8;&#x6709;&#x4E00;&#x79CD;&#x975E;&#x5E38;&#x68D2;&#x7684;&#x65B9;&#x5F0F;&#x7528;&#x6765;&#x6784;&#x5EFA;&#x865A;&#x62DF;&#x673A;&#x955C;&#x50CF;&#xFF0C;&#x5176;&#x514B;&#x670D;&#x4E86;&#x6211;&#x5C06;&#x5728;&#x4E0B;&#x9762;&#x63CF;&#x8FF0;&#x7684;&#x865A;&#x62DF;&#x673A;&#x7684;&#x7F3A;&#x70B9;&#x3002;Boxfuse &#x5C06;&#x60A8;&#x7684; Java &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x5316;&#x7684; VM &#x955C;&#x50CF;&#x3002;&#x8FD9;&#x4E9B;&#x955C;&#x50CF;&#x53EF;&#x88AB;&#x5FEB;&#x901F;&#x6784;&#x5EFA;&#x3001;&#x5FEB;&#x901F;&#x542F;&#x52A8;&#x4E14;&#x66F4;&#x52A0;&#x5B89;&#x5168;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x66B4;&#x9732;&#x4E86;&#x4E00;&#x4E2A;&#x6709;&#x9650;&#x7684;&#x653B;&#x51FB;&#x9762;&#x3002;</p>
+<p><a href="https://cloudnative.io/" target="_blank">CloudNative</a> &#x516C;&#x53F8;&#x62E5;&#x6709; Bakery&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x521B;&#x5EFA; EC2 AMI &#x7684; SaaS &#x4EA7;&#x54C1;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x60A8;&#x7684; CI &#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x901A;&#x8FC7;&#x6D4B;&#x8BD5;&#x540E;&#x8C03;&#x7528; Bakery&#x3002;&#x4E4B;&#x540E; Bakery &#x5C06;&#x60A8;&#x7684;&#x670D;&#x52A1;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A; AMI&#x3002;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5982; Bakery &#x7684; SaaS &#x4EA7;&#x54C1;&#x610F;&#x5473;&#x7740;&#x60A8;&#x4E0D;&#x5FC5;&#x6D6A;&#x8D39;&#x5B9D;&#x8D35;&#x7684;&#x65F6;&#x95F4;&#x6765;&#x8BBE;&#x7F6E; AMI &#x521B;&#x5EFA;&#x57FA;&#x7840;&#x67B6;&#x6784;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x6709;&#x8BB8;&#x591A;&#x4F18;&#x70B9;&#x3002;VM &#x7684;&#x4E3B;&#x8981;&#x4F18;&#x70B9;&#x662F;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x8FD0;&#x884C;&#x662F;&#x5B8C;&#x5168;&#x9694;&#x79BB;&#x7684;&#x3002;&#x5B83;&#x6709;&#x56FA;&#x5B9A;&#x6570;&#x91CF;&#x7684; CPU &#x548C;&#x5185;&#x5B58;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x4ECE;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x7A83;&#x53D6;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x5C06;&#x5FAE;&#x670D;&#x52A1;&#x90E8;&#x7F72;&#x4E3A;&#x865A;&#x62DF;&#x673A;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x4F18;&#x70B9;&#x662F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6210;&#x719F;&#x7684;&#x4E91;&#x57FA;&#x7840;&#x67B6;&#x6784;&#x3002;&#x5982; AWS &#x4E4B;&#x7C7B;&#x7684;&#x4E91;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F8B;&#x5982;&#x8D1F;&#x8F7D;&#x5E73;&#x8861;&#x548C;&#x81EA;&#x52A8;&#x6269;&#x7F29;&#x3002;</p>
+<p>&#x5C06;&#x670D;&#x52A1;&#x90E8;&#x7F72;&#x4E3A;&#x865A;&#x62DF;&#x673A;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x597D;&#x5904;&#x662F;&#x5B83;&#x5C01;&#x88C5;&#x4E86;&#x670D;&#x52A1;&#x7684;&#x5B9E;&#x73B0;&#x6280;&#x672F;&#x3002;&#x4E00;&#x65E6;&#x670D;&#x52A1;&#x88AB;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#xFF0C;&#x5B83;&#x5C31;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x9ED1;&#x5323;&#x5B50;&#x3002;VM &#x7684;&#x7BA1;&#x7406; API &#x6210;&#x4E3A;&#x90E8;&#x7F72;&#x670D;&#x52A1;&#x7684; API&#x3002;&#x90E8;&#x7F72;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x3001;&#x53EF;&#x9760;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x7F3A;&#x70B9;&#x3002;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#x662F;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x7387;&#x8F83;&#x4F4E;&#x3002;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x90FD;&#x6709;&#x4E00;&#x6574;&#x4E2A; VM &#x5F00;&#x9500;&#xFF0C;&#x5305;&#x62EC;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x516C;&#x5171; IaaS &#x4E2D;&#xFF0C;VM &#x5177;&#x6709;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#xFF0C;&#x5E76;&#x4E14; VM &#x53EF;&#x80FD;&#x672A;&#x88AB;&#x5145;&#x5206;&#x5229;&#x7528;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x516C;&#x5171; IaaS &#x4E2D;&#x7684; VM &#x901A;&#x5E38;&#x662F;&#x6536;&#x8D39;&#x7684;&#xFF0C;&#x65E0;&#x8BBA;&#x5B83;&#x4EEC;&#x662F;&#x5904;&#x4E8E;&#x7E41;&#x5FD9;&#x8FD8;&#x662F;&#x7A7A;&#x95F2;&#x3002;&#x5982; AWS &#x4E4B;&#x7C7B;&#x7684; IaaS &#x867D;&#x7136;&#x63D0;&#x4F9B;&#x4E86;&#x81EA;&#x52A8;&#x6269;&#x7F29;&#x529F;&#x80FD;&#xFF0C;&#x4F46;<a href="http://techblog.netflix.com/2013/11/scryer-netflixs-predictive-auto-scaling.html" target="_blank">&#x5F88;&#x96BE;&#x5FEB;&#x901F;&#x54CD;&#x5E94;&#x9700;&#x6C42;&#x53D8;&#x5316;</a>&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x60A8;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x8FC7;&#x5EA6;&#x914D;&#x7F6E; VM&#xFF0C;&#x4ECE;&#x800C;&#x589E;&#x52A0;&#x90E8;&#x7F72;&#x6210;&#x672C;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x53E6;&#x4E00;&#x7F3A;&#x70B9;&#x662F;&#x90E8;&#x7F72;&#x65B0;&#x7248;&#x672C;&#x7684;&#x670D;&#x52A1;&#x65F6;&#x901A;&#x5E38;&#x5F88;&#x6162;&#x3002;&#x7531;&#x4E8E;&#x5927;&#x5C0F;&#x539F;&#x56E0;&#xFF0C;&#x901A;&#x5E38; VM &#x955C;&#x50CF;&#x6784;&#x5EFA;&#x5F88;&#x6162;&#x3002;&#x6B64;&#x5916;&#xFF0C;VM &#x5B9E;&#x4F8B;&#x5316;&#x4E5F;&#x5F88;&#x6162;&#xFF0C;&#x540C;&#x6837;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E5F;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x65F6;&#x95F4;&#x6765;&#x542F;&#x52A8;&#x3002;&#x4F46;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x5E76;&#x4E0D;&#x666E;&#x904D;&#xFF0C;&#x56E0;&#x4E3A;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7531; Boxfuse &#x6784;&#x5EFA;&#x7684;&#x8F7B;&#x91CF;&#x7EA7; VM&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#x662F;&#x901A;&#x5E38;&#x60A8;&#xFF08;&#x6216;&#x7EC4;&#x7EC7;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x4EBA;&#xFF09;&#x8981;&#x5BF9;&#x5F88;&#x591A;&#x672A;&#x5212;&#x5206;&#x7684;&#x91CD;&#x62C5;&#x8D1F;&#x8D23;&#x3002;&#x9664;&#x975E;&#x60A8;&#x4F7F;&#x7528; Boxfuse &#x8FD9;&#x6837;&#x7684;&#x5DE5;&#x5177;&#x6765;&#x5904;&#x7406;&#x6784;&#x5EFA;&#x548C;&#x7BA1;&#x7406;&#x865A;&#x62DF;&#x673A;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x5426;&#x5219;&#x8FD9;&#x5C06;&#x662F;&#x60A8;&#x7684;&#x8D23;&#x4EFB;&#x3002;&#x8FD9;&#x4E2A;&#x5FC5;&#x8981;&#x800C;&#x53C8;&#x8017;&#x65F6;&#x7684;&#x6D3B;&#x52A8;&#x4F1A;&#x5206;&#x6563;&#x60A8;&#x7684;&#x6838;&#x5FC3;&#x4E1A;&#x52A1;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x53E6;&#x4E00;&#x79CD;&#x90E8;&#x7F72;&#x66F4;&#x8F7B;&#x91CF;&#x7EA7;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x5F0F;&#xFF0C;&#x5B83;&#x4E5F;&#x6709;&#x8BB8;&#x591A;&#x4E0E;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x6837;&#x7684;&#x4F18;&#x52BF;&#x3002;</p>
+<p><a id="service-instance-per-container-pattern"></a></p>
+<h3 id="632&#x3001;&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;">6.3.2&#x3001;&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;</h3>
+<p>&#x5F53;&#x60A8;&#x4F7F;&#x7528;<a href="http://microservices.io/patterns/deployment/service-per-container.html" target="_blank">&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;</a>&#xFF08;Service Instance per Container&#xFF09;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x90FD;&#x5728;&#x5176;&#x81EA;&#x5DF1;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x3002;&#x5BB9;&#x5668;&#x662F;&#x4E00;&#x4E2A;<a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank">&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EA7;&#x865A;&#x62DF;&#x5316;&#x673A;&#x5236;</a>&#x3002;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8FD0;&#x884C;&#x5728;&#x6C99;&#x7BB1;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x7EC4;&#x6210;&#x3002;&#x4ECE;&#x8FDB;&#x7A0B;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#xFF0C;&#x5B83;&#x4EEC;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x7AEF;&#x53E3;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x548C;&#x6839;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x9650;&#x5236;&#x5BB9;&#x5668;&#x7684;&#x5185;&#x5B58;&#x548C; CPU &#x8D44;&#x6E90;&#x3002;&#x4E00;&#x4E9B;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#x4E5F;&#x5177;&#x6709; I/O &#x901F;&#x7387;&#x9650;&#x5236;&#x3002;&#x5BB9;&#x5668;&#x6280;&#x672F;&#x7684;&#x76F8;&#x5173;&#x4F8B;&#x5B50;&#x6709; <a href="https://www.docker.com/" target="_blank">Docker</a> &#x548C; <a href="https://en.wikipedia.org/wiki/Solaris_Containers" target="_blank">Solaris Zones</a>&#x3002;</p>
+<p>&#x56FE; 6-3 &#x5C55;&#x793A;&#x4E86;&#x8BE5;&#x6A21;&#x5F0F;&#x7684;&#x7ED3;&#x6784;&#xFF1A;</p>
+<figure id="fig1.8.3"><img src="resources/6-3.png" alt="&#x56FE; 6-3&#x3001;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x5404;&#x81EA;&#x8FD0;&#x884C;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x5BB9;&#x5668;&#x4E2D;"><figcaption>&#x56FE; 6-3&#x3001;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x5404;&#x81EA;&#x8FD0;&#x884C;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x5BB9;&#x5668;&#x4E2D;</figcaption></figure>
+<p>&#x8981;&#x4F7F;&#x7528;&#x6B64;&#x6A21;&#x5F0F;&#xFF0C;&#x8BF7;&#x5C06;&#x60A8;&#x7684;&#x670D;&#x52A1;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x3002;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x662F;&#x7531;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x6240;&#x9700;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x548C;&#x5E93;&#x7EC4;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x955C;&#x50CF;&#x3002;&#x4E00;&#x4E9B;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x7531;&#x5B8C;&#x6574;&#x7684; Linux &#x6839;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7EC4;&#x6210;&#x3002;&#x5176;&#x5B83;&#x7684;&#x5219;&#x66F4;&#x52A0;&#x8F7B;&#x4FBF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x90E8;&#x7F72;&#x4E00;&#x4E2A; Java &#x670D;&#x52A1;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E86; Java &#x8FD0;&#x884C;&#x65F6;&#x7684;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#xFF0C;&#x6216;&#x8BB8;&#x4E5F;&#x5305;&#x542B;&#x4E00;&#x4E2A; Apache Tomcat &#x670D;&#x52A1;&#x5668;&#x548C;&#x7F16;&#x8BD1;&#x597D;&#x7684; Java &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x5C06;&#x670D;&#x52A1;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x540E;&#xFF0C;&#x60A8;&#x5C06;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x3002;&#x901A;&#x5E38;&#x5728;&#x6BCF;&#x4E2A;&#x7269;&#x7406;&#x6216;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x4E0A;&#x8FD0;&#x884C;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF08;&#x5982; <a href="https://kubernetes.io/" target="_blank">Kubernetes</a> &#x6216; <a href="https://github.com/mesosphere/marathon" target="_blank">Marathon</a>&#xFF09;&#x6765;&#x7BA1;&#x7406;&#x5BB9;&#x5668;&#x3002;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x5C06;&#x4E3B;&#x673A;&#x89C6;&#x4E3A;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x6C60;&#x3002;&#x5B83;&#x6839;&#x636E;&#x5BB9;&#x5668;&#x6240;&#x9700;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x6BCF;&#x4E2A;&#x4E3B;&#x673A;&#x4E0A;&#x53EF;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x6765;&#x51B3;&#x5B9A;&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x653E;&#x7F6E;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x6A21;&#x5F0F;&#x6709;&#x4F18;&#x70B9;&#x548C;&#x7F3A;&#x70B9;&#x3002;&#x5BB9;&#x5668;&#x7684;&#x4F18;&#x70B9;&#x4E0E;&#x865A;&#x62DF;&#x673A;&#x7684;&#x7C7B;&#x4F3C;&#x3002;&#x5B83;&#x4EEC;&#x5C06;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x5F7C;&#x6B64;&#x9694;&#x79BB;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x76D1;&#x63A7;&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x6240;&#x6D88;&#x8017;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x4E0E; VM &#x4E00;&#x6837;&#xFF0C;&#x5BB9;&#x5668;&#x5C01;&#x88C5;&#x4E86;&#x670D;&#x52A1;&#x7684;&#x5B9E;&#x73B0;&#x6280;&#x672F;&#x3002;&#x5BB9;&#x5668;&#x7BA1;&#x7406; API &#x4F5C;&#x4E3A;&#x7BA1;&#x7406;&#x60A8;&#x7684;&#x670D;&#x52A1;&#x7684; API&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x4E0E;&#x865A;&#x62DF;&#x673A;&#x4E0D;&#x540C;&#xFF0C;&#x5BB9;&#x5668;&#x662F;&#x8F7B;&#x91CF;&#x7EA7;&#x6280;&#x672F;&#x3002;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x5FEB;&#x901F;&#x5730;&#x6784;&#x5EFA;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x6211;&#x7684;&#x7B14;&#x8BB0;&#x672C;&#x7535;&#x8111;&#x4E0A;&#xFF0C;&#x5C06;&#x4E00;&#x4E2A; <a href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a> &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A; Docker &#x5BB9;&#x5668;&#x53EA;&#x9700;&#x8981; 5 &#x79D2;&#x949F;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x5BB9;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x5FEB;&#x5730;&#x542F;&#x52A8;&#xFF0C;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x7E41;&#x7410;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5F15;&#x5BFC;&#x673A;&#x5236;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x5B83;&#x6240;&#x8FD0;&#x884C;&#x7684;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x6709;&#x4E00;&#x4E9B;&#x7F3A;&#x70B9;&#x3002;&#x867D;&#x7136;&#x5BB9;&#x5668;&#x57FA;&#x7840;&#x67B6;&#x6784;&#x6B63;&#x5728;&#x5FEB;&#x901F;&#x53D1;&#x5C55;&#x8D70;&#x5411;&#x6210;&#x719F;&#xFF0C;&#x4F46;&#x5B83;&#x5E76;&#x4E0D;&#x50CF;&#x865A;&#x62DF;&#x673A;&#x7684;&#x57FA;&#x7840;&#x67B6;&#x6784;&#x90A3;&#x4E48;&#x6210;&#x719F;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5BB9;&#x5668;&#x4E0D;&#x50CF; VM &#x90A3;&#x6837;&#x5B89;&#x5168;&#xFF0C;&#x56E0;&#x4E3A;&#x5BB9;&#x5668;&#x5F7C;&#x6B64;&#x5171;&#x4EAB;&#x4E86;&#x4E3B;&#x673A;&#x7684; OS &#x5185;&#x6838;&#x3002;</p>
+<p>&#x5BB9;&#x5668;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#x662F;&#x60A8;&#x9700;&#x8981;&#x8D1F;&#x8D23;&#x672A;&#x5212;&#x5206;&#x7684;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x7BA1;&#x7406;&#x7684;&#x8D1F;&#x62C5;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x9664;&#x975E;&#x60A8;&#x4F7F;&#x7528;&#x4E86;&#x6258;&#x7BA1;&#x5BB9;&#x5668;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF3B;&#x5982; <a href="https://cloud.google.com/container-engine/" target="_blank">Google Container Engine</a> &#x6216; <a href="https://cloud.google.com/container-engine/" target="_blank">Amazon EC2 Container Service</a>&#xFF08;ECS&#xFF09;&#xFF3D;&#xFF0C;&#x5426;&#x5219;&#x60A8;&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#x5BB9;&#x5668;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#xFF0C;&#x53EF;&#x80FD;&#x8FD8;&#x6709;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#x7684; VM &#x57FA;&#x7840;&#x67B6;&#x6784;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x5BB9;&#x5668;&#x901A;&#x5E38;&#x90E8;&#x7F72;&#x5728;&#x4E00;&#x4E2A;&#x6309;&#x5355;&#x4E2A; VM &#x6536;&#x8D39;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x4E0A;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x4E4B;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x8D85;&#x989D;&#x914D;&#x7F6E; VM &#x7684;&#x989D;&#x5916;&#x6210;&#x672C;&#xFF0C;&#x4EE5;&#x5904;&#x7406;&#x8D1F;&#x8F7D;&#x5CF0;&#x503C;&#x3002;</p>
+<p>&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x5BB9;&#x5668;&#x548C; VM &#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E9B;&#x6A21;&#x7CCA;&#x3002;&#x5982;&#x4E4B;&#x524D;&#x6240;&#x8FF0;&#xFF0C;Boxfuse VM &#x53EF;&#x4EE5;&#x5F88;&#x5FEB;&#x5730;&#x6784;&#x5EFA;&#x548C;&#x542F;&#x52A8;&#x3002;<a href="https://clearlinux.org/features/clear-containers" target="_blank">Clear Containers</a> &#x9879;&#x76EE;&#x65E8;&#x5728;&#x521B;&#x5EFA;&#x8F7B;&#x91CF;&#x7EA7;&#x865A;&#x62DF;&#x673A;&#x3002;<a href="https://en.wikipedia.org/wiki/Unikernel" target="_blank">Unikernels</a> &#x4E5F;&#x6B63;&#x5728;&#x84EC;&#x52C3;&#x53D1;&#x5C55;&#x3002;Docker &#x516C;&#x53F8;&#x4E8E; 2016 &#x5E74;&#x521D;&#x6536;&#x8D2D;&#x4E86; Unikernel &#x7CFB;&#x7EDF;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x65E5;&#x76CA;&#x6D41;&#x884C;&#x7684; server-less&#xFF08;&#x65E0;&#x670D;&#x52A1;&#x5668;&#xFF09;&#x90E8;&#x7F72;&#x6982;&#x5FF5;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x907F;&#x514D;&#x4E86;&#x201C;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x8FD8;&#x662F;&#x5728;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x90E8;&#x7F72;&#x670D;&#x52A1;&#x201D;&#x95EE;&#x9898;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x3002;</p>
+<p><a id="serverless-deployment"></a></p>
+<h2 id="64&#x3001;serverless-&#x90E8;&#x7F72;">6.4&#x3001;Serverless &#x90E8;&#x7F72;</h2>
+<p><a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda</a> &#x5C31;&#x662F;&#x4E00;&#x4E2A; serverless &#x90E8;&#x7F72;&#x6280;&#x672F;&#x793A;&#x4F8B;&#x3002;&#x5B83;&#x652F;&#x6301; Java&#x3001;Node.js &#x548C; Python &#x670D;&#x52A1;&#x3002;&#x8981;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#xFF0C;&#x8BF7;&#x5C06;&#x5176;&#x6253;&#x5305;&#x6210; ZIP &#x6587;&#x4EF6;&#x5E76;&#x5C06;&#x4E0A;&#x4F20;&#x5230; AWS Lambda&#x3002;&#x60A8;&#x8FD8;&#x8981;&#x63D0;&#x4F9B;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x4E86;&#x88AB;&#x8C03;&#x7528;&#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF08;&#x53C8;&#x79F0;&#x4E3A;&#x4E8B;&#x4EF6;&#xFF09;&#x7684;&#x51FD;&#x6570;&#x7684;&#x540D;&#x79F0;&#x3002;AWS Lambda &#x81EA;&#x52A8;&#x8FD0;&#x884C;&#x8DB3;&#x591F;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x3002;&#x60A8;&#x53EA;&#x9700;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x6240;&#x7528;&#x65F6;&#x95F4;&#x548C;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x6765;&#x4ED8;&#x8D39;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x95EE;&#x9898;&#x5F80;&#x5F80;&#x51FA;&#x73B0;&#x5728;&#x7EC6;&#x8282;&#x4E0A;&#xFF0C;&#x60A8;&#x5F88;&#x5FEB;&#x6CE8;&#x610F;&#x5230;&#x4E86; AWS Lambda &#x7684;&#x5C40;&#x9650;&#x6027;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4F5C;&#x4E3A;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x60A8;&#x6216;&#x7EC4;&#x7EC7;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x4EBA;&#x90FD;&#x65E0;&#x9700;&#x62C5;&#x5FC3;&#x670D;&#x52A1;&#x5668;&#x3001;&#x865A;&#x62DF;&#x673A;&#x6216;&#x5BB9;&#x5668;&#x7684;&#x4EFB;&#x4F55;&#x65B9;&#x9762; &#xFF0C;&#x8FD9;&#x975E;&#x5E38;&#x6709;&#x5438;&#x5F15;&#x529B;&#xFF0C;&#x8DB3;&#x4EE5;&#x4EE4;&#x4EBA;&#x96BE;&#x4EE5;&#x7F6E;&#x4FE1;&#x3002;</p>
+<p>Lambda &#x51FD;&#x6570;&#x662F;&#x65E0;&#x72B6;&#x6001;&#x670D;&#x52A1;&#x3002;&#x5B83;&#x901A;&#x5E38;&#x901A;&#x8FC7;&#x8C03;&#x7528; AWS &#x670D;&#x52A1;&#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x56FE;&#x7247;&#x4E0A;&#x4F20;&#x5230; S3 &#x5B58;&#x50A8;&#x6876;&#x65F6;Lambda &#x51FD;&#x6570;&#x5C06;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x53EF;&#x63D2;&#x5165;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#x5230; DynamoDB &#x56FE;&#x7247;&#x8868;&#x4E2D;&#xFF0C;&#x5E76;&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x5E03;&#x5230; Kinesis &#x6D41;&#x4EE5;&#x89E6;&#x53D1;&#x56FE;&#x7247;&#x5904;&#x7406;&#x3002; Lambda &#x51FD;&#x6570;&#x8FD8;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x7B2C;&#x4E09;&#x65B9; Web &#x670D;&#x52A1;&#x3002;</p>
+<p>&#x6709;&#x56DB;&#x79CD;&#x65B9;&#x6CD5;&#x8C03;&#x7528; Lambda &#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>&#x76F4;&#x63A5;&#x4F7F;&#x7528; Web &#x670D;&#x52A1;&#x8BF7;&#x6C42;</li>
+<li>&#x81EA;&#x52A8;&#x54CD;&#x5E94;&#x4E00;&#x4E2A; AWS &#x670D;&#x52A1;&#xFF08;&#x5982; S3&#x3001;DynamoDB&#x3001;Kinesis &#x6216; Simple Email Service&#xFF09;&#x751F;&#x6210;&#x7684;&#x4E8B;&#x4EF6;</li>
+<li>&#x901A;&#x8FC7; AWS API &#x7F51;&#x5173;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x6765;&#x81EA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5BA2;&#x6237;&#x7AEF;&#x7684; HTTP &#x8BF7;&#x6C42;</li>
+<li>&#x6309;&#x7167;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C; cron &#x7684;&#x65F6;&#x95F4;&#x8868;&#xFF0C;&#x5B9A;&#x671F;&#x6267;&#x884C;</li>
+</ul>
+<p>&#x6B63;&#x5982;&#x60A8;&#x6240;&#x89C1;&#xFF0C;AWS Lambda &#x662F;&#x4E00;&#x4E2A;&#x4FBF;&#x6377;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x90E8;&#x7F72;&#x65B9;&#x5F0F;&#x3002;&#x57FA;&#x4E8E;&#x8BF7;&#x6C42;&#x7684;&#x5B9A;&#x4EF7;&#x610F;&#x5473;&#x7740;&#x60A8;&#x53EA;&#x9700;&#x4E3A;&#x670D;&#x52A1;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x7684;&#x5DE5;&#x4F5C;&#x4ED8;&#x8D39;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x60A8;&#x4E0D;&#x9700;&#x8981;&#x5BF9; IT &#x57FA;&#x7840;&#x67B6;&#x6784;&#x8D1F;&#x4EFB;&#x4F55;&#x8D23;&#x4EFB;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4E13;&#x6CE8;&#x4E8E;&#x5F00;&#x53D1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x5176;&#x4E5F;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x660E;&#x663E;&#x7684;&#x5C40;&#x9650;&#x6027;&#x3002;Lambda &#x51FD;&#x6570;&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x90E8;&#x7F72;&#x957F;&#x65F6;&#x95F4;&#x8FD0;&#x884C;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x4F8B;&#x5982;&#x6D88;&#x8017;&#x7B2C;&#x4E09;&#x65B9;&#x6D88;&#x606F;&#x4EE3;&#x7406;&#x6D88;&#x606F;&#x7684;&#x670D;&#x52A1;&#x3002;&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x5728; 300 &#x79D2;&#x5185;&#x5B8C;&#x6210;&#x3002;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x662F;&#x65E0;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x7406;&#x8BBA;&#x4E0A;&#xFF0C;AWS Lambda &#x53EF;&#x80FD;&#x4E3A;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x4ED6;&#x4EEC;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x53D7;&#x652F;&#x6301;&#x7684;&#x8BED;&#x8A00;&#x6765;&#x7F16;&#x5199;&#x3002;&#x670D;&#x52A1;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x4E5F;&#x5FC5;&#x987B;&#x5FEB;&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x4ED6;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x56E0;&#x8D85;&#x65F6;&#x800C;&#x7EC8;&#x6B62;&#x3002;</p>
+<p><a id="summary"></a></p>
+<h2 id="65&#x3001;&#x603B;&#x7ED3;">6.5&#x3001;&#x603B;&#x7ED3;</h2>
+<p>&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5145;&#x6EE1;&#x7740;&#x6311;&#x6218;&#x3002;&#x60A8;&#x53EF;&#x80FD;&#x6709;&#x6570;&#x4E2A;&#x751A;&#x81F3;&#x6570;&#x767E;&#x4E2A;&#x4F7F;&#x7528;&#x4E86;&#x5404;&#x79CD;&#x8BED;&#x8A00;&#x548C;&#x6846;&#x67B6;&#x7F16;&#x5199;&#x7684;&#x670D;&#x52A1;&#x3002;&#x6BCF;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x8FF7;&#x4F60;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6709;&#x81EA;&#x5DF1;&#x7279;&#x5B9A;&#x7684;&#x90E8;&#x7F72;&#x3001;&#x8D44;&#x6E90;&#x3001;&#x6269;&#x5C55;&#x548C;&#x76D1;&#x89C6;&#x9700;&#x6C42;&#x3002;&#x6709;&#x51E0;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x90E8;&#x7F72;&#x6A21;&#x5F0F;&#xFF0C;&#x5305;&#x62EC;&#x6BCF;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x548C;&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6A21;&#x5F0F;&#x3002;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x9009;&#x62E9;&#x662F; AWS Lambda&#xFF0C;&#x4E00;&#x79CD; serverless &#x65B9;&#x5F0F;&#x3002;&#x5728;&#x672C;&#x4E66;&#x7684;&#x4E0B;&#x4E00;&#x7AE0;&#x4E5F;&#x662F;&#x6700;&#x540E;&#x4E00;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x5C06;&#x5355;&#x4F53;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FC1;&#x79FB;&#x5230;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x3002;</p>
+<p><a id="microservices-in-action"></a></p>
+<h2 id="&#x5FAE;&#x670D;&#x52A1;&#x5B9E;&#x6218;&#xFF1A;&#x4F7F;&#x7528;-nginx-&#x5728;&#x4E0D;&#x540C;&#x4E3B;&#x673A;&#x4E0A;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;">&#x5FAE;&#x670D;&#x52A1;&#x5B9E;&#x6218;&#xFF1A;&#x4F7F;&#x7528; NGINX &#x5728;&#x4E0D;&#x540C;&#x4E3B;&#x673A;&#x4E0A;&#x90E8;&#x7F72;&#x5FAE;&#x670D;&#x52A1;</h2>
+<p>by Floyd Smith</p>
+<p>NGINX &#x5BF9;&#x4E8E;&#x5404;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x90E8;&#x7F72;&#x5177;&#x6709;&#x8BB8;&#x591A;&#x4F18;&#x52BF; &#x2014; &#x65E0;&#x8BBA;&#x662F;&#x5355;&#x4F53;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3001;&#x5FAE;&#x670D;&#x52A1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FD8;&#x662F;&#x6DF7;&#x5408;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF08;&#x5C06;&#x5728;&#x4E0B;&#x4E00;&#x7AE0;&#x4ECB;&#x7ECD;&#xFF09;&#x3002;&#x4F7F;&#x7528; NGINX&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x667A;&#x80FD;&#x62BD;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x7F72;&#x73AF;&#x5883;&#x51FA;&#x6765;&#x5E76;&#x6574;&#x5408;&#x5165; NGINX&#x3002;&#x5982;&#x679C;&#x60A8;&#x4F7F;&#x7528;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x90E8;&#x7F72;&#x73AF;&#x5883;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5219;&#x6709;&#x8BB8;&#x591A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x529F;&#x80FD;&#x5C06;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x4F7F;&#x7528; NGINX&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x6240;&#x6709;&#x73AF;&#x5883;&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x8FD9;&#x4E00;&#x7279;&#x6027;&#x4E5F;&#x4E3A; NGINX &#x548C; NGINX Plus &#x5E26;&#x6765;&#x4E86;&#x7B2C;&#x4E8C;&#x4E2A;&#x4F18;&#x52BF;&#xFF1A;&#x901A;&#x8FC7;&#x5728;&#x591A;&#x4E2A;&#x90E8;&#x7F72;&#x73AF;&#x5883;&#x4E2D;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x6269;&#x5C55;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5047;&#x8BBE;&#x60A8;&#x62E5;&#x6709;&#x548C;&#x7BA1;&#x7406;&#x7740;&#x7684;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F46;&#x662F;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x6B63;&#x5728;&#x589E;&#x957F;&#xFF0C;&#x5E76;&#x4E14;&#x9884;&#x8BA1;&#x5C06;&#x8D85;&#x51FA;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x7684;&#x5CF0;&#x503C;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x4E86; NGINX&#xFF0C;&#x60A8;&#x5C31;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x9009;&#x62E9;&#xFF1A;&#x6269;&#x5C55;&#x5230;&#x4E91;&#x7AEF; &#x2014; &#x4F8B;&#x5982;&#xFF0C;<a href="https://www.nginx.com/products/nginx-plus-aws/" target="_blank">&#x6269;&#x5C55;&#x5230; AWS &#x4E0A;</a>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8D2D;&#x4E70;&#x3001;&#x914D;&#x7F6E;&#x548C;&#x4FDD;&#x6301;&#x989D;&#x5916;&#x7684;&#x670D;&#x52A1;&#x5668;&#x6765;&#x4E3A;&#x4E86;&#x4EE5;&#x9632;&#x4E07;&#x4E00;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5F53;&#x60A8;&#x7684;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x6D41;&#x91CF;&#x8FBE;&#x5230;&#x5BB9;&#x91CF;&#x9650;&#x5236;&#x65F6;&#xFF0C;&#x53EF;&#x6839;&#x636E;&#x9700;&#x8981;&#x5728;&#x4E91;&#x4E2D;&#x542F;&#x52A8;&#x5176;&#x4ED6;&#x5FAE;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6765;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x8FD9;&#x53EA;&#x662F;&#x56E0;&#x4F7F;&#x7528; NGINX &#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;&#x7EF4;&#x62A4;&#x5355;&#x72EC;&#x7684;&#x6D4B;&#x8BD5;&#x548C;&#x90E8;&#x7F72;&#x73AF;&#x5883;&#x3001;&#x5207;&#x6362;&#x73AF;&#x5883;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x3001;&#x4EE5;&#x53CA;&#x7BA1;&#x7406;&#x5404;&#x79CD;&#x73AF;&#x5883;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7EC4;&#x5408;&#x90FD;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x73B0;&#x5B9E;&#x548C;&#x53EF;&#x5B9E;&#x73B0;&#x3002;</p>
+<p><a href="https://www.nginx.com/blog/introducing-the-nginx-microservices-reference-architecture/" target="_blank">NGINX &#x5FAE;&#x670D;&#x52A1;&#x53C2;&#x8003;&#x67B6;&#x6784;</a>&#x88AB;&#x660E;&#x786E;&#x8BBE;&#x8BA1;&#x4E3A;&#x652F;&#x6301;&#x8FD9;&#x79CD;&#x7075;&#x6D3B;&#x90E8;&#x7F72;&#xFF0C;&#x5176;&#x5047;&#x8BBE;&#x5728;&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x671F;&#x95F4;&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x6280;&#x672F;&#x3002;&#x5982;&#x679C;&#x60A8;&#x8FD8;&#x6CA1;&#x5C1D;&#x8BD5;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x8F6C;&#x79FB;&#x5230;&#x5BB9;&#x5668;&#x3001;NGINX &#x6216; NGINX Plus&#xFF0C;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x8F6C;&#x79FB;&#x5230;&#x5FAE;&#x578B;&#x670D;&#x52A1;&#xFF0C;&#x4EE5;&#x53CA;&#x4F7F;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3001;&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x7075;&#x6D3B;&#x6027;&#x4EE5;&#x53CA;&#x4EBA;&#x5458;&#x66F4;&#x5177;&#x524D;&#x77BB;&#x6027;&#x3002;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; <a style="font-weight: bold" href="http://oopsguy.com" target="_blank">Oopsguy.com</a> 2017 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2018-04-20 01:47:32
+</span></footer>
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="5-event-driven-data-management-for-microservices.html#microservices-in-action" class="navigation navigation-prev " aria-label="Previous page: 微服务实战：NGINX 与存储优化">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="6-choosing-deployment-strategy.html#motivations" class="navigation navigation-next " aria-label="Next page: 6.1、动机">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6、选择部署策略","level":"1.8","depth":1,"next":{"title":"6.1、动机","level":"1.8.1","depth":2,"anchor":"#motivations","path":"6-choosing-deployment-strategy.md","ref":"6-choosing-deployment-strategy.md#motivations","articles":[]},"previous":{"title":"微服务实战：NGINX 与存储优化","level":"1.7.8","depth":2,"anchor":"#microservices-in-action","path":"5-event-driven-data-management-for-microservices.md","ref":"5-event-driven-data-management-for-microservices.md#microservices-in-action","articles":[]},"dir":"ltr"},"config":{"plugins":["github","splitter","tbfed-pagefooter","-lunr","-search","github-buttons","image-captions","-highlight","-livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/oopsguy/microservices-from-design-to-deployment-chinese"},"tbfed-pagefooter":{"copyright":"Copyright &copy <a style=\"font-weight: bold\" href=\"http://oopsguy.com\">Oopsguy.com</a> 2017","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github-buttons":{"repo":"oopsguy/microservices-from-design-to-deployment-chinese","types":["star","watch"],"size":"small"},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"},"splitter":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"oopsguy.com","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Microsoft yahei","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"1-introduction-to-microservices.html#fig1.3.1","level":"1.3","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":1,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"1-introduction-to-microservices.html#fig1.3.2","level":"1.3","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":2,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"1-introduction-to-microservices.html#fig1.3.3","level":"1.3","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":3,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"1-introduction-to-microservices.html#fig1.3.4","level":"1.3","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":4,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"1-introduction-to-microservices.html#fig1.3.5","level":"1.3","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":5,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"1-introduction-to-microservices.html#building-monolithic-applications#fig1.3.1.1","level":"1.3.1","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":6,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.1.1"},{"backlink":"1-introduction-to-microservices.html#building-monolithic-applications#fig1.3.1.2","level":"1.3.1","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":7,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.1.2"},{"backlink":"1-introduction-to-microservices.html#building-monolithic-applications#fig1.3.1.3","level":"1.3.1","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":8,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.1.3"},{"backlink":"1-introduction-to-microservices.html#building-monolithic-applications#fig1.3.1.4","level":"1.3.1","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":9,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.1.4"},{"backlink":"1-introduction-to-microservices.html#building-monolithic-applications#fig1.3.1.5","level":"1.3.1","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":10,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.1.5"},{"backlink":"1-introduction-to-microservices.html#marching-toward-monolithic-hell#fig1.3.2.1","level":"1.3.2","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":11,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.2.1"},{"backlink":"1-introduction-to-microservices.html#marching-toward-monolithic-hell#fig1.3.2.2","level":"1.3.2","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":12,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.2.2"},{"backlink":"1-introduction-to-microservices.html#marching-toward-monolithic-hell#fig1.3.2.3","level":"1.3.2","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":13,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.2.3"},{"backlink":"1-introduction-to-microservices.html#marching-toward-monolithic-hell#fig1.3.2.4","level":"1.3.2","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":14,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.2.4"},{"backlink":"1-introduction-to-microservices.html#marching-toward-monolithic-hell#fig1.3.2.5","level":"1.3.2","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":15,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.2.5"},{"backlink":"1-introduction-to-microservices.html#tackling-the-complexity#fig1.3.3.1","level":"1.3.3","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":16,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.3.1"},{"backlink":"1-introduction-to-microservices.html#tackling-the-complexity#fig1.3.3.2","level":"1.3.3","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":17,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.3.2"},{"backlink":"1-introduction-to-microservices.html#tackling-the-complexity#fig1.3.3.3","level":"1.3.3","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":18,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.3.3"},{"backlink":"1-introduction-to-microservices.html#tackling-the-complexity#fig1.3.3.4","level":"1.3.3","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":19,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.3.4"},{"backlink":"1-introduction-to-microservices.html#tackling-the-complexity#fig1.3.3.5","level":"1.3.3","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":20,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.3.5"},{"backlink":"1-introduction-to-microservices.html#the-benefits-of-microservices#fig1.3.4.1","level":"1.3.4","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":21,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.4.1"},{"backlink":"1-introduction-to-microservices.html#the-benefits-of-microservices#fig1.3.4.2","level":"1.3.4","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":22,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.4.2"},{"backlink":"1-introduction-to-microservices.html#the-benefits-of-microservices#fig1.3.4.3","level":"1.3.4","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":23,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.4.3"},{"backlink":"1-introduction-to-microservices.html#the-benefits-of-microservices#fig1.3.4.4","level":"1.3.4","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":24,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.4.4"},{"backlink":"1-introduction-to-microservices.html#the-benefits-of-microservices#fig1.3.4.5","level":"1.3.4","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":25,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.4.5"},{"backlink":"1-introduction-to-microservices.html#the-drawbacks-of-microservices#fig1.3.5.1","level":"1.3.5","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":26,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.5.1"},{"backlink":"1-introduction-to-microservices.html#the-drawbacks-of-microservices#fig1.3.5.2","level":"1.3.5","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":27,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.5.2"},{"backlink":"1-introduction-to-microservices.html#the-drawbacks-of-microservices#fig1.3.5.3","level":"1.3.5","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":28,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.5.3"},{"backlink":"1-introduction-to-microservices.html#the-drawbacks-of-microservices#fig1.3.5.4","level":"1.3.5","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":29,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.5.4"},{"backlink":"1-introduction-to-microservices.html#the-drawbacks-of-microservices#fig1.3.5.5","level":"1.3.5","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":30,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.5.5"},{"backlink":"1-introduction-to-microservices.html#summary#fig1.3.6.1","level":"1.3.6","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":31,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.6.1"},{"backlink":"1-introduction-to-microservices.html#summary#fig1.3.6.2","level":"1.3.6","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":32,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.6.2"},{"backlink":"1-introduction-to-microservices.html#summary#fig1.3.6.3","level":"1.3.6","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":33,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.6.3"},{"backlink":"1-introduction-to-microservices.html#summary#fig1.3.6.4","level":"1.3.6","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":34,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.6.4"},{"backlink":"1-introduction-to-microservices.html#summary#fig1.3.6.5","level":"1.3.6","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":35,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.6.5"},{"backlink":"1-introduction-to-microservices.html#microservices-in-action#fig1.3.7.1","level":"1.3.7","list_caption":"Figure: 图 1-1、一个简单的打车应用","alt":"图 1-1、一个简单的打车应用","nro":36,"url":"resources/1-1.png","index":1,"caption_template":"_CAPTION_","label":"图 1-1、一个简单的打车应用","attributes":{},"skip":false,"key":"1.3.7.1"},{"backlink":"1-introduction-to-microservices.html#microservices-in-action#fig1.3.7.2","level":"1.3.7","list_caption":"Figure: 图 1-2、一个单体应用分解成微服务","alt":"图 1-2、一个单体应用分解成微服务","nro":37,"url":"resources/1-2.png","index":2,"caption_template":"_CAPTION_","label":"图 1-2、一个单体应用分解成微服务","attributes":{},"skip":false,"key":"1.3.7.2"},{"backlink":"1-introduction-to-microservices.html#microservices-in-action#fig1.3.7.3","level":"1.3.7","list_caption":"Figure: 图 1-3、开发和交付中的伸缩立方（Scale Cube）","alt":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","nro":38,"url":"resources/1-3.png","index":3,"caption_template":"_CAPTION_","label":"图 1-3、开发和交付中的伸缩立方（Scale Cube）","attributes":{},"skip":false,"key":"1.3.7.3"},{"backlink":"1-introduction-to-microservices.html#microservices-in-action#fig1.3.7.4","level":"1.3.7","list_caption":"Figure: 图 1-4、使用 Docker 部署 Trip Management 服务","alt":"图 1-4、使用 Docker 部署 Trip Management 服务","nro":39,"url":"resources/1-4.png","index":4,"caption_template":"_CAPTION_","label":"图 1-4、使用 Docker 部署 Trip Management 服务","attributes":{},"skip":false,"key":"1.3.7.4"},{"backlink":"1-introduction-to-microservices.html#microservices-in-action#fig1.3.7.5","level":"1.3.7","list_caption":"Figure: 图 1-5、打车应用的数据库架构","alt":"图 1-5、打车应用的数据库架构","nro":40,"url":"resources/1-5.png","index":5,"caption_template":"_CAPTION_","label":"图 1-5、打车应用的数据库架构","attributes":{},"skip":false,"key":"1.3.7.5"},{"backlink":"2-using-an-api-gateway.html#fig1.4.1","level":"1.4","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":41,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"2-using-an-api-gateway.html#fig1.4.2","level":"1.4","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":42,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.2"},{"backlink":"2-using-an-api-gateway.html#fig1.4.3","level":"1.4","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":43,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.3"},{"backlink":"2-using-an-api-gateway.html#introduction#fig1.4.1.1","level":"1.4.1","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":44,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.1.1"},{"backlink":"2-using-an-api-gateway.html#introduction#fig1.4.1.2","level":"1.4.1","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":45,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.1.2"},{"backlink":"2-using-an-api-gateway.html#introduction#fig1.4.1.3","level":"1.4.1","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":46,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.1.3"},{"backlink":"2-using-an-api-gateway.html#direct-client-to-microservice-communication#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":47,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"2-using-an-api-gateway.html#direct-client-to-microservice-communication#fig1.4.2.2","level":"1.4.2","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":48,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.2.2"},{"backlink":"2-using-an-api-gateway.html#direct-client-to-microservice-communication#fig1.4.2.3","level":"1.4.2","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":49,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.2.3"},{"backlink":"2-using-an-api-gateway.html#using-an-api-gateway#fig1.4.3.1","level":"1.4.3","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":50,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.3.1"},{"backlink":"2-using-an-api-gateway.html#using-an-api-gateway#fig1.4.3.2","level":"1.4.3","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":51,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.3.2"},{"backlink":"2-using-an-api-gateway.html#using-an-api-gateway#fig1.4.3.3","level":"1.4.3","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":52,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.3.3"},{"backlink":"2-using-an-api-gateway.html#benefits-and-drawbacks-of-an-api-gateway#fig1.4.4.1","level":"1.4.4","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":53,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.4.1"},{"backlink":"2-using-an-api-gateway.html#benefits-and-drawbacks-of-an-api-gateway#fig1.4.4.2","level":"1.4.4","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":54,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.4.2"},{"backlink":"2-using-an-api-gateway.html#benefits-and-drawbacks-of-an-api-gateway#fig1.4.4.3","level":"1.4.4","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":55,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.4.3"},{"backlink":"2-using-an-api-gateway.html#implementing-an-api-gateway#fig1.4.5.1","level":"1.4.5","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":56,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.5.1"},{"backlink":"2-using-an-api-gateway.html#implementing-an-api-gateway#fig1.4.5.2","level":"1.4.5","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":57,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.5.2"},{"backlink":"2-using-an-api-gateway.html#implementing-an-api-gateway#fig1.4.5.3","level":"1.4.5","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":58,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.5.3"},{"backlink":"2-using-an-api-gateway.html#performance-and-scalability#fig1.4.5.1.1","level":"1.4.5.1","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":59,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.5.1.1"},{"backlink":"2-using-an-api-gateway.html#performance-and-scalability#fig1.4.5.1.2","level":"1.4.5.1","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":60,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.5.1.2"},{"backlink":"2-using-an-api-gateway.html#performance-and-scalability#fig1.4.5.1.3","level":"1.4.5.1","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":61,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.5.1.3"},{"backlink":"2-using-an-api-gateway.html#using-a-reactive-programming-model#fig1.4.5.2.1","level":"1.4.5.2","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":62,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.5.2.1"},{"backlink":"2-using-an-api-gateway.html#using-a-reactive-programming-model#fig1.4.5.2.2","level":"1.4.5.2","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":63,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.5.2.2"},{"backlink":"2-using-an-api-gateway.html#using-a-reactive-programming-model#fig1.4.5.2.3","level":"1.4.5.2","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":64,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.5.2.3"},{"backlink":"2-using-an-api-gateway.html#service-invocation#fig1.4.5.3.1","level":"1.4.5.3","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":65,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.5.3.1"},{"backlink":"2-using-an-api-gateway.html#service-invocation#fig1.4.5.3.2","level":"1.4.5.3","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":66,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.5.3.2"},{"backlink":"2-using-an-api-gateway.html#service-invocation#fig1.4.5.3.3","level":"1.4.5.3","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":67,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.5.3.3"},{"backlink":"2-using-an-api-gateway.html#service-discovery#fig1.4.5.4.1","level":"1.4.5.4","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":68,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.5.4.1"},{"backlink":"2-using-an-api-gateway.html#service-discovery#fig1.4.5.4.2","level":"1.4.5.4","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":69,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.5.4.2"},{"backlink":"2-using-an-api-gateway.html#service-discovery#fig1.4.5.4.3","level":"1.4.5.4","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":70,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.5.4.3"},{"backlink":"2-using-an-api-gateway.html#handling-partial-failures#fig1.4.5.5.1","level":"1.4.5.5","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":71,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.5.5.1"},{"backlink":"2-using-an-api-gateway.html#handling-partial-failures#fig1.4.5.5.2","level":"1.4.5.5","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":72,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.5.5.2"},{"backlink":"2-using-an-api-gateway.html#handling-partial-failures#fig1.4.5.5.3","level":"1.4.5.5","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":73,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.5.5.3"},{"backlink":"2-using-an-api-gateway.html#summary#fig1.4.6.1","level":"1.4.6","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":74,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.6.1"},{"backlink":"2-using-an-api-gateway.html#summary#fig1.4.6.2","level":"1.4.6","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":75,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.6.2"},{"backlink":"2-using-an-api-gateway.html#summary#fig1.4.6.3","level":"1.4.6","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":76,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.6.3"},{"backlink":"2-using-an-api-gateway.html#microservices-in-action#fig1.4.7.1","level":"1.4.7","list_caption":"Figure: 图 2-1、一个简单的购物应用","alt":"图 2-1、一个简单的购物应用","nro":77,"url":"resources/2-1.png","index":1,"caption_template":"_CAPTION_","label":"图 2-1、一个简单的购物应用","attributes":{},"skip":false,"key":"1.4.7.1"},{"backlink":"2-using-an-api-gateway.html#microservices-in-action#fig1.4.7.2","level":"1.4.7","list_caption":"Figure: 图 2-2、将移动客户端的需求映射到相关微服务","alt":"图 2-2、将移动客户端的需求映射到相关微服务","nro":78,"url":"resources/2-2.png","index":2,"caption_template":"_CAPTION_","label":"图 2-2、将移动客户端的需求映射到相关微服务","attributes":{},"skip":false,"key":"1.4.7.2"},{"backlink":"2-using-an-api-gateway.html#microservices-in-action#fig1.4.7.3","level":"1.4.7","list_caption":"Figure: 使用 API 网关的微服务","alt":"使用 API 网关的微服务","nro":79,"url":"resources/2-3.png","index":3,"caption_template":"_CAPTION_","label":"使用 API 网关的微服务","attributes":{},"skip":false,"key":"1.4.7.3"},{"backlink":"3-inter-process-communication.html#fig1.5.1","level":"1.5","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":80,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.1"},{"backlink":"3-inter-process-communication.html#fig1.5.2","level":"1.5","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":81,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.2"},{"backlink":"3-inter-process-communication.html#fig1.5.3","level":"1.5","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":82,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.3"},{"backlink":"3-inter-process-communication.html#fig1.5.4","level":"1.5","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":83,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.4"},{"backlink":"3-inter-process-communication.html#fig1.5.5","level":"1.5","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":84,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.5"},{"backlink":"3-inter-process-communication.html#introduction#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":85,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"3-inter-process-communication.html#introduction#fig1.5.1.2","level":"1.5.1","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":86,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.1.2"},{"backlink":"3-inter-process-communication.html#introduction#fig1.5.1.3","level":"1.5.1","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":87,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.1.3"},{"backlink":"3-inter-process-communication.html#introduction#fig1.5.1.4","level":"1.5.1","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":88,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.1.4"},{"backlink":"3-inter-process-communication.html#introduction#fig1.5.1.5","level":"1.5.1","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":89,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.1.5"},{"backlink":"3-inter-process-communication.html#interaction-styles#fig1.5.2.1","level":"1.5.2","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":90,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.2.1"},{"backlink":"3-inter-process-communication.html#interaction-styles#fig1.5.2.2","level":"1.5.2","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":91,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.2.2"},{"backlink":"3-inter-process-communication.html#interaction-styles#fig1.5.2.3","level":"1.5.2","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":92,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.2.3"},{"backlink":"3-inter-process-communication.html#interaction-styles#fig1.5.2.4","level":"1.5.2","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":93,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.2.4"},{"backlink":"3-inter-process-communication.html#interaction-styles#fig1.5.2.5","level":"1.5.2","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":94,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.2.5"},{"backlink":"3-inter-process-communication.html#defining-apis#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":95,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"3-inter-process-communication.html#defining-apis#fig1.5.3.2","level":"1.5.3","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":96,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.3.2"},{"backlink":"3-inter-process-communication.html#defining-apis#fig1.5.3.3","level":"1.5.3","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":97,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.3.3"},{"backlink":"3-inter-process-communication.html#defining-apis#fig1.5.3.4","level":"1.5.3","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":98,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.3.4"},{"backlink":"3-inter-process-communication.html#defining-apis#fig1.5.3.5","level":"1.5.3","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":99,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.3.5"},{"backlink":"3-inter-process-communication.html#evolving-apis#fig1.5.4.1","level":"1.5.4","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":100,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.4.1"},{"backlink":"3-inter-process-communication.html#evolving-apis#fig1.5.4.2","level":"1.5.4","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":101,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.4.2"},{"backlink":"3-inter-process-communication.html#evolving-apis#fig1.5.4.3","level":"1.5.4","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":102,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.4.3"},{"backlink":"3-inter-process-communication.html#evolving-apis#fig1.5.4.4","level":"1.5.4","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":103,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.4.4"},{"backlink":"3-inter-process-communication.html#evolving-apis#fig1.5.4.5","level":"1.5.4","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":104,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.4.5"},{"backlink":"3-inter-process-communication.html#handling-partial-failure#fig1.5.5.1","level":"1.5.5","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":105,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.5.1"},{"backlink":"3-inter-process-communication.html#handling-partial-failure#fig1.5.5.2","level":"1.5.5","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":106,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.5.2"},{"backlink":"3-inter-process-communication.html#handling-partial-failure#fig1.5.5.3","level":"1.5.5","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":107,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.5.3"},{"backlink":"3-inter-process-communication.html#handling-partial-failure#fig1.5.5.4","level":"1.5.5","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":108,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.5.4"},{"backlink":"3-inter-process-communication.html#handling-partial-failure#fig1.5.5.5","level":"1.5.5","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":109,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.5.5"},{"backlink":"3-inter-process-communication.html#ipc-technologies#fig1.5.6.1","level":"1.5.6","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":110,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.6.1"},{"backlink":"3-inter-process-communication.html#ipc-technologies#fig1.5.6.2","level":"1.5.6","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":111,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.6.2"},{"backlink":"3-inter-process-communication.html#ipc-technologies#fig1.5.6.3","level":"1.5.6","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":112,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.6.3"},{"backlink":"3-inter-process-communication.html#ipc-technologies#fig1.5.6.4","level":"1.5.6","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":113,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.6.4"},{"backlink":"3-inter-process-communication.html#ipc-technologies#fig1.5.6.5","level":"1.5.6","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":114,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.6.5"},{"backlink":"3-inter-process-communication.html#asynchronous-message-based-communication#fig1.5.7.1","level":"1.5.7","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":115,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.7.1"},{"backlink":"3-inter-process-communication.html#asynchronous-message-based-communication#fig1.5.7.2","level":"1.5.7","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":116,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.7.2"},{"backlink":"3-inter-process-communication.html#asynchronous-message-based-communication#fig1.5.7.3","level":"1.5.7","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":117,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.7.3"},{"backlink":"3-inter-process-communication.html#asynchronous-message-based-communication#fig1.5.7.4","level":"1.5.7","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":118,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.7.4"},{"backlink":"3-inter-process-communication.html#asynchronous-message-based-communication#fig1.5.7.5","level":"1.5.7","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":119,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.7.5"},{"backlink":"3-inter-process-communication.html#synchronous-request-response-ipc#fig1.5.8.1","level":"1.5.8","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":120,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.8.1"},{"backlink":"3-inter-process-communication.html#synchronous-request-response-ipc#fig1.5.8.2","level":"1.5.8","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":121,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.8.2"},{"backlink":"3-inter-process-communication.html#synchronous-request-response-ipc#fig1.5.8.3","level":"1.5.8","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":122,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.8.3"},{"backlink":"3-inter-process-communication.html#synchronous-request-response-ipc#fig1.5.8.4","level":"1.5.8","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":123,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.8.4"},{"backlink":"3-inter-process-communication.html#synchronous-request-response-ipc#fig1.5.8.5","level":"1.5.8","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":124,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.8.5"},{"backlink":"3-inter-process-communication.html#rest#fig1.5.8.1.1","level":"1.5.8.1","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":125,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.8.1.1"},{"backlink":"3-inter-process-communication.html#rest#fig1.5.8.1.2","level":"1.5.8.1","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":126,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.8.1.2"},{"backlink":"3-inter-process-communication.html#rest#fig1.5.8.1.3","level":"1.5.8.1","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":127,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.8.1.3"},{"backlink":"3-inter-process-communication.html#rest#fig1.5.8.1.4","level":"1.5.8.1","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":128,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.8.1.4"},{"backlink":"3-inter-process-communication.html#rest#fig1.5.8.1.5","level":"1.5.8.1","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":129,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.8.1.5"},{"backlink":"3-inter-process-communication.html#thrift#fig1.5.8.2.1","level":"1.5.8.2","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":130,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.8.2.1"},{"backlink":"3-inter-process-communication.html#thrift#fig1.5.8.2.2","level":"1.5.8.2","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":131,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.8.2.2"},{"backlink":"3-inter-process-communication.html#thrift#fig1.5.8.2.3","level":"1.5.8.2","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":132,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.8.2.3"},{"backlink":"3-inter-process-communication.html#thrift#fig1.5.8.2.4","level":"1.5.8.2","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":133,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.8.2.4"},{"backlink":"3-inter-process-communication.html#thrift#fig1.5.8.2.5","level":"1.5.8.2","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":134,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.8.2.5"},{"backlink":"3-inter-process-communication.html#message-formats#fig1.5.9.1","level":"1.5.9","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":135,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.9.1"},{"backlink":"3-inter-process-communication.html#message-formats#fig1.5.9.2","level":"1.5.9","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":136,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.9.2"},{"backlink":"3-inter-process-communication.html#message-formats#fig1.5.9.3","level":"1.5.9","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":137,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.9.3"},{"backlink":"3-inter-process-communication.html#message-formats#fig1.5.9.4","level":"1.5.9","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":138,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.9.4"},{"backlink":"3-inter-process-communication.html#message-formats#fig1.5.9.5","level":"1.5.9","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":139,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.9.5"},{"backlink":"3-inter-process-communication.html#summary#fig1.5.10.1","level":"1.5.10","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":140,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.10.1"},{"backlink":"3-inter-process-communication.html#summary#fig1.5.10.2","level":"1.5.10","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":141,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.10.2"},{"backlink":"3-inter-process-communication.html#summary#fig1.5.10.3","level":"1.5.10","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":142,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.10.3"},{"backlink":"3-inter-process-communication.html#summary#fig1.5.10.4","level":"1.5.10","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":143,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.10.4"},{"backlink":"3-inter-process-communication.html#summary#fig1.5.10.5","level":"1.5.10","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":144,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.10.5"},{"backlink":"3-inter-process-communication.html#microservices-in-action#fig1.5.11.1","level":"1.5.11","list_caption":"Figure: 使用进程间通信交互的微服务","alt":"使用进程间通信交互的微服务","nro":145,"url":"resources/3-1.png","index":1,"caption_template":"_CAPTION_","label":"使用进程间通信交互的微服务","attributes":{},"skip":false,"key":"1.5.11.1"},{"backlink":"3-inter-process-communication.html#microservices-in-action#fig1.5.11.2","level":"1.5.11","list_caption":"Figure: 使用了多种 IPC 机制的服务交互","alt":"使用了多种 IPC 机制的服务交互","nro":146,"url":"resources/3-2.png","index":2,"caption_template":"_CAPTION_","label":"使用了多种 IPC 机制的服务交互","attributes":{},"skip":false,"key":"1.5.11.2"},{"backlink":"3-inter-process-communication.html#microservices-in-action#fig1.5.11.3","level":"1.5.11","list_caption":"Figure: 因无响应服务引起的线程阻塞","alt":"因无响应服务引起的线程阻塞","nro":147,"url":"resources/3-3.png","index":3,"caption_template":"_CAPTION_","label":"因无响应服务引起的线程阻塞","attributes":{},"skip":false,"key":"1.5.11.3"},{"backlink":"3-inter-process-communication.html#microservices-in-action#fig1.5.11.4","level":"1.5.11","list_caption":"Figure: 使用了发布/订阅通道的打车应用","alt":"使用了发布/订阅通道的打车应用","nro":148,"url":"resources/3-4.png","index":4,"caption_template":"_CAPTION_","label":"使用了发布/订阅通道的打车应用","attributes":{},"skip":false,"key":"1.5.11.4"},{"backlink":"3-inter-process-communication.html#microservices-in-action#fig1.5.11.5","level":"1.5.11","list_caption":"Figure: 使用了 RESTful 交互的打车应用","alt":"使用了 RESTful 交互的打车应用","nro":149,"url":"resources/3-5.png","index":5,"caption_template":"_CAPTION_","label":"使用了 RESTful 交互的打车应用","attributes":{},"skip":false,"key":"1.5.11.5"},{"backlink":"4-service-discovery.html#fig1.6.1","level":"1.6","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":150,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.1"},{"backlink":"4-service-discovery.html#fig1.6.2","level":"1.6","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":151,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.2"},{"backlink":"4-service-discovery.html#fig1.6.3","level":"1.6","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":152,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.3"},{"backlink":"4-service-discovery.html#fig1.6.4","level":"1.6","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":153,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.4"},{"backlink":"4-service-discovery.html#fig1.6.5","level":"1.6","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":154,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.5"},{"backlink":"4-service-discovery.html#why-use-service-discovery#fig1.6.1.1","level":"1.6.1","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":155,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.1.1"},{"backlink":"4-service-discovery.html#why-use-service-discovery#fig1.6.1.2","level":"1.6.1","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":156,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.1.2"},{"backlink":"4-service-discovery.html#why-use-service-discovery#fig1.6.1.3","level":"1.6.1","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":157,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.1.3"},{"backlink":"4-service-discovery.html#why-use-service-discovery#fig1.6.1.4","level":"1.6.1","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":158,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.1.4"},{"backlink":"4-service-discovery.html#why-use-service-discovery#fig1.6.1.5","level":"1.6.1","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":159,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.1.5"},{"backlink":"4-service-discovery.html#the-client-side-discovery-pattern#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":160,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"4-service-discovery.html#the-client-side-discovery-pattern#fig1.6.2.2","level":"1.6.2","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":161,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.2.2"},{"backlink":"4-service-discovery.html#the-client-side-discovery-pattern#fig1.6.2.3","level":"1.6.2","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":162,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.2.3"},{"backlink":"4-service-discovery.html#the-client-side-discovery-pattern#fig1.6.2.4","level":"1.6.2","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":163,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.2.4"},{"backlink":"4-service-discovery.html#the-client-side-discovery-pattern#fig1.6.2.5","level":"1.6.2","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":164,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.2.5"},{"backlink":"4-service-discovery.html#the-server-side-discovery-pattern#fig1.6.3.1","level":"1.6.3","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":165,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.3.1"},{"backlink":"4-service-discovery.html#the-server-side-discovery-pattern#fig1.6.3.2","level":"1.6.3","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":166,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.3.2"},{"backlink":"4-service-discovery.html#the-server-side-discovery-pattern#fig1.6.3.3","level":"1.6.3","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":167,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.3.3"},{"backlink":"4-service-discovery.html#the-server-side-discovery-pattern#fig1.6.3.4","level":"1.6.3","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":168,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.3.4"},{"backlink":"4-service-discovery.html#the-server-side-discovery-pattern#fig1.6.3.5","level":"1.6.3","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":169,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.3.5"},{"backlink":"4-service-discovery.html#the-service-registry#fig1.6.4.1","level":"1.6.4","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":170,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.4.1"},{"backlink":"4-service-discovery.html#the-service-registry#fig1.6.4.2","level":"1.6.4","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":171,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.4.2"},{"backlink":"4-service-discovery.html#the-service-registry#fig1.6.4.3","level":"1.6.4","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":172,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.4.3"},{"backlink":"4-service-discovery.html#the-service-registry#fig1.6.4.4","level":"1.6.4","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":173,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.4.4"},{"backlink":"4-service-discovery.html#the-service-registry#fig1.6.4.5","level":"1.6.4","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":174,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.4.5"},{"backlink":"4-service-discovery.html#service-registration-options#fig1.6.5.1","level":"1.6.5","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":175,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.5.1"},{"backlink":"4-service-discovery.html#service-registration-options#fig1.6.5.2","level":"1.6.5","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":176,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.5.2"},{"backlink":"4-service-discovery.html#service-registration-options#fig1.6.5.3","level":"1.6.5","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":177,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.5.3"},{"backlink":"4-service-discovery.html#service-registration-options#fig1.6.5.4","level":"1.6.5","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":178,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.5.4"},{"backlink":"4-service-discovery.html#service-registration-options#fig1.6.5.5","level":"1.6.5","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":179,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.5.5"},{"backlink":"4-service-discovery.html#the-self-registration-pattern#fig1.6.6.1","level":"1.6.6","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":180,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.6.1"},{"backlink":"4-service-discovery.html#the-self-registration-pattern#fig1.6.6.2","level":"1.6.6","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":181,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.6.2"},{"backlink":"4-service-discovery.html#the-self-registration-pattern#fig1.6.6.3","level":"1.6.6","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":182,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.6.3"},{"backlink":"4-service-discovery.html#the-self-registration-pattern#fig1.6.6.4","level":"1.6.6","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":183,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.6.4"},{"backlink":"4-service-discovery.html#the-self-registration-pattern#fig1.6.6.5","level":"1.6.6","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":184,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.6.5"},{"backlink":"4-service-discovery.html#the-third-party-registration-pattern#fig1.6.7.1","level":"1.6.7","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":185,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.7.1"},{"backlink":"4-service-discovery.html#the-third-party-registration-pattern#fig1.6.7.2","level":"1.6.7","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":186,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.7.2"},{"backlink":"4-service-discovery.html#the-third-party-registration-pattern#fig1.6.7.3","level":"1.6.7","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":187,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.7.3"},{"backlink":"4-service-discovery.html#the-third-party-registration-pattern#fig1.6.7.4","level":"1.6.7","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":188,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.7.4"},{"backlink":"4-service-discovery.html#the-third-party-registration-pattern#fig1.6.7.5","level":"1.6.7","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":189,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.7.5"},{"backlink":"4-service-discovery.html#summary#fig1.6.8.1","level":"1.6.8","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":190,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.8.1"},{"backlink":"4-service-discovery.html#summary#fig1.6.8.2","level":"1.6.8","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":191,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.8.2"},{"backlink":"4-service-discovery.html#summary#fig1.6.8.3","level":"1.6.8","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":192,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.8.3"},{"backlink":"4-service-discovery.html#summary#fig1.6.8.4","level":"1.6.8","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":193,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.8.4"},{"backlink":"4-service-discovery.html#summary#fig1.6.8.5","level":"1.6.8","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":194,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.8.5"},{"backlink":"4-service-discovery.html#microservices-in-action#fig1.6.9.1","level":"1.6.9","list_caption":"Figure: 图 4-1、需要服务寻找帮助的客户端或 API 网关","alt":"图 4-1、需要服务寻找帮助的客户端或 API 网关","nro":195,"url":"resources/4-1.png","index":1,"caption_template":"_CAPTION_","label":"图 4-1、需要服务寻找帮助的客户端或 API 网关","attributes":{},"skip":false,"key":"1.6.9.1"},{"backlink":"4-service-discovery.html#microservices-in-action#fig1.6.9.2","level":"1.6.9","list_caption":"Figure: 客户端可以承担发现服务任务","alt":"客户端可以承担发现服务任务","nro":196,"url":"resources/4-2.png","index":2,"caption_template":"_CAPTION_","label":"客户端可以承担发现服务任务","attributes":{},"skip":false,"key":"1.6.9.2"},{"backlink":"4-service-discovery.html#microservices-in-action#fig1.6.9.3","level":"1.6.9","list_caption":"Figure: 服务器间也可以处理服务发现","alt":"服务器间也可以处理服务发现","nro":197,"url":"resources/4-3.png","index":3,"caption_template":"_CAPTION_","label":"服务器间也可以处理服务发现","attributes":{},"skip":false,"key":"1.6.9.3"},{"backlink":"4-service-discovery.html#microservices-in-action#fig1.6.9.4","level":"1.6.9","list_caption":"Figure: 图 4-4、服务可以自我处理注册","alt":"图 4-4、服务可以自我处理注册","nro":198,"url":"resources/4-4.png","index":4,"caption_template":"_CAPTION_","label":"图 4-4、服务可以自我处理注册","attributes":{},"skip":false,"key":"1.6.9.4"},{"backlink":"4-service-discovery.html#microservices-in-action#fig1.6.9.5","level":"1.6.9","list_caption":"Figure: 图 4-5、一个单独的服务注册器可负责注册其他服务","alt":"图 4-5、一个单独的服务注册器可负责注册其他服务","nro":199,"url":"resources/4-5.png","index":5,"caption_template":"_CAPTION_","label":"图 4-5、一个单独的服务注册器可负责注册其他服务","attributes":{},"skip":false,"key":"1.6.9.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.1","level":"1.7","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":200,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.2","level":"1.7","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":201,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.3","level":"1.7","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":202,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.4","level":"1.7","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":203,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.5","level":"1.7","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":204,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.6","level":"1.7","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":205,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.7","level":"1.7","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":206,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#fig1.7.8","level":"1.7","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":207,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.1","level":"1.7.1","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":208,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.1.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.2","level":"1.7.1","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":209,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.1.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.3","level":"1.7.1","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":210,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.1.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.4","level":"1.7.1","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":211,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.1.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.5","level":"1.7.1","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":212,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.1.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.6","level":"1.7.1","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":213,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.1.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.7","level":"1.7.1","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":214,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.1.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-and-the-problem-of-distributed-data-management#fig1.7.1.8","level":"1.7.1","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":215,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.1.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.1","level":"1.7.2","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":216,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.2.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.2","level":"1.7.2","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":217,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.2.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.3","level":"1.7.2","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":218,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.2.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.4","level":"1.7.2","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":219,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.2.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.5","level":"1.7.2","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":220,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.2.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.6","level":"1.7.2","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":221,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.2.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.7","level":"1.7.2","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":222,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.2.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#event-driven-architecture#fig1.7.2.8","level":"1.7.2","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":223,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.2.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.1","level":"1.7.3","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":224,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.3.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.2","level":"1.7.3","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":225,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.3.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.3","level":"1.7.3","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":226,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.3.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.4","level":"1.7.3","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":227,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.3.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.5","level":"1.7.3","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":228,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.3.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.6","level":"1.7.3","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":229,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.3.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.7","level":"1.7.3","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":230,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.3.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#achieving-atomicity#fig1.7.3.8","level":"1.7.3","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":231,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.3.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.1","level":"1.7.4","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":232,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.4.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.2","level":"1.7.4","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":233,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.4.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.3","level":"1.7.4","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":234,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.4.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.4","level":"1.7.4","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":235,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.4.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.5","level":"1.7.4","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":236,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.4.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.6","level":"1.7.4","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":237,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.4.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.7","level":"1.7.4","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":238,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.4.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#publishing-events-using-local-transactions#fig1.7.4.8","level":"1.7.4","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":239,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.4.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.1","level":"1.7.5","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":240,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.5.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.2","level":"1.7.5","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":241,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.5.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.3","level":"1.7.5","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":242,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.5.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.4","level":"1.7.5","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":243,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.5.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.5","level":"1.7.5","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":244,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.5.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.6","level":"1.7.5","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":245,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.5.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.7","level":"1.7.5","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":246,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.5.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#mining-a-database-transaction-log#fig1.7.5.8","level":"1.7.5","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":247,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.5.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.1","level":"1.7.6","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":248,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.6.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.2","level":"1.7.6","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":249,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.6.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.3","level":"1.7.6","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":250,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.6.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.4","level":"1.7.6","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":251,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.6.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.5","level":"1.7.6","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":252,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.6.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.6","level":"1.7.6","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":253,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.6.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.7","level":"1.7.6","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":254,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.6.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#using-event-sourcing#fig1.7.6.8","level":"1.7.6","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":255,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.6.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.1","level":"1.7.7","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":256,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.7.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.2","level":"1.7.7","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":257,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.7.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.3","level":"1.7.7","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":258,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.7.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.4","level":"1.7.7","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":259,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.7.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.5","level":"1.7.7","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":260,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.7.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.6","level":"1.7.7","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":261,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.7.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.7","level":"1.7.7","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":262,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.7.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#summary#fig1.7.7.8","level":"1.7.7","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":263,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.7.8"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.1","level":"1.7.8","list_caption":"Figure: 图 5-1、每个微服务都有各自的数据","alt":"图 5-1、每个微服务都有各自的数据","nro":264,"url":"./resources/5-1.png","index":1,"caption_template":"_CAPTION_","label":"图 5-1、每个微服务都有各自的数据","attributes":{},"skip":false,"key":"1.7.8.1"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.2","level":"1.7.8","list_caption":"Figure: 图 5-2、Order Service 发布一个事件","alt":"图 5-2、Order Service 发布一个事件","nro":265,"url":"resources/5-2.png","index":2,"caption_template":"_CAPTION_","label":"图 5-2、Order Service 发布一个事件","attributes":{},"skip":false,"key":"1.7.8.2"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.3","level":"1.7.8","list_caption":"Figure: 图 5.3、Customer Service 响应","alt":"图 5.3、Customer Service 响应","nro":266,"url":"resources/5-3.png","index":3,"caption_template":"_CAPTION_","label":"图 5.3、Customer Service 响应","attributes":{},"skip":false,"key":"1.7.8.3"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.4","level":"1.7.8","list_caption":"Figure: 图 5-4、Order Service 作用于响应","alt":"图 5-4、Order Service 作用于响应","nro":267,"url":"resources/5-4.png","index":4,"caption_template":"_CAPTION_","label":"图 5-4、Order Service 作用于响应","attributes":{},"skip":false,"key":"1.7.8.4"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.5","level":"1.7.8","list_caption":"Figure: 图 5-5 Customer Order View 被两个服务访问","alt":"图 5-5 Customer Order View 被两个服务访问","nro":268,"url":"resources/5-5.png","index":5,"caption_template":"_CAPTION_","label":"图 5-5 Customer Order View 被两个服务访问","attributes":{},"skip":false,"key":"1.7.8.5"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.6","level":"1.7.8","list_caption":"Figure: 图 5-6、本地事务实现原子性","alt":"图 5-6、本地事务实现原子性","nro":269,"url":"resources/5-6.png","index":6,"caption_template":"_CAPTION_","label":"图 5-6、本地事务实现原子性","attributes":{},"skip":false,"key":"1.7.8.6"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.7","level":"1.7.8","list_caption":"Figure: 图 5-7、Message Broker 可以公断数据事务","alt":"图 5-7、Message Broker 可以公断数据事务","nro":270,"url":"resources/5-7.png","index":7,"caption_template":"_CAPTION_","label":"图 5-7、Message Broker 可以公断数据事务","attributes":{},"skip":false,"key":"1.7.8.7"},{"backlink":"5-event-driven-data-management-for-microservices.html#microservices-in-action#fig1.7.8.8","level":"1.7.8","list_caption":"Figure: 图 5-8、事件有完整的数据","alt":"图 5-8、事件有完整的数据","nro":271,"url":"resources/5-8.png","index":8,"caption_template":"_CAPTION_","label":"图 5-8、事件有完整的数据","attributes":{},"skip":false,"key":"1.7.8.8"},{"backlink":"6-choosing-deployment-strategy.html#fig1.8.1","level":"1.8","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":272,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.1"},{"backlink":"6-choosing-deployment-strategy.html#fig1.8.2","level":"1.8","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":273,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.2"},{"backlink":"6-choosing-deployment-strategy.html#fig1.8.3","level":"1.8","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":274,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.3"},{"backlink":"6-choosing-deployment-strategy.html#motivations#fig1.8.1.1","level":"1.8.1","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":275,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.1.1"},{"backlink":"6-choosing-deployment-strategy.html#motivations#fig1.8.1.2","level":"1.8.1","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":276,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.1.2"},{"backlink":"6-choosing-deployment-strategy.html#motivations#fig1.8.1.3","level":"1.8.1","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":277,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.1.3"},{"backlink":"6-choosing-deployment-strategy.html#multiple-service-instances-per-host-pattern#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":278,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"6-choosing-deployment-strategy.html#multiple-service-instances-per-host-pattern#fig1.8.2.2","level":"1.8.2","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":279,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.2.2"},{"backlink":"6-choosing-deployment-strategy.html#multiple-service-instances-per-host-pattern#fig1.8.2.3","level":"1.8.2","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":280,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.2.3"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-host-pattern#fig1.8.3.1","level":"1.8.3","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":281,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.3.1"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-host-pattern#fig1.8.3.2","level":"1.8.3","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":282,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.3.2"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-host-pattern#fig1.8.3.3","level":"1.8.3","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":283,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.3.3"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-virtual-machine-pattern#fig1.8.3.1.1","level":"1.8.3.1","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":284,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.3.1.1"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-virtual-machine-pattern#fig1.8.3.1.2","level":"1.8.3.1","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":285,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.3.1.2"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-virtual-machine-pattern#fig1.8.3.1.3","level":"1.8.3.1","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":286,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.3.1.3"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-container-pattern#fig1.8.3.2.1","level":"1.8.3.2","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":287,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.3.2.1"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-container-pattern#fig1.8.3.2.2","level":"1.8.3.2","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":288,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.3.2.2"},{"backlink":"6-choosing-deployment-strategy.html#service-instance-per-container-pattern#fig1.8.3.2.3","level":"1.8.3.2","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":289,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.3.2.3"},{"backlink":"6-choosing-deployment-strategy.html#serverless-deployment#fig1.8.4.1","level":"1.8.4","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":290,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.4.1"},{"backlink":"6-choosing-deployment-strategy.html#serverless-deployment#fig1.8.4.2","level":"1.8.4","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":291,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.4.2"},{"backlink":"6-choosing-deployment-strategy.html#serverless-deployment#fig1.8.4.3","level":"1.8.4","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":292,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.4.3"},{"backlink":"6-choosing-deployment-strategy.html#summary#fig1.8.5.1","level":"1.8.5","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":293,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.5.1"},{"backlink":"6-choosing-deployment-strategy.html#summary#fig1.8.5.2","level":"1.8.5","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":294,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.5.2"},{"backlink":"6-choosing-deployment-strategy.html#summary#fig1.8.5.3","level":"1.8.5","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":295,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.5.3"},{"backlink":"6-choosing-deployment-strategy.html#microservices-in-action#fig1.8.6.1","level":"1.8.6","list_caption":"Figure: 图 6-1、主机可支持多个服务实例","alt":"图 6-1、主机可支持多个服务实例","nro":296,"url":"resources/6-1.png","index":1,"caption_template":"_CAPTION_","label":"图 6-1、主机可支持多个服务实例","attributes":{},"skip":false,"key":"1.8.6.1"},{"backlink":"6-choosing-deployment-strategy.html#microservices-in-action#fig1.8.6.2","level":"1.8.6","list_caption":"Figure: 图 6-2、服务可以各自运行在自己的虚拟机中","alt":"图 6-2、服务可以各自运行在自己的虚拟机中","nro":297,"url":"resources/6-2.png","index":2,"caption_template":"_CAPTION_","label":"图 6-2、服务可以各自运行在自己的虚拟机中","attributes":{},"skip":false,"key":"1.8.6.2"},{"backlink":"6-choosing-deployment-strategy.html#microservices-in-action#fig1.8.6.3","level":"1.8.6","list_caption":"Figure: 图 6-3、服务可以各自运行在自己的容器中","alt":"图 6-3、服务可以各自运行在自己的容器中","nro":298,"url":"resources/6-3.png","index":3,"caption_template":"_CAPTION_","label":"图 6-3、服务可以各自运行在自己的容器中","attributes":{},"skip":false,"key":"1.8.6.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#fig1.9.1","level":"1.9","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":299,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#fig1.9.2","level":"1.9","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":300,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#fig1.9.3","level":"1.9","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":301,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#fig1.9.4","level":"1.9","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":302,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#overview-of-refactoring-to-microservices#fig1.9.1.1","level":"1.9.1","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":303,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.1.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#overview-of-refactoring-to-microservices#fig1.9.1.2","level":"1.9.1","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":304,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.1.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#overview-of-refactoring-to-microservices#fig1.9.1.3","level":"1.9.1","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":305,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.1.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#overview-of-refactoring-to-microservices#fig1.9.1.4","level":"1.9.1","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":306,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.1.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-1-Stop-digging#fig1.9.2.1","level":"1.9.2","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":307,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.2.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-1-Stop-digging#fig1.9.2.2","level":"1.9.2","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":308,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.2.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-1-Stop-digging#fig1.9.2.3","level":"1.9.2","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":309,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.2.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-1-Stop-digging#fig1.9.2.4","level":"1.9.2","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":310,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.2.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-2-split-frontend-and-backend#fig1.9.3.1","level":"1.9.3","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":311,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.3.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-2-split-frontend-and-backend#fig1.9.3.2","level":"1.9.3","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":312,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.3.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-2-split-frontend-and-backend#fig1.9.3.3","level":"1.9.3","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":313,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.3.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-2-split-frontend-and-backend#fig1.9.3.4","level":"1.9.3","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":314,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.3.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-3-extract-services#fig1.9.4.1","level":"1.9.4","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":315,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.4.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-3-extract-services#fig1.9.4.2","level":"1.9.4","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":316,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.4.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-3-extract-services#fig1.9.4.3","level":"1.9.4","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":317,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.4.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#strategy-3-extract-services#fig1.9.4.4","level":"1.9.4","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":318,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.4.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#prioritizing-which-modules-to-convert-into-services#fig1.9.4.1.1","level":"1.9.4.1","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":319,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.4.1.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#prioritizing-which-modules-to-convert-into-services#fig1.9.4.1.2","level":"1.9.4.1","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":320,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.4.1.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#prioritizing-which-modules-to-convert-into-services#fig1.9.4.1.3","level":"1.9.4.1","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":321,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.4.1.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#prioritizing-which-modules-to-convert-into-services#fig1.9.4.1.4","level":"1.9.4.1","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":322,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.4.1.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#how-to-extract-a-module#fig1.9.4.2.1","level":"1.9.4.2","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":323,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.4.2.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#how-to-extract-a-module#fig1.9.4.2.2","level":"1.9.4.2","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":324,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.4.2.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#how-to-extract-a-module#fig1.9.4.2.3","level":"1.9.4.2","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":325,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.4.2.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#how-to-extract-a-module#fig1.9.4.2.4","level":"1.9.4.2","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":326,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.4.2.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#summary#fig1.9.5.1","level":"1.9.5","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":327,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.5.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#summary#fig1.9.5.2","level":"1.9.5","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":328,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.5.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#summary#fig1.9.5.3","level":"1.9.5","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":329,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.5.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#summary#fig1.9.5.4","level":"1.9.5","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":330,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.5.4"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#microservices-in-action#fig1.9.6.1","level":"1.9.6","list_caption":"Figure: 葡萄树","alt":"葡萄树","nro":331,"url":"resources/7.png","index":1,"caption_template":"_CAPTION_","label":"葡萄树","attributes":{},"skip":false,"key":"1.9.6.1"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#microservices-in-action#fig1.9.6.2","level":"1.9.6","list_caption":"Figure: 图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","alt":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","nro":332,"url":"resources/7-1.png","index":2,"caption_template":"_CAPTION_","label":"图 7-1、将新功能实现为单独的服务，而不是将模块添加到单体","attributes":{},"skip":false,"key":"1.9.6.2"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#microservices-in-action#fig1.9.6.3","level":"1.9.6","list_caption":"Figure: 图 7-2、重构现有的应用程序","alt":"图 7-2、重构现有的应用程序","nro":333,"url":"resources/7-2.png","index":3,"caption_template":"_CAPTION_","label":"图 7-2、重构现有的应用程序","attributes":{},"skip":false,"key":"1.9.6.3"},{"backlink":"7-refactoring-a-monolith-into-microservices.html#microservices-in-action#fig1.9.6.4","level":"1.9.6","list_caption":"Figure: 图7-3、单体模块可转换为微服务","alt":"图7-3、单体模块可转换为微服务","nro":334,"url":"resources/7-3.png","index":4,"caption_template":"_CAPTION_","label":"图7-3、单体模块可转换为微服务","attributes":{},"skip":false,"key":"1.9.6.4"}]},"title":"微服务：从设计到部署","language":"zh-hans","links":{"sharing":{"all":true,"facebook":true,"google":true,"twitter":true,"weibo":true},"sidebar":{"Oopsguy 的博客":"http://oopsguy.com","《微服务：从设计到部署》":"https://github.com/oopsguy/microservices-from-design-to-deployment-chinese"}},"gitbook":"*","description":"Nginx 经典微服务电子书中文翻译版本","extension":null},"file":{"path":"6-choosing-deployment-strategy.md","mtime":"2018-04-19T17:47:32.090Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-26T15:12:13.860Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
