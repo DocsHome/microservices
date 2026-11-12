@@ -1,6 +1,6 @@
 # 7、重构单体应用为微服务
 
-本书主要介绍如何使用微服务构建应用，这是本书的第七章，也是最后一章。[第一章](1-introduction-to-microservices.md)介绍了微服务架构模式，讨论了使用微服务的优点与缺点。随后的章节讨论了微服务架构的方方面面：[使用 API ​​网关](2-using-an-api-gateway.md)、[进程间通信](3-inter-process-communication.md)、[服务发现](4-service-discovery.md)、[事件驱动数据管理](5-event-driven-data-management-for-microservices.md)和[部署微服务](6-choosing-deployment-strategy.md)。在本章中，我们将介绍单体应用迁移到微服务的策略。
+本书主要介绍如何使用微服务构建应用，这是本书的第七章，也是最后一章。[第一章](1-introduction-to-microservices.md)介绍了微服务架构模式，讨论了使用微服务的优点与缺点。随后的章节讨论了微服务架构的方方面面：[使用 API 网关](2-using-an-api-gateway.md)、[进程间通信](3-inter-process-communication.md)、[服务发现](4-service-discovery.md)、[事件驱动数据管理](5-event-driven-data-management-for-microservices.md)和[部署微服务](6-choosing-deployment-strategy.md)。在本章中，我们将介绍单体应用迁移到微服务的策略。
 
 我希望这本电子书能够让你对微服务的架构、其优点和缺点以及何时使用它有更好的了解。微服务架构也许很适合你的组织。
 
@@ -18,7 +18,7 @@
 
 ![葡萄树](resources/7.png)
 
-Martin Fowler 将这种应用现代化策略称为[绞杀者应用](http://www.martinfowler.com/bliki/StranglerApplication.html)（Strangler Application）。这个名字来自发现于热带雨林中的葡萄树（也称为绞杀榕）。一棵葡萄树生长在一棵树上，以获取森林冠层之上的阳光。有时，树死了，留下一条树形的腾。应用现代化也遵循相同的模式。我们将围绕遗留应用来构建一个由微服务组成的新应用，遗留应用将慢慢缩小最终消亡。
+Martin Fowler 将这种应用现代化策略称为[绞杀者应用](http://www.martinfowler.com/bliki/StranglerApplication.html)（Strangler Application）。这个名字来自发现于热带雨林中的葡萄树（也称为绞杀榕）。一棵葡萄树生长在一棵树上，以获取森林冠层之上的阳光。有时，树死了，留下一条树形的藤。应用现代化也遵循相同的模式。我们将围绕遗留应用来构建一个由微服务组成的新应用，遗留应用将慢慢缩小最终消亡。
 
 让我们来看看能做到这点的策略。
 
@@ -122,7 +122,7 @@ Martin Fowler 将这种应用现代化策略称为[绞杀者应用](http://www.m
 
 by Floyd Smith
 
-如本章所述，将单体转换为微服务可能是一个缓慢而困难的过程，但这同样有许多好处。使用 NGINX，你可以在实际开始转换过程之前获得微服务器的部分优势。
+如本章所述，将单体转换为微服务可能是一个缓慢而困难的过程，但这同样有许多好处。使用 NGINX，你可以在实际开始转换过程之前获得微服务的部分优势。
 
 你可以通过将 NGINX 放在你现有的单体应用之前，以节省迁移微服务所花费的大量时间。以下简要说明与微服务相关的好处：
 

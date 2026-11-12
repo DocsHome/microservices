@@ -94,7 +94,7 @@
 
 将服务打包成一个容器镜像后，你将启动一个或多个容器。通常在每台（个）物理或虚拟主机上运行多个容器。你可以使用集群管理工具（如 [Kubernetes](https://kubernetes.io/) 或 [Marathon](https://github.com/mesosphere/marathon)）来管理容器。集群管理工具将主机视为一个资源池。它根据容器所需的资源和每个主机上可用的资源来决定每个容器放置的位置。
 
-每个容器一个服务实例模式模式有优点也有缺点。容器的优点与虚拟机的类似。它们将服务实例彼此隔离。你可以轻松地监控每个容器所消耗的资源。此外，与 VM 一样，容器封装了服务的实现技术。可将容器管理 API 作为服务管理 API。
+每个容器一个服务实例模式有优点也有缺点。容器的优点与虚拟机的类似。它们将服务实例彼此隔离。你可以轻松地监控每个容器所消耗的资源。此外，与 VM 一样，容器封装了服务的实现技术。可将容器管理 API 作为服务管理 API。
 
 然而，与虚拟机不同，容器是轻量级技术。容器镜像可以非常快速地构建。例如，在我的笔记本电脑上，将一个 [Spring Boot](http://projects.spring.io/spring-boot/) 应用打包成一个 Docker 容器只需要 5 秒钟的时间。容器也可以很快地启动，因为没有繁琐的操作系统引导机制。当一个容器启动时，它所运行的就是服务。
 
@@ -104,7 +104,7 @@
 
 此外，容器通常部署在一个按单个 VM 收费的基础设施上。因此，如之前所述，当有处理负载峰值时，可能会产生超额配置 VM 的额外成本。
 
-有趣的是，容器和 VM 之间的区别可能会有些模糊。如之前所述，Boxfuse VM 可以很快地构建和启动。[Clear Containers](https://clearlinux.org/features/clear-containers) 项目旨在创建轻量级分的虚拟机。[Unikernels](https://en.wikipedia.org/wiki/Unikernel) 也正在蓬勃发展。Docker 公司于 2016 年初收购了 Unikernel 系统。
+有趣的是，容器和 VM 之间的区别可能会有些模糊。如之前所述，Boxfuse VM 可以很快地构建和启动。[Clear Containers](https://clearlinux.org/features/clear-containers) 项目旨在创建轻量级虚拟机。[Unikernels](https://en.wikipedia.org/wiki/Unikernel) 也正在蓬勃发展。Docker 公司于 2016 年初收购了 Unikernel 系统。
 
 还有一个日益流行的 server-less（无服务器）部署概念，它避免了「在容器中还是在虚拟机中部署服务」这一问题。
 
@@ -112,7 +112,7 @@
 
 ## 6.4、Serverless 部署
 
-[AWS Lambda](https://aws.amazon.com/lambda/) 就是一个 serverless 部署技术示例。它支持 Java、Node.js 和 Python 服务。要部署微服务时，需将服务打包成 ZIP 文件并将上传到 AWS Lambda。你还要提供元数据，其中包括了被调用用来处理请求（又称为事件）的函数的名称。AWS Lambda 会自动运行足够的微服务服务实例来处理请求。你只需根据每个请求所用时间和内存消耗来付费。当然，问题往往出现在细节上，你很快注意到了 AWS Lambda 的局限性。但作为开发人员的你或组织中的任何人都无需担心服务器、虚拟机或容器方面的任何问题 ，这非常有吸引力，足以令人难以置信。
+[AWS Lambda](https://aws.amazon.com/lambda/) 就是一个 serverless 部署技术示例。它支持 Java、Node.js 和 Python 服务。要部署微服务时，需将服务打包成 ZIP 文件并上传到 AWS Lambda。你还要提供元数据，其中包括了被调用用来处理请求（又称为事件）的函数的名称。AWS Lambda 会自动运行足够的微服务服务实例来处理请求。你只需根据每个请求所用时间和内存消耗来付费。当然，问题往往出现在细节上，你很快注意到了 AWS Lambda 的局限性。但作为开发人员的你或组织中的任何人都无需担心服务器、虚拟机或容器方面的任何问题 ，这非常有吸引力，足以令人难以置信。
 
 Lambda 函数是无状态服务。它通常通过调用 AWS 服务来处理请求。例如，当图片上传到 S3 存储桶时 Lambda 函数将被调用，该函数可插入一条记录到 DynamoDB 图片表中，并将消息发布到 Kinesis 流以触发图片处理。Lambda 函数还可以调用第三方 Web 服务。
 
