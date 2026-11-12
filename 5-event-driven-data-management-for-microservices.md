@@ -49,7 +49,7 @@ Order Service 无法直接访问 CUSTOMER 表。它只能使用 Customer Service
 
 - Customer Service （客户服务）消费了 Order Created 事件，为订单预留信用额度，并发布 Credit Reserved 事件。
 
-![图 5.3、Customer Service 响应](resources/5-3.png)
+![图 5-3、Customer Service 响应](resources/5-3.png)
 
 - Order Service 消费了 Credit Reserved （信用预留）事件并将订单的状态更改为 OPEN。
 
@@ -138,7 +138,7 @@ LinkedIn Databus 开源项目使用此方法。Databus 挖掘 Oracle 事务日�
 
 by Floyd Smith
 
-基于微服务的存储方式涉及了大数量和各种数据存储，访问和更新数据将变得更加复杂，DevOps 在维护数据一致性方面面临着更大的挑战。NGINX 为这种数据管理提供了重要支持，主要有三个方面：
+基于微服务的存储方式涉及大量数据和各种数据存储，访问和更新数据将变得更加复杂，DevOps 在维护数据一致性方面面临着更大的挑战。NGINX 为这种数据管理提供了重要支持，主要有三个方面：
 
 1. **数据缓存与微缓存（microcaching）**
 
@@ -150,6 +150,6 @@ by Floyd Smith
 
 3. **服务监控与管理，包括数据服务**
 
-    随着数据服务器数量的增加，支持复杂操作、有监控和管理工具就显得非常重要了。[NGINX Plus](https://www.nginx.com/products/) 内置了这些工具和应用性能管理服务[合作方](https://www.nginx.com/partners/)的接口，如 Data Dog、Dynatrace 和 New Relic。
+    随着数据服务器数量的增加，支持复杂操作、有监控和管理工具就显得非常重要了。[NGINX Plus](https://www.nginx.com/products/) 内置了这些工具和应用性能管理服务[合作方](https://www.nginx.com/partners/)的接口，如 Datadog、Dynatrace 和 New Relic。
 
 微服务相关的数据管理示例可在 NGINX [微服务参考架构](https://www.nginx.com/blog/introducing-the-nginx-microservices-reference-architecture/)的三大模型中找到，其为你设计决策和实施提供了一个起点。

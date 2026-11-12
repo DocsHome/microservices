@@ -134,9 +134,9 @@ Eureka 客户端 — 服务与服务客户端 — 查询 DNS 以发现 Eureka �
 
 有两种主要的服务发现模式：客户端发现与服务端发现。在使用了客户端服务发现的系统中，客户端查询服务注册中心，选择一个可用实例并发出请求。在使用了服务端发现的系统中，客户端通过路由进行请求，路由将查询服务注册中心，并将请求转发到可用实例。
 
-服务实例在服务注册中心中注册与注销有两种主要方式。一个是服务实例向服务注中心自我注册，即[自注册模式](http://microservices.io/patterns/self-registration.html)。另一个是使用其他系统组件代表服务完成注册与注销，即[第三方注册模式](http://microservices.io/patterns/3rd-party-registration.html)。
+服务实例在服务注册中心中注册与注销有两种主要方式。一个是服务实例向服务注册中心自我注册，即[自注册模式](http://microservices.io/patterns/self-registration.html)。另一个是使用其他系统组件代表服务完成注册与注销，即[第三方注册模式](http://microservices.io/patterns/3rd-party-registration.html)。
 
-在某些部署环境中，你需要使用如 [Netflix Eureka](https://github.com/Netflix/eureka) 、ectd 或 [Apache ZooKeeper](http://zookeeper.apache.org/) 等服务注册中心来设置你自己的服务发现基础设施。在其他部署环境中，服务发现是内置的，例如，[Kubernetes](https://kubernetes.io/) 和 [Marathon](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)，可以处理服务实例的注册与注销。他们还在每一个扮演服务端发现路由角色的集群主机上运行一个代理。
+在某些部署环境中，你需要使用如 [Netflix Eureka](https://github.com/Netflix/eureka) 、etcd 或 [Apache ZooKeeper](http://zookeeper.apache.org/) 等服务注册中心来设置你自己的服务发现基础设施。在其他部署环境中，服务发现是内置的，例如，[Kubernetes](https://kubernetes.io/) 和 [Marathon](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)，可以处理服务实例的注册与注销。他们还在每一个扮演服务端发现路由角色的集群主机上运行一个代理。
 
 一个 HTTP 反向代理和负载均衡器（如 NGINX）也可以作为服务端发现负载均衡器。服务注册中心可以将路由信息推送给 NGINX，并调用优雅配置更新，例如，你可以使用 [Consul Template](https://www.hashicorp.com/blog/introducing-consul-template/)。NGINX Plus 支持[额外的动态重新配置机制](https://www.nginx.com/products/on-the-fly-reconfiguration/) — 它可以使用 DNS 从注册中心中提取有关服务实例的信息，并为远程重新配置提供一个 API。
 
